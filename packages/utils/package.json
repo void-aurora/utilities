@@ -1,0 +1,36 @@
+{
+  "name": "@void-aurora/utils",
+  "version": "0.0.0",
+  "description": "Shared utils module for Void Aurora.",
+  "keywords": [
+    "typescript",
+    "javascript",
+    "Void Aurora"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": "github:void-aurora/utils",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "./dist/utils.cjs.js",
+  "module": "./dist/utils.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/utils.cjs.js",
+      "import": "./dist/utils.esm.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc",
+    "serve": "vite preview",
+    "prepare": "pnpm run build",
+    "prepublishOnly": "pnpm run build"
+  },
+  "devDependencies": {
+    "vite": "^2.3.3"
+  }
+}
