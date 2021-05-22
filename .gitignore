@@ -1,0 +1,35 @@
+# OS
+.DS_Store
+
+# Editor or IDE directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+
+# Dependencies directories
+node_modules/
+
+# Coverage directories
+coverage/
+
+# Output directories
+dist/
+
+# Temporary directories and files
+temp/
+.tmp
+.tmp.*

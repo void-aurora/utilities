@@ -1,0 +1,8 @@
+# Dependencies directories
+node_modules/
+
+# Coverage directories
+coverage/
+
+# Output directories
+dist/
