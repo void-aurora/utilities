@@ -32,5 +32,8 @@
   },
   "devDependencies": {
     "vite": "^2.3.3"
+  },
+  "dependencies": {
+    "type-fest": "^1.1.3"
   }
 }
