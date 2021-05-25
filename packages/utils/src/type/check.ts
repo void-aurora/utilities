@@ -1,5 +1,13 @@
 // ================================================================
-// Primitives
+// Primitive
+// https://developer.mozilla.org/en-US/docs/Glossary/Primitive
+
+import { Primitive } from 'type-fest';
+
+export const isNull = (value: unknown): value is null => value === null;
+
+export const isUndefined = (value: unknown): value is undefined =>
+  typeof value === 'undefined';
 
 export const isString = (value: unknown): value is string =>
   typeof value === 'string';
@@ -10,22 +18,22 @@ export const isNumber = (value: unknown): value is number =>
 export const isBoolean = (value: unknown): value is boolean =>
   typeof value === 'boolean';
 
-export const isBigInt = (value: unknown): value is bigint =>
-  typeof value === 'bigint';
-
 export const isSymbol = (value: unknown): value is symbol =>
   typeof value === 'symbol';
 
-export const isPrimitives = (
-  value: unknown,
-): value is string | number | boolean | bigint | symbol => {
+export const isBigInt = (value: unknown): value is bigint =>
+  typeof value === 'bigint';
+
+export const isPrimitives = (value: unknown): value is Primitive => {
   const t = typeof value;
   return (
+    value === null ||
+    t === 'undefined' ||
     t === 'string' ||
     t === 'number' ||
     t === 'boolean' ||
-    t === 'bigint' ||
-    t === 'symbol'
+    t === 'symbol' ||
+    t === 'bigint'
   );
 };
 
@@ -69,3 +77,5 @@ export const isSet = <V = any>(value: unknown): value is Set<V> =>
 
 export const isPromise = <T = any>(value: unknown): value is Promise<T> =>
   isObject(value) && isFunction(value.then) && isFunction(value.catch);
+
+export const isDate = (value: unknown): value is Date => value instanceof Date;
