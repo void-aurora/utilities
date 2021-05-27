@@ -4,7 +4,8 @@
   "scripts": {
     "bump": "changeset version && pnpm install",
     "changeset": "changeset",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "ts": "ts-node --project tsconfig.dev.json"
   },
   "devDependencies": {
     "@changesets/cli": "^2.16.0",

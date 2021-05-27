@@ -1,14 +1,7 @@
 import pth from 'path';
 import type { UserConfig } from 'vite';
 
-const resolve = (...paths: string[]) => pth.resolve(__dirname, ...paths);
-
 const config: UserConfig = {
-  resolve: {
-    alias: {
-      'type-fest': './type-fest',
-    },
-  },
   build: {
     sourcemap: true,
     lib: {
@@ -17,7 +10,13 @@ const config: UserConfig = {
       formats: ['es', 'cjs', 'iife'],
     },
     rollupOptions: {
-      // external: ['type-fest'],
+      external: [
+        '@void-aurora/utils',
+        'dom-serializer',
+        'domhandler',
+        'domutils',
+        'htmlparser2',
+      ],
     },
   },
 };
