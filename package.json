@@ -1,5 +1,5 @@
 {
-  "name": "@void-aurora/utils-monorepo",
+  "name": "@void-aurora/utilities-monorepo",
   "private": true,
   "scripts": {
     "bump": "changeset version && pnpm install",

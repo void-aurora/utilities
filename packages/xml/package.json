@@ -8,7 +8,7 @@
   ],
   "author": "duduluu <duduluu@outlook.com>",
   "license": "MIT",
-  "repository": "github:void-aurora/utils",
+  "repository": "github:void-aurora/utilities",
   "files": [
     "dist",
     "src"
