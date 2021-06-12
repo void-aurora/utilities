@@ -29,7 +29,6 @@
     "build": "vite build && tsc",
     "serve": "vite preview",
     "prepare": "pnpm run build",
-    "prepublishOnly": "pnpm run build",
     "ts-node": "ts-node --project ../../tsconfig.dev.json"
   },
   "devDependencies": {

@@ -5,7 +5,7 @@ import pkg from './package.json';
 const config: UserConfig = {
   resolve: {
     alias: {
-      'type-fest': './type-fest',
+      // 'type-fest': './type-fest',
     },
   },
   build: {
@@ -16,7 +16,7 @@ const config: UserConfig = {
       formats: ['es', 'cjs', 'iife'],
     },
     rollupOptions: {
-      // external: ['type-fest'],
+      external: ['type-fest'],
     },
   },
 };
