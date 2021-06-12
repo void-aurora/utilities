@@ -1,5 +1,8 @@
 {
   "name": "@void-aurora/xml",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.1.0",
   "description": "A simple xml library based on htmlparser2.",
   "keywords": [

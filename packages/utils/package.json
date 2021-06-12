@@ -1,5 +1,8 @@
 {
   "name": "@void-aurora/utils",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.1.0",
   "description": "Shared utils module for Void Aurora.",
   "keywords": [
