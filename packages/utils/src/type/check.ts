@@ -1,19 +1,29 @@
+// https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
+
+import { Primitive } from './utility';
+
+const { isFinite } = Number;
+
 // ================================================================
 // Primitive
 // https://developer.mozilla.org/en-US/docs/Glossary/Primitive
-
-import { Primitive } from 'type-fest';
 
 export const isNull = (value: unknown): value is null => value === null;
 
 export const isUndefined = (value: unknown): value is undefined =>
   typeof value === 'undefined';
 
+export const isAssigned = <T>(value: T | null | undefined): value is T =>
+  !isNull(value) && !isUndefined(value);
+
 export const isString = (value: unknown): value is string =>
   typeof value === 'string';
 
+/**
+ * Check if the value is a valid number -- finite and none-NaN.
+ */
 export const isNumber = (value: unknown): value is number =>
-  typeof value === 'number';
+  typeof value === 'number' && isFinite(value);
 
 export const isBoolean = (value: unknown): value is boolean =>
   typeof value === 'boolean';
@@ -30,7 +40,7 @@ export const isPrimitives = (value: unknown): value is Primitive => {
     value === null ||
     t === 'undefined' ||
     t === 'string' ||
-    t === 'number' ||
+    (t === 'number' && isFinite(value)) ||
     t === 'boolean' ||
     t === 'symbol' ||
     t === 'bigint'
