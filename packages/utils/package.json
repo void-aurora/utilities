@@ -23,6 +23,7 @@
       "import": "./dist/utils.esm.js"
     }
   },
+  "globalName": "VoidAuroraXml",
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc",

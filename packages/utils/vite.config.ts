@@ -1,7 +1,6 @@
 import pth from 'path';
 import type { UserConfig } from 'vite';
-
-const resolve = (...paths: string[]) => pth.resolve(__dirname, ...paths);
+import pkg from './package.json';
 
 const config: UserConfig = {
   resolve: {
@@ -13,7 +12,7 @@ const config: UserConfig = {
     sourcemap: true,
     lib: {
       entry: pth.resolve(__dirname, 'src/index.ts'),
-      name: 'VoidAuroraUtils',
+      name: pkg.globalName,
       formats: ['es', 'cjs', 'iife'],
     },
     rollupOptions: {
