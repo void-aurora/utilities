@@ -31,7 +31,6 @@
     "build": "vite build && tsc",
     "serve": "vite preview",
     "prepare": "pnpm run build",
-    "prepublishOnly": "pnpm run build",
     "test": "pnpm run ts -- scripts/test",
     "ts": "ts-node --project ../../tsconfig.dev.json"
   },
