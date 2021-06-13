@@ -1,0 +1,42 @@
+{
+  "name": "@void-aurora/math",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.1.0",
+  "description": "Shared Mathematical Algorithms Module for Void Aurora.",
+  "keywords": [
+    "typescript",
+    "javascript",
+    "Void Aurora"
+  ],
+  "author": "duduluu <duduluu@outlook.com>",
+  "license": "MIT",
+  "repository": "github:void-aurora/utilities",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "./dist/math.cjs.js",
+  "module": "./dist/math.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/math.cjs.js",
+      "import": "./dist/math.esm.js"
+    }
+  },
+  "globalName": "VoidAuroraMath",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc",
+    "serve": "vite preview",
+    "test": "jest",
+    "test:updateSnapshot": "jest --updateSnapshot",
+    "prepare": "pnpm run build",
+    "ts-node": "ts-node --project ../../tsconfig.dev.json"
+  },
+  "devDependencies": {
+    "vite": "^2.3.3"
+  }
+}
