@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "bump": "changeset version && pnpm install",
-    "changeset": "changeset",
+    "changeset": "changeset && git add .changeset",
     "preinstall": "npx only-allow pnpm",
     "ts": "ts-node --project tsconfig.dev.json"
   },
