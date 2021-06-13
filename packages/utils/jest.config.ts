@@ -25,7 +25,6 @@ const config: InitialOptionsTsJest = {
     'src/**/*.{ts,tsx}',
     '!src/**/index.{ts,tsx}',
     '!src/type/utility.ts',
-    '!src/**/*.test.{ts,tsx}',
   ],
   coverageThreshold: {
     global: {
