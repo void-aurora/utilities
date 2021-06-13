@@ -4,7 +4,7 @@
     "access": "public"
   },
   "version": "0.1.0",
-  "description": "A simple xml library based on htmlparser2.",
+  "description": "A simple xml library, wrapping of htmlparser2.",
   "keywords": [
     "xml",
     "Void Aurora"

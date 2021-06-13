@@ -4,7 +4,7 @@
     "access": "public"
   },
   "version": "0.1.0",
-  "description": "Shared utils module for Void Aurora.",
+  "description": "Shared Utilities Module for Void Aurora.",
   "keywords": [
     "typescript",
     "javascript",

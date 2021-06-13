@@ -1,3 +1,3 @@
-# XML
+# @void-aurora/xml
 
-A simple xml library based on htmlparser2.
+> A simple xml library, wrapping of htmlparser2.
