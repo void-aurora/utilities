@@ -25,6 +25,7 @@
       "import": "./dist/xml.esm.js"
     }
   },
+  "sideEffects": false,
   "globalName": "VoidAuroraXml",
   "scripts": {
     "dev": "vite",

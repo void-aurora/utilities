@@ -26,6 +26,7 @@
       "import": "./dist/math.esm.js"
     }
   },
+  "sideEffects": false,
   "globalName": "VoidAuroraMath",
   "scripts": {
     "dev": "vite",
