@@ -19,9 +19,7 @@ const config: UserConfig = {
         // 'htmlparser2',
       ],
       output: {
-        globals: {
-          '@void-aurora/utils': 'VoidAuroraUtils',
-        },
+        globals: {},
       },
     },
   },
