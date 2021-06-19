@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@changesets/cli': ^2.16.0
       '@types/jest': ^26.0.23
-      '@types/node': ^15.6.0
+      '@types/node': ^15.12.4
       '@void-aurora/prettier-config': ^1.0.1
       commitlint: ^12.1.4
       eslint: ^7.27.0
@@ -22,7 +22,7 @@ importers:
     devDependencies:
       '@changesets/cli': 2.16.0
       '@types/jest': 26.0.23
-      '@types/node': 15.6.0
+      '@types/node': 15.12.4
       '@void-aurora/prettier-config': 1.0.1
       commitlint: 12.1.4
       eslint: 7.27.0
@@ -1312,8 +1312,8 @@ packages:
     resolution: {integrity: sha512-zjQ69G564OCIWIOHSXyQEEDpdpGl+G348RAKY0XXy9Z5kU9Vzv1GMNnkar/ZJ8dzXB3COzD9Mo9NtRZ4xfgUww==}
     dev: true
 
-  /@types/node/15.6.0:
-    resolution: {integrity: sha512-gCYSfQpy+LYhOFTKAeE8BkyGqaxmlFxe+n4DKM6DR0wzw/HISUE/hAmkC/KT8Sw5PCJblqg062b3z9gucv3k0A==}
+  /@types/node/15.12.4:
+    resolution: {integrity: sha512-zrNj1+yqYF4WskCMOHwN+w9iuD12+dGm0rQ35HLl9/Ouuq52cEtd0CH9qMgrdNmi5ejC1/V7vKEXYubB+65DkA==}
     dev: true
 
   /@types/node/15.6.1:
