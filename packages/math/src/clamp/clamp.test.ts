@@ -1,7 +1,7 @@
 import { clamp, clamp01, createClamp } from './clamp';
 
 describe('clamp', () => {
-  test('clamp(), createClamp(), clamp01()', () => {
+  test('clamp(), createClamp()', () => {
     const min = 5.123;
     const max = 874.13;
     const clamper = createClamp(min, max);
@@ -26,7 +26,11 @@ describe('clamp', () => {
       expect(clamp(value, min, max)).toBe(result);
       expect(clamper(value)).toBe(result);
     });
+  });
 
+  test('clampRound(), createClampRound()', () => {});
+
+  test('clamp01()', () => {
     expect(clamp01(-654.2)).toBe(0);
     expect(clamp01(-1)).toBe(0);
     expect(clamp01(0)).toBe(0);
