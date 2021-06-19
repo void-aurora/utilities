@@ -19,6 +19,8 @@
     "module": "CommonJS",
     "target": "ES2019",
     "types": ["node"],
+    "allowJs": true,
+    "resolveJsonModule": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
