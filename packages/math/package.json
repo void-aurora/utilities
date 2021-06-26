@@ -36,8 +36,5 @@
     "test:updateSnapshot": "jest --updateSnapshot",
     "prepare": "pnpm run build",
     "ts-node": "ts-node --project ../../tsconfig.dev.json"
-  },
-  "devDependencies": {
-    "vite": "^2.3.3"
   }
 }
