@@ -11,7 +11,7 @@ import {
   createClampFloor,
   createClampRound,
   createClampTrunc,
-} from './clamp';
+} from './normal';
 
 describe('clamp', () => {
   test('test normal clamp and integer clamp with round, floor, ceil, trunc', () => {

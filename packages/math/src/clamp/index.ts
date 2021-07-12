@@ -1,2 +1,2 @@
-export * from './clamp';
-export * from './clamp-loop';
+export * from './normal';
+export * from './loop';
