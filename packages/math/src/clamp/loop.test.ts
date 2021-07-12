@@ -1,5 +1,6 @@
 import { exp } from '../standard';
-import { clampLoop, clampLoop01, createClampLoop } from './loop';
+import { clampLoop, createClampLoop } from './loop';
+import { clampLoop01 } from './special';
 
 describe('clamp loop', () => {
   test('clampLoop() createClampLoop()', () => {});

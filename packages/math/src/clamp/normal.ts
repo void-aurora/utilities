@@ -35,15 +35,8 @@ export function createClamp(
 }
 
 /**
- * Clamps value between 0 and 1 and returns value.
- * If the value is negative then zero is returned.
- * If value is greater than one then one is returned.
- */
-export const clamp01 = createClamp(0, 1);
-
-/**
  * Clamps the given value between the given minimum and maximum number values.
- * Use `round(value)`, `ceil(min)` and `floor(max)`.
+ * Uses `round(value)`, `ceil(min)` and `floor(max)`.
  * @param value The number value to restrict inside the range defined by the min and max values.
  * @param min The minimum number value to compare against.
  * @param max The maximum number value to compare against.
@@ -58,7 +51,7 @@ export function clampRound(value: number, min: number, max: number): number {
 
 /**
  * Create a clamp function for clamping the given value between given minimum and maximum number value.
- * Use `round(value)`, `ceil(min)` and `floor(max)`.
+ * Uses `round(value)`, `ceil(min)` and `floor(max)`.
  * @param min The minimum number value to compare against.
  * @param max The maximum number value to compare against.
  * @returns A clamp function.
@@ -76,7 +69,7 @@ export function createClampRound(
 
 /**
  * Clamps the given value between the given minimum and maximum number values.
- * Use `floor(value)`, `ceil(min)` and `floor(max)`.
+ * Uses `floor(value)`, `ceil(min)` and `floor(max)`.
  * @param value The number value to restrict inside the range defined by the min and max values.
  * @param min The minimum number value to compare against.
  * @param max The maximum number value to compare against.
@@ -91,7 +84,7 @@ export function clampFloor(value: number, min: number, max: number): number {
 
 /**
  * Create a clamp function for clamping the given value between given minimum and maximum number value.
- * Use `floor(value)`, `ceil(min)` and `floor(max)`.
+ * Uses `floor(value)`, `ceil(min)` and `floor(max)`.
  * @param min The minimum number value to compare against.
  * @param max The maximum number value to compare against.
  * @returns A clamp function.
@@ -109,7 +102,7 @@ export function createClampFloor(
 
 /**
  * Clamps the given value between the given minimum and maximum number values.
- * Use `ceil(value)`, `ceil(min)` and `floor(max)`.
+ * Uses `ceil(value)`, `ceil(min)` and `floor(max)`.
  * @param value The number value to restrict inside the range defined by the min and max values.
  * @param min The minimum number value to compare against.
  * @param max The maximum number value to compare against.
@@ -124,7 +117,7 @@ export function clampCeil(value: number, min: number, max: number): number {
 
 /**
  * Create a clamp function for clamping the given value between given minimum and maximum number value.
- * Use `ceil(value)`, `ceil(min)` and `floor(max)`.
+ * Uses `ceil(value)`, `ceil(min)` and `floor(max)`.
  * @param min The minimum number value to compare against.
  * @param max The maximum number value to compare against.
  * @returns A clamp function.
@@ -142,7 +135,7 @@ export function createClampCeil(
 
 /**
  * Clamps the given value between the given minimum and maximum number values.
- * Use `trunc(value)`, `ceil(min)` and `floor(max)`.
+ * Uses `trunc(value)`, `ceil(min)` and `floor(max)`.
  * @param value The number value to restrict inside the range defined by the min and max values.
  * @param min The minimum number value to compare against.
  * @param max The maximum number value to compare against.
@@ -157,7 +150,7 @@ export function clampTrunc(value: number, min: number, max: number): number {
 
 /**
  * Create a clamp function for clamping the given value between given minimum and maximum number value.
- * Use `trunc(value)`, `ceil(min)` and `floor(max)`.
+ * Uses `trunc(value)`, `ceil(min)` and `floor(max)`.
  * @param min The minimum number value to compare against.
  * @param max The maximum number value to compare against.
  * @returns A clamp function.

@@ -1,7 +1,6 @@
 import { ceil, floor } from '../standard';
 import {
   clamp,
-  clamp01,
   clampCeil,
   clampFloor,
   clampRound,
@@ -12,6 +11,7 @@ import {
   createClampRound,
   createClampTrunc,
 } from './normal';
+import { clamp01 } from './special';
 
 describe('clamp', () => {
   test('test normal clamp and integer clamp with round, floor, ceil, trunc', () => {
@@ -80,7 +80,7 @@ describe('clamp', () => {
     );
   });
 
-  test('clamp01()', () => {
+  test('test special clamp from 0 to 1', () => {
     expect(clamp01(-654.2)).toBe(0);
     expect(clamp01(-1)).toBe(0);
     expect(clamp01(0)).toBe(0);
