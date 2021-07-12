@@ -5,7 +5,7 @@ describe('clamp loop', () => {
   test('clampLoop() createClampLoop()', () => {});
 
   test('clampLoop01()', () => {
-    const clampLoop01Created = createClampLoop(1);
+    const clampLoop01Created = createClampLoop(0, 1);
     [
       [-1325, 0],
       [-1, 0],
@@ -33,7 +33,7 @@ describe('clamp loop', () => {
       [-13563767.34758675, 0.65241325],
     ].forEach(([a, b]) => {
       expect(clampLoop01(a)).toBeCloseTo(b);
-      expect(clampLoop(a, 1)).toBeCloseTo(b);
+      expect(clampLoop(a, 0, 1)).toBeCloseTo(b);
       expect(clampLoop01Created(a)).toBeCloseTo(b);
     });
   });
