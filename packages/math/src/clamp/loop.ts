@@ -1,4 +1,4 @@
-import { abs, ceil, floor, PI, round, sign, trunc } from '../standard';
+import { ceil, floor, round, trunc } from '../standard';
 
 /**
  * Clamps the given value in a loop range
