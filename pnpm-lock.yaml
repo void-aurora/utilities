@@ -38,6 +38,14 @@ importers:
       typescript: 4.2.4
       vite: 2.3.5
 
+  packages/color:
+    specifiers:
+      '@void-aurora/math': workspace:^0.1.0
+      '@void-aurora/utils': workspace:^0.1.0
+    devDependencies:
+      '@void-aurora/math': link:../math
+      '@void-aurora/utils': link:../utils
+
   packages/math:
     specifiers:
       '@void-aurora/utils': workspace:^0.1.0

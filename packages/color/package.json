@@ -1,0 +1,48 @@
+{
+  "name": "@void-aurora/color",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.0",
+  "description": "Shared Color Algorithms Module for Void Aurora.",
+  "keywords": [
+    "color",
+    "rgb",
+    "hsl",
+    "Void Aurora"
+  ],
+  "author": "duduluu <duduluu@outlook.com>",
+  "license": "MIT",
+  "repository": "github:void-aurora/utilities",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "globalName": "VaColor",
+  "main": "./dist/color.cjs.js",
+  "module": "./dist/color.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/color.cjs.js",
+      "import": "./dist/color.esm.js"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc",
+    "serve": "vite preview",
+    "test": "jest",
+    "test:updateSnapshot": "jest --updateSnapshot",
+    "prepare": "pnpm run build",
+    "ts-node": "ts-node --project ../../tsconfig.dev.json"
+  },
+  "devDependencies": {
+    "@void-aurora/math": "workspace:^0.1.0",
+    "@void-aurora/utils": "workspace:^0.1.0"
+  },
+  "peerDependencies": {
+    "@void-aurora/utils": "^0.1.0"
+  }
+}
