@@ -36,5 +36,11 @@
     "test:updateSnapshot": "jest --updateSnapshot",
     "prepare": "pnpm run build",
     "ts-node": "ts-node --project ../../tsconfig.dev.json"
+  },
+  "devDependencies": {
+    "@void-aurora/utils": "workspace:^0.1.0"
+  },
+  "peerDependencies": {
+    "@void-aurora/utils": "^0.1.0"
   }
 }

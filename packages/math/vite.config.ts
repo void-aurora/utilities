@@ -1,6 +1,11 @@
 import pth from 'path';
 import type { UserConfig } from 'vite';
 import pkg from './package.json';
+import pkgUtils from '../utils/package.json';
+
+const deps = [pkgUtils];
+const external = deps.map(p => p.name);
+const globals = Object.fromEntries(deps.map(p => [p.name, p.globalName]));
 
 const config: UserConfig = {
   resolve: {
@@ -14,7 +19,10 @@ const config: UserConfig = {
       formats: ['es', 'cjs', 'iife'],
     },
     rollupOptions: {
-      external: [],
+      external,
+      output: {
+        globals: globals,
+      },
     },
   },
 };
