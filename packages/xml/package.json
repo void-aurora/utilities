@@ -16,6 +16,7 @@
     "dist",
     "src"
   ],
+  "globalName": "VaXml",
   "main": "./dist/xml.cjs.js",
   "module": "./dist/xml.esm.js",
   "types": "./dist/index.d.ts",
@@ -26,7 +27,6 @@
     }
   },
   "sideEffects": false,
-  "globalName": "VoidAuroraXml",
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc",

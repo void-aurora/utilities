@@ -17,6 +17,7 @@
     "dist",
     "src"
   ],
+  "globalName": "VaMath",
   "main": "./dist/math.cjs.js",
   "module": "./dist/math.esm.js",
   "types": "./dist/index.d.ts",
@@ -27,7 +28,6 @@
     }
   },
   "sideEffects": false,
-  "globalName": "VoidAuroraMath",
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc",
