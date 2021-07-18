@@ -1,8 +1,10 @@
 import {
   arrayEqual,
+  buildArray,
   createArrayEqual,
   createDeDupe,
   deDupe,
+  emptyArray,
   firstItem,
   lastItem,
 } from './helper';
@@ -15,6 +17,21 @@ const foobarEqual = (a: Foobar, b: Foobar) =>
   a === b || (a.foo === b.foo && a.bar === b.bar);
 
 describe('array helpers', () => {
+  test('emptyArray()', () => {
+    const arrayA = emptyArray();
+    const arrayB = emptyArray();
+    expect(arrayA).toEqual([]);
+    expect(arrayB).toEqual([]);
+    expect(arrayA).not.toBe(arrayB);
+  });
+
+  test('buildArray()', () => {
+    const arrayA = buildArray(5, i => i);
+    expect(arrayA).toEqual([0, 1, 2, 3, 4]);
+    const arrayB = buildArray(7, i => i * 2);
+    expect(arrayB).toEqual([0, 2, 4, 6, 8, 10, 12]);
+  });
+
   test('firstItem(), lastItem()', () => {
     const array: string[] = [];
     expect(firstItem(array)).toBeUndefined();
