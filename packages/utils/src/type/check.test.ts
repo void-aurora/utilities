@@ -5,9 +5,12 @@ import {
   isBigInt,
   isBoolean,
   isDate,
+  isDefined,
   isFunction,
   isMap,
   isNull,
+  isNullish,
+  isNullOrUndefined,
   isNumber,
   isObject,
   isPlainObject,
@@ -24,6 +27,7 @@ import {
 const checkers = [
   isNull,
   isUndefined,
+  isNullOrUndefined,
   isAssigned,
   isString,
   isNumber,
@@ -129,6 +133,11 @@ describe('type check', () => {
       }),
     );
     expect(record).toMatchSnapshot();
+  });
+
+  test('alias', () => {
+    expect(isDefined).toBe(isAssigned);
+    expect(isNullish).toBe(isNullOrUndefined);
   });
 
   test('hasOwn()', () => {
