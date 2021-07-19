@@ -1,5 +1,5 @@
 import { isNumber } from '@void-aurora/utils';
-import { clampUint8, MAX_UINT8 } from '@void-aurora/math';
+import { clampUint8, isNaN, MAX_UINT8, round } from '@void-aurora/math';
 
 import { Color } from '../base';
 import { ColorSrgbFloat } from './float';
@@ -98,11 +98,35 @@ export class ColorSrgbUint8 extends Color {
   }
 
   /**
-   * Format this color to CSS RGB color value `rgba(r, g, b, a)`.
+   * Format this color to CSS RGB functional notation `rgba(r, g, b, a)`.
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
    */
   public toString(): string {
     return `rgba(${this.r},${this.g},${this.b},${this.alpha})`;
+  }
+
+  /**
+   * Format this color to CSS hexadecimal notation.
+   *
+   * Supports formats:
+   * - `#rrggbb` (default)
+   * - `#rrggbbaa`
+   * - `#rgb`
+   * - `#rgba`
+   */
+  public toHexString(withAlpha: boolean = false): string {
+    const { r, g, b, alpha } = this;
+    const rr = r.toString(16).padStart(2, '0');
+    const gg = g.toString(16).padStart(2, '0');
+    const bb = b.toString(16).padStart(2, '0');
+    let text = `#${rr}${gg}${bb}`;
+    if (withAlpha) {
+      const aa = round(alpha * MAX_UINT8)
+        .toString(16)
+        .padStart(2, '0');
+      text = `${text}${aa}`;
+    }
+    return text;
   }
 
   /**
@@ -132,5 +156,69 @@ export class ColorSrgbUint8 extends Color {
       b * MAX_UINT8,
       alpha,
     );
+  }
+
+  /**
+   * Get a `ColorSrgbUint8` from a hexadecimal notation text.
+   * The hexadecimal notation must be one of #rrggbb, #rgb, #rrggbbaa, #rgba.
+   * The signal '#' is optional.
+   * @param hex The hexadecimal notation text.
+   */
+  public static fromHex(hex: string): ColorSrgbUint8 {
+    let hexFinal = hex.replace(/#/g, '').trim();
+    let length: number | undefined;
+    let integer: number;
+
+    let r: number | undefined;
+    let g: number | undefined;
+    let b: number | undefined;
+    let alpha = 1;
+
+    switch (hexFinal.length) {
+      case 6:
+        length = 6;
+        break;
+      case 3:
+        length = 3;
+        break;
+      case 8:
+        alpha = parseInt(hexFinal.substring(6, 8), 16) / MAX_UINT8;
+        hexFinal = hexFinal.substring(0, 6);
+        length = 6;
+        break;
+      case 4:
+        alpha = parseInt(hexFinal.substring(3, 4), 16);
+        alpha |= alpha << 4;
+        alpha /= MAX_UINT8;
+        hexFinal = hexFinal.substring(0, 3);
+        length = 3;
+        break;
+    }
+
+    integer = parseInt(hexFinal, 16);
+
+    if (!isNumber(length) || !isNumber(integer) || !isNumber(alpha)) {
+      throw new Error(
+        `Invalid color: '${hex}', the hexadecimal notation must be one of #rrggbb, #rgb, #rrggbbaa, #rgba.`,
+      );
+    }
+
+    switch (length) {
+      case 6:
+        r = (integer & 0xff0000) >> 16;
+        g = (integer & 0x00ff00) >> 8;
+        b = integer & 0x0000ff;
+        break;
+      case 3:
+        r = (integer & 0xf00) >> 8;
+        r |= r << 4;
+        g = (integer & 0x0f0) >> 4;
+        g |= g << 4;
+        b = integer & 0x00f;
+        b |= b << 4;
+        break;
+    }
+
+    return new ColorSrgbUint8(r, g, b, alpha);
   }
 }
