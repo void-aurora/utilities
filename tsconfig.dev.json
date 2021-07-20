@@ -21,9 +21,11 @@
     "types": ["node"],
     "allowJs": true,
     "resolveJsonModule": true,
-    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "strict": true
   }
 }

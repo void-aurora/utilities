@@ -42,3 +42,7 @@ export abstract class Color {
    */
   abstract toSrgbFloat(): ColorSrgbFloat;
 }
+
+interface Foobar {
+  a: string;
+}

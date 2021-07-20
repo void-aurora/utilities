@@ -11,6 +11,8 @@
     "emitDeclarationOnly": true,
     "sourceMap": true,
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
     "strict": true,
     "noUnusedLocals": true,
