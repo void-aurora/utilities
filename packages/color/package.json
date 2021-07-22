@@ -20,12 +20,12 @@
   ],
   "globalName": "VaColor",
   "main": "./dist/color.cjs.js",
-  "module": "./dist/color.esm.js",
+  "module": "./dist/color.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/color.cjs.js",
-      "import": "./dist/color.esm.js"
+      "import": "./dist/color.es.js"
     }
   },
   "sideEffects": false,

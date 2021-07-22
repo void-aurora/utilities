@@ -18,12 +18,12 @@
   ],
   "globalName": "VaXml",
   "main": "./dist/xml.cjs.js",
-  "module": "./dist/xml.esm.js",
+  "module": "./dist/xml.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/xml.cjs.js",
-      "import": "./dist/xml.esm.js"
+      "import": "./dist/xml.es.js"
     }
   },
   "sideEffects": false,

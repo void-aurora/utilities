@@ -19,12 +19,12 @@
   ],
   "globalName": "VaMath",
   "main": "./dist/math.cjs.js",
-  "module": "./dist/math.esm.js",
+  "module": "./dist/math.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/math.cjs.js",
-      "import": "./dist/math.esm.js"
+      "import": "./dist/math.es.js"
     }
   },
   "sideEffects": false,
