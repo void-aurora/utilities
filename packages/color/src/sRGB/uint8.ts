@@ -1,5 +1,5 @@
 import { isNumber } from '@void-aurora/utils';
-import { clampUint8, isNaN, MAX_UINT8, round } from '@void-aurora/math';
+import { clampUint8, MAX_UINT8, round } from '@void-aurora/math';
 
 import { Color } from '../base';
 import { ColorSrgbFloat } from './float';
