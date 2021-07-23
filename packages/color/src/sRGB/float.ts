@@ -6,6 +6,8 @@ import { Color } from '../base';
 /**
  * The __Standard RGB Color__ that each channel is
  * a __single precision float__ number between 0 and 1.
+ * @see https://en.wikipedia.org/wiki/SRGB
+ * @see https://www.w3.org/TR/css-color-3/#rgb-color
  */
 export class ColorSrgbFloat extends Color {
   /**

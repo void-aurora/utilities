@@ -7,6 +7,8 @@ import { ColorSrgbFloat } from './float';
 /**
  * The __Standard RGB Color__ that each channel is
  * a __unsigned 8-bit (1-byte) integer__ number between 0 and 255.
+ * @see https://en.wikipedia.org/wiki/SRGB
+ * @see https://www.w3.org/TR/css-color-3/#rgb-color
  */
 export class ColorSrgbUint8 extends Color {
   /**
