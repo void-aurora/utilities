@@ -43,6 +43,7 @@
     "@void-aurora/utils": "workspace:^0.1.0"
   },
   "peerDependencies": {
+    "@void-aurora/math": "0.1.0",
     "@void-aurora/utils": "^0.1.0"
   }
 }
