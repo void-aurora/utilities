@@ -1,4 +1,5 @@
 import type { UserConfig } from 'vite';
+import reactRefresh from '@vitejs/plugin-react-refresh';
 
 const config: UserConfig = {
   base: './',
@@ -10,4 +11,8 @@ const config: UserConfig = {
   },
 };
 
-export default config;
+export default {
+  ...config,
+
+  plugins: [reactRefresh()],
+};

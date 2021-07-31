@@ -3,7 +3,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["ESNext", "DOM"],
-    "types": ["vite/client"],
+    "typeRoots": ["node_modules/@types"],
     "moduleResolution": "Node",
     "outDir": "dist",
     "declaration": true,
