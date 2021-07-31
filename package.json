@@ -2,8 +2,12 @@
   "name": "@void-aurora/utilities-monorepo",
   "private": true,
   "scripts": {
+    "pre:exit": "changeset pre exit",
+    "pre:alpha": "changeset pre enter alpha",
+    "pre:beta": "changeset pre enter beta",
     "bump": "changeset version && pnpm install",
-    "changeset": "changeset && git add .changeset",
+    "change": "changeset && git add .changeset",
+    "changeset": "changeset",
     "preinstall": "npx only-allow pnpm",
     "ts": "ts-node --project tsconfig.dev.json"
   },
