@@ -1,0 +1,48 @@
+{
+  "name": "@void-aurora/datetime",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.0",
+  "description": "Shared Date and Time Algorithms Module for Void Aurora.",
+  "keywords": [
+    "datetime",
+    "date",
+    "time",
+    "Void Aurora"
+  ],
+  "author": "duduluu <duduluu@outlook.com>",
+  "license": "MIT",
+  "repository": "github:void-aurora/utilities",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "globalName": "VaDateTime",
+  "main": "./dist/datetime.cjs.js",
+  "module": "./dist/datetime.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/datetime.cjs.js",
+      "import": "./dist/datetime.es.js"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc",
+    "serve": "vite preview",
+    "test": "jest",
+    "test:updateSnapshot": "jest --updateSnapshot",
+    "prepare": "pnpm run build",
+    "ts-node": "ts-node --project ../../tsconfig.dev.json"
+  },
+  "devDependencies": {
+    "@void-aurora/math": "workspace:^0.1.0",
+    "@void-aurora/utils": "workspace:^0.1.0"
+  },
+  "peerDependencies": {
+    "@void-aurora/utils": "^0.1.0"
+  }
+}
