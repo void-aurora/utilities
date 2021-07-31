@@ -1,7 +1,7 @@
 import pth from 'path';
 import type { UserConfig } from 'vite';
 import pkg from './package.json';
-import pkgUtils from '../utils/package.json';
+import pkgUtils from '@void-aurora/utils/package.json';
 
 const deps = [pkgUtils];
 const external = deps.map(p => p.name);

@@ -1,8 +1,8 @@
 import pth from 'path';
 import type { UserConfig } from 'vite';
 import pkg from './package.json';
-import pkgUtils from '../utils/package.json';
-import pkgMath from '../math/package.json';
+import pkgUtils from '@void-aurora/utils/package.json';
+import pkgMath from '@void-aurora/math/package.json';
 const deps = [pkgUtils, pkgMath];
 const external = deps.map(p => p.name);
 const globals = Object.fromEntries(deps.map(p => [p.name, p.globalName]));
