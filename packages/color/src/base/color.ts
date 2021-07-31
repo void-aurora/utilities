@@ -17,9 +17,11 @@ export abstract class Color {
   /**
    * Get or set value of the alpha channel of this color.
    * The given value will be clamped between 0 and 1.
+   *
    * - If the given value is less than 0, will be set to 0.
    * - If the given value is greater than 1, will be set to 1.
    */
+  // Use 'alpha' as a name to prevent conflicts with a channel with the name 'a'.
   public get alpha(): number {
     return this._alpha;
   }
