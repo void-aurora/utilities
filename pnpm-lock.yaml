@@ -46,6 +46,14 @@ importers:
       '@void-aurora/math': link:../math
       '@void-aurora/utils': link:../utils
 
+  packages/datetime:
+    specifiers:
+      '@void-aurora/math': workspace:^0.1.0
+      '@void-aurora/utils': workspace:^0.1.0
+    devDependencies:
+      '@void-aurora/math': link:../math
+      '@void-aurora/utils': link:../utils
+
   packages/demo:
     specifiers:
       '@types/react': ^17.0.0
@@ -133,11 +141,6 @@ packages:
 
   /@babel/compat-data/7.14.0:
     resolution: {integrity: sha512-vu9V3uMM/1o5Hl5OekMUowo3FqXLJSw+s+66nt0fSWVWTtmosdzn45JHOB3cPtZoe6CTBDzvSw0RdOY85Q37+Q==}
-    dev: true
-
-  /@babel/compat-data/7.14.5:
-    resolution: {integrity: sha512-kixrYn4JwfAVPa0f2yfzc2AWti6WRRyO3XjWW5PJAvtE11qhSayrrcrEnee05KAtNaPC+EwehE8Qt1UedEVB8w==}
-    engines: {node: '>=6.9.0'}
     dev: true
 
   /@babel/compat-data/7.14.7:
@@ -258,7 +261,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
-      '@babel/compat-data': 7.14.5
+      '@babel/compat-data': 7.14.7
       '@babel/core': 7.14.5
       '@babel/helper-validator-option': 7.14.5
       browserslist: 4.16.6
