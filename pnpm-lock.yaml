@@ -5,14 +5,21 @@ importers:
   .:
     specifiers:
       '@changesets/cli': ^2.16.0
+      '@types/fs-extra': ^9.0.12
       '@types/jest': ^27.0.1
+      '@types/js-yaml': ^4.0.3
       '@types/node': ^16.7.6
       '@void-aurora/prettier-config': ^1.0.1
+      chalk: ^4.1.2
       commitlint: ^13.1.0
       eslint: ^7.32.0
+      fs-extra: ^10.0.0
+      globby: ^12.0.2
       husky: ^7.0.2
       jest: ^27.1.0
+      js-yaml: ^4.1.0
       lint-staged: ^11.1.2
+      node-fetch: ^2.6.1
       prettier: ^2.3.2
       stylelint: ^13.13.1
       ts-jest: ^27.0.5
@@ -22,14 +29,21 @@ importers:
       vite: ^2.5.1
     devDependencies:
       '@changesets/cli': 2.16.0
+      '@types/fs-extra': 9.0.12
       '@types/jest': 27.0.1
+      '@types/js-yaml': 4.0.3
       '@types/node': 16.7.6
       '@void-aurora/prettier-config': 1.0.1
+      chalk: 4.1.2
       commitlint: 13.1.0
       eslint: 7.32.0
+      fs-extra: 10.0.0
+      globby: 12.0.2
       husky: 7.0.2
       jest: 27.1.0_ts-node@10.2.1
+      js-yaml: 4.1.0
       lint-staged: 11.1.2
+      node-fetch: 2.6.1
       prettier: 2.3.2
       stylelint: 13.13.1
       ts-jest: 27.0.5_d6279bcaf6e2c6aa91a58343d133ee67
@@ -1222,6 +1236,10 @@ packages:
       pretty-format: 27.1.0
     dev: true
 
+  /@types/js-yaml/4.0.3:
+    resolution: {integrity: sha512-5t9BhoORasuF5uCPr+d5/hdB++zRFUTMIZOzbNkr+jZh3yQht4HYbRDyj9fY8n2TZT30iW9huzav73x4NikqWg==}
+    dev: true
+
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
     dependencies:
@@ -1479,6 +1497,10 @@ packages:
       sprintf-js: 1.0.3
     dev: true
 
+  /argparse/2.0.1:
+    resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+    dev: true
+
   /array-ify/1.0.0:
     resolution: {integrity: sha1-nlKHYrSpBmrRY6aWKjZEGOlibs4=}
     dev: true
@@ -1486,6 +1508,11 @@ packages:
   /array-union/2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
     engines: {node: '>=8'}
+    dev: true
+
+  /array-union/3.0.1:
+    resolution: {integrity: sha512-1OvF9IbWwaeiM9VhzYXVQacMibxpXOMYVNIvMtKRyX9SImBXpKcFr8XvFDeEslCyuH/t6KRt7HEO94AlP8Iatw==}
+    engines: {node: '>=12'}
     dev: true
 
   /arrify/1.0.1:
@@ -2692,6 +2719,18 @@ packages:
       slash: 3.0.0
     dev: true
 
+  /globby/12.0.2:
+    resolution: {integrity: sha512-lAsmb/5Lww4r7MM9nCCliDZVIKbZTavrsunAsHLr9oHthrZP1qi7/gAnHOsUs9bLvEt2vKVJhHmxuL7QbDuPdQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      array-union: 3.0.1
+      dir-glob: 3.0.1
+      fast-glob: 3.2.7
+      ignore: 5.1.8
+      merge2: 1.4.1
+      slash: 4.0.0
+    dev: true
+
   /globjoin/0.1.4:
     resolution: {integrity: sha1-L0SUrIkZ43Z8XLtpHp9GMyQoXUM=}
     dev: true
@@ -3594,6 +3633,13 @@ packages:
       esprima: 4.0.1
     dev: true
 
+  /js-yaml/4.1.0:
+    resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
+    hasBin: true
+    dependencies:
+      argparse: 2.0.1
+    dev: true
+
   /jsdom/16.7.0:
     resolution: {integrity: sha512-u9Smc2G1USStM+s/x1ru5Sxrl6mPYCbByG1U/hUmqaVsm4tbNyS7CicOSRyuGQYZhTu0h84qkZZQ/I+dzizSVw==}
     engines: {node: '>=10'}
@@ -4055,6 +4101,11 @@ packages:
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
+    dev: true
+
+  /node-fetch/2.6.1:
+    resolution: {integrity: sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==}
+    engines: {node: 4.x || >=6.0.0}
     dev: true
 
   /node-int64/0.4.0:
@@ -4854,6 +4905,11 @@ packages:
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
+    dev: true
+
+  /slash/4.0.0:
+    resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
+    engines: {node: '>=12'}
     dev: true
 
   /slice-ansi/3.0.0:
