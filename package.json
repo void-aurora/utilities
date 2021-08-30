@@ -9,7 +9,7 @@
     "change": "changeset && git add .changeset",
     "changeset": "changeset",
     "preinstall": "npx only-allow pnpm",
-    "ts": "ts-node --project tsconfig.dev.json"
+    "ts-node": "ts-node --project tsconfig.dev.json"
   },
   "devDependencies": {
     "@changesets/cli": "^2.16.0",

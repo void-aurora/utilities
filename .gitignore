@@ -28,6 +28,7 @@ coverage/
 
 # Output directories
 dist/
+docs/
 
 # Temporary directories and files
 temp/

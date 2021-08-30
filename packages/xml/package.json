@@ -33,7 +33,7 @@
     "serve": "vite preview",
     "prepare": "pnpm run build",
     "test": "pnpm run ts -- scripts/test",
-    "ts": "ts-node --project ../../tsconfig.dev.json"
+    "ts-node": "ts-node --project ../../tsconfig.dev.json"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.11",
