@@ -70,20 +70,20 @@ importers:
 
   packages/demo:
     specifiers:
-      '@types/react': ^17.0.19
-      '@types/react-dom': ^17.0.9
+      '@types/react': ^17.0.0
+      '@types/react-dom': ^17.0.0
       '@types/react-router-dom': ^5.1.8
-      '@vitejs/plugin-react-refresh': ^1.3.6
+      '@vitejs/plugin-react-refresh': ^1.3.5
       '@void-aurora/color': workspace:^0.0.0
       '@void-aurora/math': workspace:^0.1.0
       '@void-aurora/utils': workspace:^0.1.0
       normalize.css: ^8.0.1
-      react: ^17.0.2
-      react-dom: ^17.0.2
-      react-router-dom: ^5.2.1
-      sass: ^1.38.2
-      typescript: ^4.4.2
-      vite: ^2.5.1
+      react: ^17.0.0
+      react-dom: ^17.0.0
+      react-router-dom: ^5.2.0
+      sass: ^1.36.0
+      typescript: ^4.3.2
+      vite: ^2.4.2
     dependencies:
       '@void-aurora/color': link:../color
       '@void-aurora/math': link:../math
@@ -109,17 +109,17 @@ importers:
 
   packages/utils:
     specifiers:
-      type-fest: ^1.4.0
+      type-fest: ^1.1.3
     dependencies:
       type-fest: 1.4.0
 
   packages/xml:
     specifiers:
-      '@types/fs-extra': ^9.0.12
+      '@types/fs-extra': ^9.0.11
       '@void-aurora/utils': workspace:^0.1.0
       dom-serializer: ^1.3.2
-      domhandler: ^4.2.2
-      domutils: ^2.8.0
+      domhandler: ^4.2.0
+      domutils: ^2.6.0
       fs-extra: ^10.0.0
       htmlparser2: ^6.1.0
     dependencies:
@@ -2597,6 +2597,7 @@ packages:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+    requiresBuild: true
     dev: true
     optional: true
 
