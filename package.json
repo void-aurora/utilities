@@ -12,11 +12,11 @@
     "ts-node": "ts-node --project tsconfig.dev.json"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.16.0",
-    "@types/fs-extra": "^9.0.12",
-    "@types/jest": "^27.0.1",
+    "@changesets/cli": "^2.17.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^27.0.2",
     "@types/js-yaml": "^4.0.3",
-    "@types/node": "^16.7.6",
+    "@types/node": "^16.9.6",
     "@void-aurora/prettier-config": "^1.0.1",
     "chalk": "^4.1.2",
     "commitlint": "^13.1.0",
@@ -24,17 +24,17 @@
     "fs-extra": "^10.0.0",
     "globby": "^12.0.2",
     "husky": "^7.0.2",
-    "jest": "^27.1.0",
+    "jest": "^27.2.1",
     "js-yaml": "^4.1.0",
     "lint-staged": "^11.1.2",
-    "node-fetch": "^2.6.1",
-    "prettier": "^2.3.2",
+    "node-fetch": "^2.6.5",
+    "prettier": "^2.4.1",
     "stylelint": "^13.13.1",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.2",
-    "vite": "^2.5.1"
+    "typescript": "^4.4.3",
+    "vite": "^2.5.10"
   },
   "engines": {
     "node": ">=12.0.0",
