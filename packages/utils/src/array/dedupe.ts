@@ -7,7 +7,7 @@ export const deDupe = <T>(array: T[]): T[] => [...new Set(array)];
 /**
  * Create a de-duplication function. The function de-duplicate the elements of the array
  * via the passing in callback `equal` to determine if the elements are equal, and then
- * a new array is returned.
+ * a new array is returned. Note that you need to handle the `NaN` yourself.
  * @param equal The callback to determine whether two elements are equal or not.
  */
 export function createDeDupe<T>(
