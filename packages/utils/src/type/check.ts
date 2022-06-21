@@ -37,6 +37,9 @@ export const isAssigned = <T>(value: T | null | undefined): value is T =>
 // alias
 export { isAssigned as isDefined };
 
+/**
+ * Determines whether a value is string.
+ */
 export const isString = (value: unknown): value is string =>
   typeof value === 'string';
 
@@ -173,10 +176,13 @@ export const isSet = <V = any>(value: unknown): value is Set<V> =>
   toTypeString(value) === '[object Set]';
 
 /**
- * Determines whether a value is an instance of `Promise`
+ * Determines whether a value is an instance of `Promise`.
  * which with callbacks `then` and `catch`.
  */
 export const isPromise = <T = any>(value: unknown): value is Promise<T> =>
   isObject(value) && isFunction(value.then) && isFunction(value.catch);
 
+/**
+ * Determines whether a value is an instance of `Date`.
+ */
 export const isDate = (value: unknown): value is Date => value instanceof Date;
