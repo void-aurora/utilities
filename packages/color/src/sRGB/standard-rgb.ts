@@ -3,9 +3,9 @@ import { isObject } from '@void-aurora/utils';
 import { clampAlpha, ColorBase } from '../base';
 
 /**
- * The linearRGB color model.
+ * The standard-RGB color model.
  */
-export interface LinearRgb extends ColorBase {
+export interface StandardRgb extends ColorBase {
   /**
    * The red primary of the color, with a value ranging from 0 to 1.
    */
@@ -22,31 +22,31 @@ export interface LinearRgb extends ColorBase {
   readonly b: number;
 
   /** @internal */
-  readonly [Symbol.toStringTag]: 'linearRGB';
+  readonly [Symbol.toStringTag]: 'sRGB';
 }
 
-const STRING_TAG = 'linearRGB';
+const STRING_TAG = 'sRGB';
 
 /**
- * Create a linear RGB color.
+ * Create a standard RGB color.
  * @param r The red primary of the color.
  * @param g The green primary of the color.
  * @param b The blue primary of the color
  * @param alpha The alpha channel of the color.
  * @returns
  */
-export function createLinearRgb(
+export function createStandardRgb(
   r: number,
   g: number,
   b: number,
   alpha?: number,
-): LinearRgb {
-  const color: LinearRgb = {
+): StandardRgb {
+  const color: StandardRgb = {
     r: clamp01(r),
     g: clamp01(g),
     b: clamp01(b),
     alpha: clampAlpha(alpha),
-    get [Symbol.toStringTag](): 'linearRGB' {
+    get [Symbol.toStringTag](): 'sRGB' {
       return STRING_TAG;
     },
   };
@@ -54,7 +54,7 @@ export function createLinearRgb(
 }
 
 /**
- * Strictly determine whether a color is a linear RGB color.
+ * Strictly determine whether a color is a standard RGB color.
  */
-export const isLinearRgb = (color: unknown): color is LinearRgb =>
+export const isStandardRgb = (color: unknown): color is StandardRgb =>
   isObject(color) && color[Symbol.toStringTag] === STRING_TAG;
