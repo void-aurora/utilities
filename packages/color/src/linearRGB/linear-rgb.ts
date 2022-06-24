@@ -1,0 +1,60 @@
+import { clamp01 } from '@void-aurora/math';
+import { isObject } from '@void-aurora/utils';
+import { clampAlpha, ColorBase } from '../base';
+
+/**
+ * The linearRGB color model.
+ */
+export interface LinearRgb extends ColorBase {
+  /**
+   * The red primary of the color, with a value ranging from 0 to 1.
+   */
+  readonly r: number;
+
+  /**
+   * The green primary of the color, with a value ranging from 0 to 1.
+   */
+  readonly g: number;
+
+  /**
+   * The blue primary of the color, with a value ranging from 0 to 1.
+   */
+  readonly b: number;
+
+  /** @internal */
+  readonly [Symbol.toStringTag]: 'linearRGB';
+}
+
+const STRING_TAG = 'linearRGB';
+
+/**
+ *
+ * @param r The red primary of the color.
+ * @param g The green primary of the color.
+ * @param b The blue primary of the color
+ * @param alpha The alpha channel of the color.
+ * @returns
+ */
+export function createLinearRgb(
+  r: number,
+  g: number,
+  b: number,
+  alpha?: number,
+): LinearRgb {
+  const color: LinearRgb = {
+    r: clamp01(r),
+    g: clamp01(g),
+    b: clamp01(b),
+    alpha: clampAlpha(alpha),
+    get [Symbol.toStringTag](): 'linearRGB' {
+      return STRING_TAG;
+    },
+  };
+  return Object.freeze(color);
+}
+
+/**
+ * Strictly determine whether a color is a linearRGB color.
+ */
+export const isLinearRgb = (color: unknown): color is LinearRgb =>
+  isObject(color) && color[Symbol.toStringTag] === STRING_TAG;
