@@ -113,7 +113,7 @@ export const isFunction = (value: unknown): value is Function =>
  * Determines whether a value is an object that is not `null`.
  * Note that an array is also an object.
  */
-export const isObject = (value: unknown): value is Record<any, any> =>
+export const isObject = (value: unknown): value is Record<PropertyKey, any> =>
   value !== null && typeof value === 'object';
 
 /**

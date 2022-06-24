@@ -148,4 +148,15 @@ describe('type check', () => {
     expect(hasOwn(foobar, 'hasOwnProperty')).toBe(false);
     expect(hasOwn(foobar, 'valueOf')).toBe(false);
   });
+
+  test('test type define isObject()', () => {
+    const obj: unknown = {};
+    const s = Symbol('foobar');
+    if (isObject(obj)) {
+      obj[1] = 'a';
+      obj['a'] = 1;
+      obj[s] = { foo: 'bar' };
+    }
+    expect(obj).toEqual({ [1]: 'a', a: 1, [s]: { foo: 'bar' } });
+  });
 });
