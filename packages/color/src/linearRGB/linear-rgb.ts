@@ -1,5 +1,5 @@
-import { clamp01 } from '@void-aurora/math';
 import { isObject } from '@void-aurora/utils';
+import { clamp01 } from '@void-aurora/math';
 import { clampAlpha, ColorBase } from '../base';
 
 /**
