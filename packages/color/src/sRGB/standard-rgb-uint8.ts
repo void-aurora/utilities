@@ -67,37 +67,45 @@ export function createStandardRgbUint8(
 
 /**
  * Parse a RGB hexadecimal notation text and returns a standard RGB color with uint8 precision.
- * Supports notations: `#RRGGBB`, `#RRGGBBAA`, `#RGB`, `#RGBA`, the character '#' is optional.
+ *
+ * The CSS hex color notation allows an sRGB color to be specified by giving the channels as hexadecimal numbers,
+ * which is similar to how colors are often written directly in computer code.
+ * It’s also shorter than writing the same color out in rgb() notation.
+ *
+ * Supports notations: `#RRGGBB`, `#RRGGBBAA`, `#RGB`, `#RGBA`. The '#' symbol at the start is optional.
+ *
  * @param hex The RGB hexadecimal notation text.
+ *
+ * @see {@link [The RGB hexadecimal notations: #RRGGBB](https://www.w3.org/TR/css-color-4/#hex-notation)}
  */
 export function createStandardRgbUint8FromHex(hex: string): StandardRgbUint8 {
-  const hexFinal = hex.replace(/#/g, '').trim();
+  const hexFinal = hex.trim().replace(/^#/g, '');
   const integer = parseInt(hexFinal, 16);
   if (isNumber(integer)) {
     switch (hexFinal.length) {
       case 6:
         return createStandardRgbUint8(
-          (integer & 0xff0000) >> 16,
-          (integer & 0x00ff00) >> 8,
+          (integer & 0xff0000) >>> 16,
+          (integer & 0x00ff00) >>> 8,
           integer & 0x0000ff,
         );
       case 8:
         return createStandardRgbUint8(
-          (integer & 0xff000000) >> 24,
-          (integer & 0x00ff0000) >> 16,
-          (integer & 0x0000ff00) >> 8,
+          (integer & 0xff000000) >>> 24,
+          (integer & 0x00ff0000) >>> 16,
+          (integer & 0x0000ff00) >>> 8,
           (integer & 0x000000ff) / MAX_UINT8,
         );
       case 3: {
-        const r = (integer & 0xf00) >> 8;
-        const g = (integer & 0x0f0) >> 4;
+        const r = (integer & 0xf00) >>> 8;
+        const g = (integer & 0x0f0) >>> 4;
         const b = integer & 0x00f;
         return createStandardRgbUint8(r | (r << 4), g | (g << 4), b | (b << 4));
       }
       case 4: {
-        const r = (integer & 0xf000) >> 12;
-        const g = (integer & 0x0f00) >> 8;
-        const b = (integer & 0x00f0) >> 4;
+        const r = (integer & 0xf000) >>> 12;
+        const g = (integer & 0x0f00) >>> 8;
+        const b = (integer & 0x00f0) >>> 4;
         const alpha = integer & 0x000f;
         return createStandardRgbUint8(
           r | (r << 4),
