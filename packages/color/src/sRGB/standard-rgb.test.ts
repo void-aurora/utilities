@@ -1,6 +1,6 @@
 import { createStandardRgb, isStandardRgb } from './standard-rgb';
 
-describe('standard RGB', () => {
+describe('sRGB', () => {
   test('createStandardRgb()', () => {
     {
       const color = createStandardRgb(0.1, 0.2, 0.3);
