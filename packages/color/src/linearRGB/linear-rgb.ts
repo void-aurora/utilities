@@ -46,9 +46,7 @@ export function createLinearRgb(
     g: clamp01(g),
     b: clamp01(b),
     alpha: clampAlpha(alpha),
-    get [Symbol.toStringTag](): 'linearRGB' {
-      return STRING_TAG;
-    },
+    [Symbol.toStringTag]: STRING_TAG,
   };
   return Object.freeze(color);
 }

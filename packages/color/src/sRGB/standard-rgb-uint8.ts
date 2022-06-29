@@ -58,9 +58,7 @@ export function createStandardRgbUint8(
     g: clampUint8(g),
     b: clampUint8(b),
     alpha: clampAlpha(alpha),
-    get [Symbol.toStringTag](): 'sRGB-uint8' {
-      return STRING_TAG;
-    },
+    [Symbol.toStringTag]: STRING_TAG,
   };
   return Object.freeze(color);
 }

@@ -53,9 +53,7 @@ export function createStandardRgb(
     g: clamp01(g),
     b: clamp01(b),
     alpha: clampAlpha(alpha),
-    get [Symbol.toStringTag](): 'sRGB' {
-      return STRING_TAG;
-    },
+    [Symbol.toStringTag]: STRING_TAG,
   };
   return Object.freeze(color);
 }
