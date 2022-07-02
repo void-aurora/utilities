@@ -35,21 +35,19 @@ const STRING_TAG = 'linearRGB';
  * @param alpha The alpha channel of the color.
  * @returns
  */
-export function createLinearRgb(
+export const createLinearRgb = (
   r: number,
   g: number,
   b: number,
   alpha?: number,
-): LinearRgb {
-  const color: LinearRgb = {
+): LinearRgb =>
+  Object.freeze<LinearRgb>({
     r: clamp01(r),
     g: clamp01(g),
     b: clamp01(b),
     alpha: clampAlpha(alpha),
     [Symbol.toStringTag]: STRING_TAG,
-  };
-  return Object.freeze(color);
-}
+  });
 
 /**
  * Strictly determine whether a color is a linear RGB color.

@@ -53,21 +53,19 @@ const STRING_TAG = 'sRGB-uint8';
  * @param alpha The alpha channel of the color.
  * @returns
  */
-export function createStandardRgbUint8(
+export const createStandardRgbUint8 = (
   r: number,
   g: number,
   b: number,
   alpha?: number,
-): StandardRgbUint8 {
-  const color: StandardRgbUint8 = {
+): StandardRgbUint8 =>
+  Object.freeze<StandardRgbUint8>({
     r: clampUint8(r),
     g: clampUint8(g),
     b: clampUint8(b),
     alpha: clampAlpha(alpha),
     [Symbol.toStringTag]: STRING_TAG,
-  };
-  return Object.freeze(color);
-}
+  });
 
 /**
  * Parse a RGB hexadecimal notation text and returns a standard RGB color with uint8 precision.

@@ -42,21 +42,19 @@ const STRING_TAG = 'sRGB';
  * @param alpha The alpha channel of the color.
  * @returns
  */
-export function createStandardRgb(
+export const createStandardRgb = (
   r: number,
   g: number,
   b: number,
   alpha?: number,
-): StandardRgb {
-  const color: StandardRgb = {
+): StandardRgb =>
+  Object.freeze<StandardRgb>({
     r: clamp01(r),
     g: clamp01(g),
     b: clamp01(b),
     alpha: clampAlpha(alpha),
     [Symbol.toStringTag]: STRING_TAG,
-  };
-  return Object.freeze(color);
-}
+  });
 
 /**
  * Strictly determine whether a color is a standard RGB color.
