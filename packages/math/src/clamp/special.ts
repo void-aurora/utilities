@@ -1,6 +1,6 @@
 import { PI, trunc } from '../standard';
-import { createClamp, createClampTrunc } from './normal';
-import { createClampLoop, createClampLoopTrunc } from './loop';
+import { createClamp, createClampRound } from './normal';
+import { createClampLoop, createClampLoopRound } from './loop';
 
 // ================================
 // zero to one
@@ -38,14 +38,14 @@ export const MAX_UINT8 = 255;
  * If the value is negative then zero is returned.
  * If value is greater than 255 then 255 is returned.
  */
-export const clampUint8 = createClampTrunc(MIN_UINT8, MAX_UINT8);
+export const clampUint8 = createClampRound(MIN_UINT8, MAX_UINT8);
 
 /**
  * Returns the integer part in loop range between 0 and 255.
  * The fractional digits part will be removed.
  * If the value is out of the range, will be clamp loop to the correct value.
  */
-export const clampLoopUint8 = createClampLoopTrunc(MIN_UINT8, MAX_UINT8);
+export const clampLoopUint8 = createClampLoopRound(MIN_UINT8, MAX_UINT8);
 
 // ================================
 // angle, 360 degrees and radian
@@ -61,7 +61,7 @@ export const clampDegree = createClamp(MIN_DEGREE, MAX_DEGREE);
 /**
  * Clamps value in loop range between 0 and 360 for angle degree.
  */
-export const clampLoopDegree = createClampLoopTrunc(MIN_DEGREE, MAX_DEGREE);
+export const clampLoopDegree = createClampLoopRound(MIN_DEGREE, MAX_DEGREE);
 
 export const MIN_RADIAN = 0;
 export const MAX_RADIAN = 2 * PI;
