@@ -26,10 +26,13 @@ export function clampLoop01(value: number): number {
 // 8-bit(1-byte) unsigned integer
 
 /**
- * The max value of unsigned 8-bit(1-byte) integer.
+ * The value of the largest 8-bit unsigned integer.
  *
  */
 export const MIN_UINT8 = 0;
+/**
+ * The value of the smallest 8-bit unsigned integer.
+ */
 export const MAX_UINT8 = 255;
 
 /**
