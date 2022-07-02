@@ -3,21 +3,21 @@ import { clamp01 } from '@void-aurora/math';
 import { clampAlpha, ColorBase } from '../base';
 
 /**
- * The linearRGB color model.
+ * The linear RGB color model that is linear light (un-companded) form sRGB.
  */
 export interface LinearRgb extends ColorBase {
   /**
-   * The red primary of the color, with a value ranging from 0 to 1.
+   * The red channel of the color, with a value ranging from 0 to 1.
    */
   readonly r: number;
 
   /**
-   * The green primary of the color, with a value ranging from 0 to 1.
+   * The green channel of the color, with a value ranging from 0 to 1.
    */
   readonly g: number;
 
   /**
-   * The blue primary of the color, with a value ranging from 0 to 1.
+   * The blue channel of the color, with a value ranging from 0 to 1.
    */
   readonly b: number;
 
@@ -29,9 +29,9 @@ const STRING_TAG = 'linearRGB';
 
 /**
  * Create a linear RGB color.
- * @param r The red primary of the color.
- * @param g The green primary of the color.
- * @param b The blue primary of the color
+ * @param r The red channel of the color.
+ * @param g The green channel of the color.
+ * @param b The blue channel of the color
  * @param alpha The alpha channel of the color.
  * @returns
  */

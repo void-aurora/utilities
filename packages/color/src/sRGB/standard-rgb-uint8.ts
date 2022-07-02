@@ -10,6 +10,8 @@ import { clampAlpha, ColorBase } from '../base';
 import { createStandardRgb, StandardRgb } from './standard-rgb';
 
 /**
+ * The standard RGB color model that is gamma corrected form.
+ *
  * NOTE: The `StandardRgbUint8` use 8-bit unsigned integers for each color channel
  * (rea, green, and blue, but alpha channel).
  * This color model is low-precision, not recommended.
@@ -25,17 +27,17 @@ import { createStandardRgb, StandardRgb } from './standard-rgb';
  */
 export interface StandardRgbUint8 extends ColorBase {
   /**
-   * The red primary of the color, with a value ranging from 0 to 255.
+   * The red channel of the color, with a value ranging from 0 to 255.
    */
   readonly r: number;
 
   /**
-   * The green primary of the color, with a value ranging from 0 to 255.
+   * The green channel of the color, with a value ranging from 0 to 255.
    */
   readonly g: number;
 
   /**
-   * The blue primary of the color, with a value ranging from 0 to 255.
+   * The blue channel of the color, with a value ranging from 0 to 255.
    */
   readonly b: number;
 
@@ -47,9 +49,9 @@ const STRING_TAG = 'sRGB-uint8';
 
 /**
  * Create a standard RGB color with uint8 precision.
- * @param r The red primary of the color.
- * @param g The green primary of the color.
- * @param b The blue primary of the color
+ * @param r The red channel of the color.
+ * @param g The green channel of the color.
+ * @param b The blue channel of the color
  * @param alpha The alpha channel of the color.
  * @returns
  */
