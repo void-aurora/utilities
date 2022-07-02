@@ -1,5 +1,11 @@
 import { isNumber, isObject } from '@void-aurora/utils';
-import { clampUint8, MAX_UINT8, parseInt } from '@void-aurora/math';
+import {
+  clampUint8,
+  floor,
+  MAX_UINT8,
+  parseInt,
+  round,
+} from '@void-aurora/math';
 import { clampAlpha, ColorBase } from '../base';
 import { createStandardRgb, StandardRgb } from './standard-rgb';
 
@@ -135,11 +141,8 @@ export const isStandardRgbUint8 = (color: unknown): color is StandardRgbUint8 =>
 export const convertStandardRgbFromUint8ToFloat = (
   rgbUint8: StandardRgbUint8,
 ): StandardRgb => {
-  const { r: rUint8, g: gUint8, b: bUint8, alpha } = rgbUint8;
-  const [rFloat, gFloat, bFloat] = [rUint8, gUint8, bUint8].map(
-    v => v / MAX_UINT8,
-  );
-  return createStandardRgb(rFloat, gFloat, bFloat, alpha);
+  const { r, g, b, alpha } = rgbUint8;
+  return createStandardRgb(r / MAX_UINT8, g / MAX_UINT8, b / MAX_UINT8, alpha);
 };
 
 /**
@@ -150,9 +153,11 @@ export const convertStandardRgbFromUint8ToFloat = (
 export const convertStandardRgbFromFloatToUint8 = (
   rgbFloat: StandardRgb,
 ): StandardRgbUint8 => {
-  const { r: rFloat, g: gFloat, b: bFloat, alpha } = rgbFloat;
-  const [rUint8, gUint8, bUint8] = [rFloat, gFloat, bFloat].map(
-    v => v * MAX_UINT8,
+  const { r, g, b, alpha } = rgbFloat;
+  return createStandardRgbUint8(
+    round(r * MAX_UINT8),
+    round(g * MAX_UINT8),
+    round(b * MAX_UINT8),
+    alpha,
   );
-  return createStandardRgbUint8(rUint8, gUint8, bUint8, alpha);
 };
