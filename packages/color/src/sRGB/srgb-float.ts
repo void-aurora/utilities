@@ -1,7 +1,7 @@
 import { isObject } from '@void-aurora/utils';
 import { clamp01, pow } from '@void-aurora/math';
 import { clampAlpha, ColorBase, srgbLuminanceColorSpace } from '../base';
-import { createLinearRgb, LinearRgb } from './srgb-linear';
+import { createColorSrgbLinear, ColorSrgbLinear } from './srgb-linear';
 
 /**
  * The standard RGB color model that is gamma corrected form.
@@ -84,13 +84,18 @@ const { toLuma, fromLuma } = srgbLuminanceColorSpace;
 /**
  * Convert a sRGB to linear light (un-companded) form.
  */
-export const gammaDecode = (sRGB: StandardRgb): LinearRgb =>
-  createLinearRgb(toLuma(sRGB.r), toLuma(sRGB.g), toLuma(sRGB.b), sRGB.alpha);
+export const gammaDecode = (sRGB: StandardRgb): ColorSrgbLinear =>
+  createColorSrgbLinear(
+    toLuma(sRGB.r),
+    toLuma(sRGB.g),
+    toLuma(sRGB.b),
+    sRGB.alpha,
+  );
 
 /**
  * Convert a linear-light sRGB to gamma corrected form.
  */
-export const gammaEncode = (linearRGB: LinearRgb): StandardRgb =>
+export const gammaEncode = (linearRGB: ColorSrgbLinear): StandardRgb =>
   createStandardRgb(
     fromLuma(linearRGB.r),
     fromLuma(linearRGB.g),

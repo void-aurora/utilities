@@ -3,9 +3,9 @@ import { clamp01 } from '@void-aurora/math';
 import { clampAlpha, ColorBase } from '../base';
 
 /**
- * The linear RGB color model that is linear light (un-companded) form sRGB.
+ * The linear light (un-companded) form sRGB color model.
  */
-export interface LinearRgb extends ColorBase {
+export interface ColorSrgbLinear extends ColorBase {
   /**
    * The red channel of the color, with a value ranging from 0 to 1.
    */
@@ -22,26 +22,26 @@ export interface LinearRgb extends ColorBase {
   readonly b: number;
 
   /** @internal */
-  readonly [Symbol.toStringTag]: 'linearRGB';
+  readonly [Symbol.toStringTag]: 'srgb-linear';
 }
 
-const STRING_TAG = 'linearRGB';
+const STRING_TAG = 'srgb-linear';
 
 /**
- * Create a linear RGB color.
+ * Create a linear-light sRGB color.
  * @param r The red channel of the color.
  * @param g The green channel of the color.
  * @param b The blue channel of the color
  * @param alpha The alpha channel of the color.
  * @returns
  */
-export const createLinearRgb = (
+export const createColorSrgbLinear = (
   r: number,
   g: number,
   b: number,
   alpha?: number,
-): LinearRgb =>
-  Object.freeze<LinearRgb>({
+): ColorSrgbLinear =>
+  Object.freeze<ColorSrgbLinear>({
     r: clamp01(r),
     g: clamp01(g),
     b: clamp01(b),
@@ -50,15 +50,15 @@ export const createLinearRgb = (
   });
 
 /**
- * Strictly determine whether a color is a linear RGB color.
+ * Strictly determine whether a color is a linear-light sRGB color.
  */
-export const isLinearRgb = (color: unknown): color is LinearRgb =>
+export const isColorSrgbLinear = (color: unknown): color is ColorSrgbLinear =>
   isObject(color) && color[Symbol.toStringTag] === STRING_TAG;
 
 /**
- * Get relative luminance of a linear RGB.
+ * Get relative luminance of a linear-light sRGB.
  */
-export const getRelativeLuminance = (linearRGB: LinearRgb): number =>
+export const getRelativeLuminance = (linearRGB: ColorSrgbLinear): number =>
   0.21263900587151027 * linearRGB.r +
   0.715168678767756 * linearRGB.g +
   0.07219231536073371 * linearRGB.b;
