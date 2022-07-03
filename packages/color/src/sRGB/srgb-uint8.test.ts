@@ -1,6 +1,6 @@
 import { MAX_UINT8, parseInt } from '@void-aurora/math';
 import { buildArray } from '@void-aurora/utils';
-import { createStandardRgb } from './srgb-float';
+import { createColorSrgb } from './srgb-float';
 import {
   convertStandardRgbFromFloatToUint8,
   convertStandardRgbFromUint8ToFloat,
@@ -135,7 +135,7 @@ describe('sRGB uint8', () => {
 
   test('convert between uint8 and float', () => {
     {
-      const whiteFloat = createStandardRgb(1, 1, 1);
+      const whiteFloat = createColorSrgb(1, 1, 1);
       const whiteUint8 = createStandardRgbUint8(255, 255, 255);
       expect(convertStandardRgbFromFloatToUint8(whiteFloat)).toEqual(
         whiteUint8,
@@ -145,7 +145,7 @@ describe('sRGB uint8', () => {
       );
     }
     {
-      const blackFloat = createStandardRgb(0, 0, 0);
+      const blackFloat = createColorSrgb(0, 0, 0);
       const blackUint8 = createStandardRgbUint8(0, 0, 0);
       expect(convertStandardRgbFromFloatToUint8(blackFloat)).toEqual(
         blackUint8,
@@ -158,7 +158,7 @@ describe('sRGB uint8', () => {
       0, 0.32451623, 0.1236, 0.903452, 0.2834346, 0.1233462, 0.825665026,
       0.986554, 0.34573586, 1,
     ].forEach(alpha => {
-      const colorFloat = createStandardRgb(0.3, 0.6, 0.9, alpha);
+      const colorFloat = createColorSrgb(0.3, 0.6, 0.9, alpha);
       const colorUint8 = createStandardRgbUint8(64, 128, 192, alpha);
       expect(convertStandardRgbFromFloatToUint8(colorFloat).alpha).toBe(alpha);
       expect(convertStandardRgbFromUint8ToFloat(colorUint8).alpha).toBe(alpha);
@@ -168,11 +168,7 @@ describe('sRGB uint8', () => {
       if (channelsUint8) {
         expect(
           convertStandardRgbFromFloatToUint8(
-            createStandardRgb(
-              channelsFloat.r,
-              channelsFloat.g,
-              channelsFloat.b,
-            ),
+            createColorSrgb(channelsFloat.r, channelsFloat.g, channelsFloat.b),
           ),
         ).toEqual(
           createStandardRgbUint8(

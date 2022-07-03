@@ -30,7 +30,7 @@ describe('sRGB-linear', () => {
     }
   });
 
-  test('isLinearRgb()', () => {
+  test('isColorSrgbLinear()', () => {
     expect(isColorSrgbLinear(createColorSrgbLinear(0.1, 0.2, 0.3))).toBe(true);
     expect(
       isColorSrgbLinear({

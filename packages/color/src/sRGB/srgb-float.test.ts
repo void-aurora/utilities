@@ -1,9 +1,9 @@
-import { createStandardRgb, isStandardRgb } from './srgb-float';
+import { createColorSrgb, isColorSrgb } from './srgb-float';
 
-describe('sRGB', () => {
-  test('createStandardRgb()', () => {
+describe('sRGB-float', () => {
+  test('createColorSrgb()', () => {
     {
-      const color = createStandardRgb(0.1, 0.2, 0.3);
+      const color = createColorSrgb(0.1, 0.2, 0.3);
       expect(Object.isFrozen(color)).toBe(true);
       expect(color[Symbol.toStringTag]).toBe('sRGB');
       expect(color.r).toBe(0.1);
@@ -12,28 +12,28 @@ describe('sRGB', () => {
       expect(color.alpha).toBe(1);
     }
     {
-      const color = createStandardRgb(1.2, 2.3, 3.4, 4.5);
+      const color = createColorSrgb(1.2, 2.3, 3.4, 4.5);
       expect(color.r).toBe(1);
       expect(color.g).toBe(1);
       expect(color.b).toBe(1);
       expect(color.alpha).toBe(1);
     }
     {
-      const color = createStandardRgb(-1.2, -2.3, -3.4, -4.5);
+      const color = createColorSrgb(-1.2, -2.3, -3.4, -4.5);
       expect(color.r).toBe(0);
       expect(color.g).toBe(0);
       expect(color.b).toBe(0);
       expect(color.alpha).toBe(0);
     }
     {
-      expect(createStandardRgb(0.4, 0.5, 0.6, undefined).alpha).toBe(1);
+      expect(createColorSrgb(0.4, 0.5, 0.6, undefined).alpha).toBe(1);
     }
   });
 
-  test('isStandardRgb()', () => {
-    expect(isStandardRgb(createStandardRgb(0.1, 0.2, 0.3))).toBe(true);
+  test('isColorSrgb()', () => {
+    expect(isColorSrgb(createColorSrgb(0.1, 0.2, 0.3))).toBe(true);
     expect(
-      isStandardRgb({
+      isColorSrgb({
         r: 0.1,
         g: 0.2,
         b: 0.3,
@@ -41,7 +41,7 @@ describe('sRGB', () => {
       }),
     ).toBe(false);
     expect(
-      isStandardRgb({
+      isColorSrgb({
         r: 0.1,
         g: 0.2,
         b: 0.3,
@@ -50,11 +50,11 @@ describe('sRGB', () => {
       }),
     ).toBe(false);
     expect(
-      isStandardRgb({
+      isColorSrgb({
         alpha: 0.5,
         [Symbol.toStringTag]: 'foobar',
       }),
     ).toBe(false);
-    expect(isStandardRgb(null)).toBe(false);
+    expect(isColorSrgb(null)).toBe(false);
   });
 });

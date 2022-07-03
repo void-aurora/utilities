@@ -7,7 +7,7 @@ import {
   round,
 } from '@void-aurora/math';
 import { clampAlpha, ColorBase } from '../base';
-import { createStandardRgb, StandardRgb } from './srgb-float';
+import { createColorSrgb, ColorSrgb } from './srgb-float';
 
 /**
  * The standard RGB color model that is gamma corrected form.
@@ -144,9 +144,9 @@ export const isStandardRgbUint8 = (color: unknown): color is StandardRgbUint8 =>
  */
 export const convertStandardRgbFromUint8ToFloat = (
   rgbUint8: StandardRgbUint8,
-): StandardRgb => {
+): ColorSrgb => {
   const { r, g, b, alpha } = rgbUint8;
-  return createStandardRgb(r / MAX_UINT8, g / MAX_UINT8, b / MAX_UINT8, alpha);
+  return createColorSrgb(r / MAX_UINT8, g / MAX_UINT8, b / MAX_UINT8, alpha);
 };
 
 /**
@@ -155,7 +155,7 @@ export const convertStandardRgbFromUint8ToFloat = (
  * @returns A standard RGB color with uint8 precision
  */
 export const convertStandardRgbFromFloatToUint8 = (
-  rgbFloat: StandardRgb,
+  rgbFloat: ColorSrgb,
 ): StandardRgbUint8 => {
   const { r, g, b, alpha } = rgbFloat;
   return createStandardRgbUint8(

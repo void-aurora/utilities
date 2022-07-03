@@ -4,7 +4,7 @@ import { clampAlpha, ColorBase, srgbLuminanceColorSpace } from '../base';
 import { createColorSrgbLinear, ColorSrgbLinear } from './srgb-linear';
 
 /**
- * The standard RGB color model that is gamma corrected form.
+ * The gamma corrected form sRGB color model.
  *
  * Represents pre-multiplied RGBA colors with floating point numbers.
  *
@@ -26,7 +26,7 @@ import { createColorSrgbLinear, ColorSrgbLinear } from './srgb-linear';
  * @see {@link [IEC 61966-2-1:1999](https://webstore.iec.ch/publication/6169)}
  * @see {@link [sRGB](https://www.color.org/chardata/rgb/srgb.xalter)}
  */
-export interface StandardRgb extends ColorBase {
+export interface ColorSrgb extends ColorBase {
   /**
    * The red channel of the color, with a value ranging from 0 to 1.
    */
@@ -56,13 +56,13 @@ const STRING_TAG = 'sRGB';
  * @param alpha The alpha channel of the color.
  * @returns
  */
-export const createStandardRgb = (
+export const createColorSrgb = (
   r: number,
   g: number,
   b: number,
   alpha?: number,
-): StandardRgb =>
-  Object.freeze<StandardRgb>({
+): ColorSrgb =>
+  Object.freeze<ColorSrgb>({
     r: clamp01(r),
     g: clamp01(g),
     b: clamp01(b),
@@ -73,7 +73,7 @@ export const createStandardRgb = (
 /**
  * Strictly determine whether a color is a standard RGB color.
  */
-export const isStandardRgb = (color: unknown): color is StandardRgb =>
+export const isColorSrgb = (color: unknown): color is ColorSrgb =>
   isObject(color) && color[Symbol.toStringTag] === STRING_TAG;
 
 // ================================================================
@@ -84,21 +84,21 @@ const { toLuma, fromLuma } = srgbLuminanceColorSpace;
 /**
  * Convert a sRGB to linear light (un-companded) form.
  */
-export const gammaDecode = (sRGB: StandardRgb): ColorSrgbLinear =>
+export const gammaDecode = (srgb: ColorSrgb): ColorSrgbLinear =>
   createColorSrgbLinear(
-    toLuma(sRGB.r),
-    toLuma(sRGB.g),
-    toLuma(sRGB.b),
-    sRGB.alpha,
+    toLuma(srgb.r),
+    toLuma(srgb.g),
+    toLuma(srgb.b),
+    srgb.alpha,
   );
 
 /**
  * Convert a linear-light sRGB to gamma corrected form.
  */
-export const gammaEncode = (linearRGB: ColorSrgbLinear): StandardRgb =>
-  createStandardRgb(
-    fromLuma(linearRGB.r),
-    fromLuma(linearRGB.g),
-    fromLuma(linearRGB.b),
-    linearRGB.alpha,
+export const gammaEncode = (srgbLinear: ColorSrgbLinear): ColorSrgb =>
+  createColorSrgb(
+    fromLuma(srgbLinear.r),
+    fromLuma(srgbLinear.g),
+    fromLuma(srgbLinear.b),
+    srgbLinear.alpha,
   );
