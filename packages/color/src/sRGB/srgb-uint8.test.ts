@@ -2,17 +2,17 @@ import { MAX_UINT8, parseInt } from '@void-aurora/math';
 import { buildArray } from '@void-aurora/utils';
 import { createColorSrgb } from './srgb-float';
 import {
-  convertStandardRgbFromFloatToUint8,
-  convertStandardRgbFromUint8ToFloat,
-  createStandardRgbUint8,
-  createStandardRgbUint8FromHex,
-  isStandardRgbUint8,
+  convertSrgbFromFloatToUint8,
+  convertSrgbFromUint8ToFloat,
+  createColorSrgbUint8,
+  createColorSrgbUint8FromHex,
+  isColorSrgbUint8,
 } from './srgb-uint8';
 
-describe('sRGB uint8', () => {
-  test('createStandardRgbUint8', () => {
+describe('sRGB-uint8', () => {
+  test('createColorSrgbUint8', () => {
     {
-      const color = createStandardRgbUint8(32.3, 63.5, 127.999999);
+      const color = createColorSrgbUint8(32.3, 63.5, 127.999999);
       expect(Object.isFrozen(color)).toBe(true);
       expect(color[Symbol.toStringTag]).toBe('sRGB-uint8');
       expect(color.r).toBe(32);
@@ -21,30 +21,30 @@ describe('sRGB uint8', () => {
       expect(color.alpha).toBe(1);
     }
     {
-      const color = createStandardRgbUint8(255, 256, 512, 4.5);
+      const color = createColorSrgbUint8(255, 256, 512, 4.5);
       expect(color.r).toBe(MAX_UINT8);
       expect(color.g).toBe(MAX_UINT8);
       expect(color.b).toBe(MAX_UINT8);
       expect(color.alpha).toBe(1);
     }
     {
-      const color = createStandardRgbUint8(-33, -44, -55, -4.5);
+      const color = createColorSrgbUint8(-33, -44, -55, -4.5);
       expect(color.r).toBe(0);
       expect(color.g).toBe(0);
       expect(color.b).toBe(0);
       expect(color.alpha).toBe(0);
     }
     {
-      expect(createStandardRgbUint8(66, 77, 88, undefined).alpha).toBe(1);
+      expect(createColorSrgbUint8(66, 77, 88, undefined).alpha).toBe(1);
     }
   });
 
-  test('isStandardRgbUint8', () => {
-    expect(isStandardRgbUint8(createStandardRgbUint8(32.3, 63.5, 127.8))).toBe(
+  test('isColorSrgbUint8', () => {
+    expect(isColorSrgbUint8(createColorSrgbUint8(32.3, 63.5, 127.8))).toBe(
       true,
     );
     expect(
-      isStandardRgbUint8({
+      isColorSrgbUint8({
         r: 32,
         g: 64,
         b: 128,
@@ -52,7 +52,7 @@ describe('sRGB uint8', () => {
       }),
     ).toBe(false);
     expect(
-      isStandardRgbUint8({
+      isColorSrgbUint8({
         r: 32,
         g: 64,
         b: 128,
@@ -61,17 +61,17 @@ describe('sRGB uint8', () => {
       }),
     ).toBe(false);
     expect(
-      isStandardRgbUint8({
+      isColorSrgbUint8({
         alpha: 0.5,
         [Symbol.toStringTag]: 'foobar',
       }),
     ).toBe(false);
-    expect(isStandardRgbUint8(null)).toBe(false);
+    expect(isColorSrgbUint8(null)).toBe(false);
   });
 
   test('hex', () => {
     ['##ffa500', '# ffc0cb', '#9400d'].forEach(badHex => {
-      expect(() => createStandardRgbUint8FromHex(badHex)).toThrowError(
+      expect(() => createColorSrgbUint8FromHex(badHex)).toThrowError(
         new TypeError(`Invalid RGB hexadecimal notation "${badHex}".`),
       );
     });
@@ -79,9 +79,9 @@ describe('sRGB uint8', () => {
     // 6 or 8 digits
     Object.entries(namedColorsUint8).forEach(([name, { hex, r, g, b }]) => {
       {
-        const colorA = createStandardRgbUint8FromHex(hex);
-        const colorB = createStandardRgbUint8FromHex(`#${hex}`);
-        const colorC = createStandardRgbUint8FromHex(` #${hex} `);
+        const colorA = createColorSrgbUint8FromHex(hex);
+        const colorB = createColorSrgbUint8FromHex(`#${hex}`);
+        const colorC = createColorSrgbUint8FromHex(` #${hex} `);
         expect(colorA.r).toBe(r);
         expect(colorA.g).toBe(g);
         expect(colorA.b).toBe(b);
@@ -90,9 +90,9 @@ describe('sRGB uint8', () => {
         expect(colorA).toEqual(colorC);
       }
       alphaHexEntries.forEach(([hexAlpha, alpha]) => {
-        const colorA = createStandardRgbUint8FromHex(`${hex}${hexAlpha}`);
-        const colorB = createStandardRgbUint8FromHex(`#${hex}${hexAlpha}`);
-        const colorC = createStandardRgbUint8FromHex(` #${hex}${hexAlpha} `);
+        const colorA = createColorSrgbUint8FromHex(`${hex}${hexAlpha}`);
+        const colorB = createColorSrgbUint8FromHex(`#${hex}${hexAlpha}`);
+        const colorC = createColorSrgbUint8FromHex(` #${hex}${hexAlpha} `);
         expect(colorA.r).toBe(r);
         expect(colorA.g).toBe(g);
         expect(colorA.b).toBe(b);
@@ -109,9 +109,9 @@ describe('sRGB uint8', () => {
       const g = parseInt(hex.substring(1, 2).repeat(2), 16);
       const b = parseInt(hex.substring(2, 3).repeat(2), 16);
       {
-        const colorA = createStandardRgbUint8FromHex(hex);
-        const colorB = createStandardRgbUint8FromHex(`#${hex}`);
-        const colorC = createStandardRgbUint8FromHex(` #${hex} `);
+        const colorA = createColorSrgbUint8FromHex(hex);
+        const colorB = createColorSrgbUint8FromHex(`#${hex}`);
+        const colorC = createColorSrgbUint8FromHex(` #${hex} `);
         expect(colorA.r).toBe(r);
         expect(colorA.g).toBe(g);
         expect(colorA.b).toBe(b);
@@ -120,9 +120,9 @@ describe('sRGB uint8', () => {
         expect(colorA).toEqual(colorC);
       }
       alphaHexEntriesShort.forEach(([hexAlpha, alpha]) => {
-        const colorA = createStandardRgbUint8FromHex(`${hex}${hexAlpha}`);
-        const colorB = createStandardRgbUint8FromHex(`#${hex}${hexAlpha}`);
-        const colorC = createStandardRgbUint8FromHex(` #${hex}${hexAlpha} `);
+        const colorA = createColorSrgbUint8FromHex(`${hex}${hexAlpha}`);
+        const colorB = createColorSrgbUint8FromHex(`#${hex}${hexAlpha}`);
+        const colorC = createColorSrgbUint8FromHex(` #${hex}${hexAlpha} `);
         expect(colorA.r).toBe(r);
         expect(colorA.g).toBe(g);
         expect(colorA.b).toBe(b);
@@ -136,49 +136,41 @@ describe('sRGB uint8', () => {
   test('convert between uint8 and float', () => {
     {
       const whiteFloat = createColorSrgb(1, 1, 1);
-      const whiteUint8 = createStandardRgbUint8(255, 255, 255);
-      expect(convertStandardRgbFromFloatToUint8(whiteFloat)).toEqual(
-        whiteUint8,
-      );
-      expect(convertStandardRgbFromUint8ToFloat(whiteUint8)).toEqual(
-        whiteFloat,
-      );
+      const whiteUint8 = createColorSrgbUint8(255, 255, 255);
+      expect(convertSrgbFromFloatToUint8(whiteFloat)).toEqual(whiteUint8);
+      expect(convertSrgbFromUint8ToFloat(whiteUint8)).toEqual(whiteFloat);
     }
     {
       const blackFloat = createColorSrgb(0, 0, 0);
-      const blackUint8 = createStandardRgbUint8(0, 0, 0);
-      expect(convertStandardRgbFromFloatToUint8(blackFloat)).toEqual(
-        blackUint8,
-      );
-      expect(convertStandardRgbFromUint8ToFloat(blackUint8)).toEqual(
-        blackFloat,
-      );
+      const blackUint8 = createColorSrgbUint8(0, 0, 0);
+      expect(convertSrgbFromFloatToUint8(blackFloat)).toEqual(blackUint8);
+      expect(convertSrgbFromUint8ToFloat(blackUint8)).toEqual(blackFloat);
     }
     [
       0, 0.32451623, 0.1236, 0.903452, 0.2834346, 0.1233462, 0.825665026,
       0.986554, 0.34573586, 1,
     ].forEach(alpha => {
       const colorFloat = createColorSrgb(0.3, 0.6, 0.9, alpha);
-      const colorUint8 = createStandardRgbUint8(64, 128, 192, alpha);
-      expect(convertStandardRgbFromFloatToUint8(colorFloat).alpha).toBe(alpha);
-      expect(convertStandardRgbFromUint8ToFloat(colorUint8).alpha).toBe(alpha);
+      const colorUint8 = createColorSrgbUint8(64, 128, 192, alpha);
+      expect(convertSrgbFromFloatToUint8(colorFloat).alpha).toBe(alpha);
+      expect(convertSrgbFromUint8ToFloat(colorUint8).alpha).toBe(alpha);
     });
     Object.entries(namedColorsFloat).forEach(([name, channelsFloat]) => {
       const channelsUint8 = namedColorsUint8[name];
       if (channelsUint8) {
         expect(
-          convertStandardRgbFromFloatToUint8(
+          convertSrgbFromFloatToUint8(
             createColorSrgb(channelsFloat.r, channelsFloat.g, channelsFloat.b),
           ),
         ).toEqual(
-          createStandardRgbUint8(
+          createColorSrgbUint8(
             channelsUint8.r,
             channelsUint8.g,
             channelsUint8.b,
           ),
         );
-        const colorFloat = convertStandardRgbFromUint8ToFloat(
-          createStandardRgbUint8(
+        const colorFloat = convertSrgbFromUint8ToFloat(
+          createColorSrgbUint8(
             channelsUint8.r,
             channelsUint8.g,
             channelsUint8.b,
