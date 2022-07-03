@@ -4,8 +4,14 @@ import { clampAlpha, ColorBase } from '../base';
 
 /**
  * The standard RGB color model that is gamma corrected form.
- * The `StandardRgb` user single float number that in range
- * from 0 to 1 for each channel.
+ *
+ * Represents pre-multiplied RGBA colors with floating point numbers.
+ *
+ * All components must be between 0.0 and 1.0.
+ * An alpha value of 1.0 is opaque while 0.0 is fully transparent.
+ *
+ * In premultiplied colors transitions to transparent always look "nice"
+ * therefore they are used in CSS gradients.
  *
  *
  * CSS colors in the sRGB color space are represented by a triplet of values
@@ -13,9 +19,11 @@ import { clampAlpha, ColorBase } from '../base';
  * This is an internationally-recognized, device-independent color space,
  * and so is useful for specifying colors that will be displayed on a computer screen,
  * but is also useful for specifying colors on other types of devices, like printers.
- * @see {@link [sRGB Colors](https://www.w3.org/TR/css-color-4/#numeric-srgb)}
- * @see {@link [Predefined sRGB space](https://www.w3.org/TR/css-color-4/#predefined-sRGB)}
+ *
+ * @see {@link [CSS Color Module Level 4 sRGB Colors](https://www.w3.org/TR/css-color-4/#numeric-srgb)}
+ * @see {@link [CSS Color Module Level 4 Predefined sRGB space](https://www.w3.org/TR/css-color-4/#predefined-sRGB)}
  * @see {@link [IEC 61966-2-1:1999](https://webstore.iec.ch/publication/6169)}
+ * @see {@link [sRGB](https://www.color.org/chardata/rgb/srgb.xalter)}
  */
 export interface StandardRgb extends ColorBase {
   /**

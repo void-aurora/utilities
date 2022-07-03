@@ -12,6 +12,8 @@ import { createStandardRgb, StandardRgb } from './standard-rgb';
 /**
  * The standard RGB color model that is gamma corrected form.
  *
+ * Represents RGBA screen colors with one byte per channel.
+ *
  * NOTE: The `StandardRgbUint8` use 8-bit unsigned integers for each color channel
  * (rea, green, and blue, but alpha channel).
  * This color model is low-precision, not recommended.
@@ -21,9 +23,11 @@ import { createStandardRgb, StandardRgb } from './standard-rgb';
  * This is an internationally-recognized, device-independent color space,
  * and so is useful for specifying colors that will be displayed on a computer screen,
  * but is also useful for specifying colors on other types of devices, like printers.
- * @see {@link [sRGB Colors](https://www.w3.org/TR/css-color-4/#numeric-srgb)}
- * @see {@link [Predefined sRGB space](https://www.w3.org/TR/css-color-4/#predefined-sRGB)}
+ *
+ * @see {@link [CSS Color Module Level 4 sRGB Colors](https://www.w3.org/TR/css-color-4/#numeric-srgb)}
+ * @see {@link [CSS Color Module Level 4 Predefined sRGB space](https://www.w3.org/TR/css-color-4/#predefined-sRGB)}
  * @see {@link [IEC 61966-2-1:1999](https://webstore.iec.ch/publication/6169)}
+ * @see {@link [sRGB](https://www.color.org/chardata/rgb/srgb.xalter)}
  */
 export interface StandardRgbUint8 extends ColorBase {
   /**
