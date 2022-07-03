@@ -1,4 +1,4 @@
-import { createStandardRgb, isStandardRgb } from './standard-rgb';
+import { createStandardRgb, isStandardRgb } from './srgb-float';
 
 describe('sRGB', () => {
   test('createStandardRgb()', () => {

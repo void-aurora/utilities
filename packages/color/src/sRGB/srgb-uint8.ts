@@ -7,7 +7,7 @@ import {
   round,
 } from '@void-aurora/math';
 import { clampAlpha, ColorBase } from '../base';
-import { createStandardRgb, StandardRgb } from './standard-rgb';
+import { createStandardRgb, StandardRgb } from './srgb-float';
 
 /**
  * The standard RGB color model that is gamma corrected form.

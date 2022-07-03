@@ -1,4 +1,4 @@
-import { createLinearRgb, isLinearRgb } from './linear-rgb';
+import { createLinearRgb, isLinearRgb } from './srgb-linear';
 
 describe('linearRGB', () => {
   test('createLinearRgb()', () => {

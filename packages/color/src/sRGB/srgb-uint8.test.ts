@@ -1,13 +1,13 @@
 import { MAX_UINT8, parseInt } from '@void-aurora/math';
 import { buildArray } from '@void-aurora/utils';
-import { createStandardRgb } from './standard-rgb';
+import { createStandardRgb } from './srgb-float';
 import {
   convertStandardRgbFromFloatToUint8,
   convertStandardRgbFromUint8ToFloat,
   createStandardRgbUint8,
   createStandardRgbUint8FromHex,
   isStandardRgbUint8,
-} from './standard-rgb-uint8';
+} from './srgb-uint8';
 
 describe('sRGB uint8', () => {
   test('createStandardRgbUint8', () => {

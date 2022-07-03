@@ -1,7 +1,7 @@
 import { isObject } from '@void-aurora/utils';
 import { clamp01, pow } from '@void-aurora/math';
 import { clampAlpha, ColorBase, srgbLuminanceColorSpace } from '../base';
-import { createLinearRgb, LinearRgb } from '../linearRGB';
+import { createLinearRgb, LinearRgb } from './srgb-linear';
 
 /**
  * The standard RGB color model that is gamma corrected form.
