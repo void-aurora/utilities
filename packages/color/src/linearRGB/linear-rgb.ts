@@ -54,3 +54,17 @@ export const createLinearRgb = (
  */
 export const isLinearRgb = (color: unknown): color is LinearRgb =>
   isObject(color) && color[Symbol.toStringTag] === STRING_TAG;
+
+/**
+ * Get relative luminance of a linear RGB.
+ */
+export const getRelativeLuminance = (linearRGB: LinearRgb): number =>
+  0.21263900587151027 * linearRGB.r +
+  0.715168678767756 * linearRGB.g +
+  0.07219231536073371 * linearRGB.b;
+
+/**
+ * Get contrast ratio between two relative luminance values.
+ */
+export const getContrastRatio = (l1: number, l2: number): number =>
+  l1 < l2 ? (l1 + 0.05) / (l2 + 0.05) : (l2 + 0.05) / (l1 + 0.05);
