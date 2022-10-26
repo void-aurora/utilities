@@ -1,14 +1,8 @@
-import {
-  firstItem,
-  lastItem,
-  findFirst,
-  createFindFirst,
-  findLast,
-  createFindLast,
-} from './find';
+import { isFunction } from '../type';
+import { firstItem, lastItem, findFirst, findLast } from './find';
 
 const emptyArray: any[] = [];
-const textArray = 'abcdefghiflmnopqrstuvwxyz'.split('');
+const textArray = 'abcdefghiflmnopqrstuvwxyz';
 const hybridArray = [1, 2, 3, 'a', 'b', 'c', { foo: 'bar' }, true, false];
 
 describe('array find', () => {
@@ -26,33 +20,37 @@ describe('array find', () => {
   test('findFirst', () => {
     {
       const predicate = (v: unknown): v is string => typeof v === 'string';
-      const arrayFindFirst = createFindFirst<unknown, string>(predicate);
+      const findFirstFunc = findFirst<unknown, string>(predicate);
 
-      expect(findFirst(emptyArray, predicate)).toBeUndefined();
-      expect(arrayFindFirst(emptyArray)).toBeUndefined();
+      expect(isFunction(findFirstFunc)).toBe(true);
 
-      expect(findFirst(textArray, predicate)).toBe('a');
-      expect(arrayFindFirst(textArray)).toBe('a');
+      expect(findFirst(predicate, emptyArray)).toBeUndefined();
+      expect(findFirstFunc(emptyArray)).toBeUndefined();
+
+      expect(findFirst(predicate, textArray)).toBe('a');
+      expect(findFirstFunc(textArray)).toBe('a');
 
       // test type
-      const resultA: string | undefined = findFirst(hybridArray, predicate);
+      const resultA: string | undefined = findFirst(predicate, hybridArray);
       expect(resultA).toBe('a');
-      const resultB: string | undefined = arrayFindFirst(hybridArray);
+      const resultB: string | undefined = findFirstFunc(hybridArray);
       expect(resultB).toBe('a');
     }
     {
       const predicate = (v: unknown): boolean => v === 'b';
-      const arrayFindFirst = createFindFirst<unknown>(predicate);
+      const findFirstFunc = findFirst<unknown>(predicate);
 
-      expect(findFirst(emptyArray, predicate)).toBeUndefined();
-      expect(arrayFindFirst(emptyArray)).toBeUndefined();
+      expect(isFunction(findFirstFunc)).toBe(true);
 
-      expect(findFirst(textArray, predicate)).toBe('b');
-      expect(arrayFindFirst(textArray)).toBe('b');
+      expect(findFirst(predicate, emptyArray)).toBeUndefined();
+      expect(findFirstFunc(emptyArray)).toBeUndefined();
 
-      const resultA = findFirst(hybridArray, predicate);
+      expect(findFirst(predicate, textArray)).toBe('b');
+      expect(findFirstFunc(textArray)).toBe('b');
+
+      const resultA = findFirst(predicate, hybridArray);
       expect(resultA).toBe('b');
-      const resultB = arrayFindFirst(hybridArray);
+      const resultB = findFirstFunc(hybridArray);
       expect(resultB).toBe('b');
     }
   });
@@ -60,18 +58,18 @@ describe('array find', () => {
   test('findLast', () => {
     {
       const predicate = (v: unknown): v is number => typeof v === 'number';
-      const arrayFindLast = createFindLast<unknown, number>(predicate);
+      const findLastFunc = findLast<unknown, number>(predicate);
 
-      expect(findLast(emptyArray, predicate)).toBeUndefined();
-      expect(arrayFindLast(emptyArray)).toBeUndefined();
+      expect(findLast(predicate, emptyArray)).toBeUndefined();
+      expect(findLastFunc(emptyArray)).toBeUndefined();
 
-      expect(findLast(textArray, predicate)).toBeUndefined();
-      expect(arrayFindLast(textArray)).toBeUndefined();
+      expect(findLast(predicate, textArray)).toBeUndefined();
+      expect(findLastFunc(textArray)).toBeUndefined();
 
       // test type
-      const resultA: number | undefined = findLast(hybridArray, predicate);
+      const resultA: number | undefined = findLast(predicate, hybridArray);
       expect(resultA).toBe(3);
-      const resultB: number | undefined = arrayFindLast(hybridArray);
+      const resultB: number | undefined = findLastFunc(hybridArray);
       expect(resultB).toBe(3);
     }
     {
@@ -81,21 +79,21 @@ describe('array find', () => {
           'foo' in v &&
           typeof (v as any).foo === 'string') ||
         false;
-      const arrayFindLast = createFindLast<unknown, { foo: string }>(predicate);
+      const findLastFunc = findLast<unknown, { foo: string }>(predicate);
 
-      expect(findLast(emptyArray, predicate)).toBeUndefined();
-      expect(arrayFindLast(emptyArray)).toBeUndefined();
+      expect(findLast(predicate, emptyArray)).toBeUndefined();
+      expect(findLastFunc(emptyArray)).toBeUndefined();
 
-      expect(findLast(textArray, predicate)).toBeUndefined();
-      expect(arrayFindLast(textArray)).toBeUndefined();
+      expect(findLast(predicate, textArray)).toBeUndefined();
+      expect(findLastFunc(textArray)).toBeUndefined();
 
       // test type
       const resultA: { foo: string } | undefined = findLast(
-        hybridArray,
         predicate,
+        hybridArray,
       );
       expect(resultA).toEqual({ foo: 'bar' });
-      const resultB: { foo: string } | undefined = arrayFindLast(hybridArray);
+      const resultB: { foo: string } | undefined = findLastFunc(hybridArray);
       expect(resultB).toEqual({ foo: 'bar' });
     }
   });
