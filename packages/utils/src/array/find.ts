@@ -1,16 +1,33 @@
 // ================================================================
 // First & Last
 
+import { isIterable } from '../type';
+
 /**
  * Returns the value of the first element in the array, and undefined if not exists.
  */
-export const firstItem = <T>(array: ArrayLike<T>): T | undefined => array[0];
+export function firstItem<T>(
+  iterable: Iterable<T> | ArrayLike<T>,
+): T | undefined {
+  if (isIterable(iterable)) {
+    const [first] = iterable;
+    return first;
+  }
+  return iterable[0];
+}
 
 /**
  * Returns the value of the last element in the array, and undefined if not exists.
  */
-export const lastItem = <T>(array: ArrayLike<T>): T | undefined =>
-  array[array.length - 1];
+export function lastItem<T>(
+  iterable: Iterable<T> | ArrayLike<T>,
+): T | undefined {
+  if (isIterable(iterable)) {
+    const array = [...iterable];
+    return array[array.length - 1];
+  }
+  return iterable[iterable.length - 1];
+}
 
 // ================================================================
 // Find First
@@ -69,7 +86,7 @@ export function findFirst(
     | [(value: any, index: number, array: ArrayLike<any>) => unknown]
     | [
         (value: any, index: number, array: ArrayLike<any>) => unknown,
-        ArrayLike<any>,
+        ArrayLike<any> | Iterable<any>,
       ]
 ): ((array: ArrayLike<any>) => any | undefined) | any | undefined {
   const [predicate, array] = args;
