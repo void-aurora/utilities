@@ -158,6 +158,15 @@ export const toRawType = (value: unknown): string => {
 export const isPlainObject = (value: unknown): value is object =>
   toTypeString(value) === '[object Object]';
 
+// ================================================================
+// Built-in Iterables
+
+/**
+ * Determines whether a object is iterable.
+ */
+export const isIterable = <T>(value: unknown): value is Iterable<T> =>
+  isObject(value) && isFunction(value[Symbol.iterator]);
+
 /**
  * Determines whether a value is an instance of `Array` via `Array.isArray(value)`.
  */
@@ -174,6 +183,9 @@ export const isMap = <K = any, V = any>(value: unknown): value is Map<K, V> =>
  */
 export const isSet = <V = any>(value: unknown): value is Set<V> =>
   toTypeString(value) === '[object Set]';
+
+// ================================================================
+// Built-in Objects
 
 /**
  * Determines whether a value is an instance of `Promise`.

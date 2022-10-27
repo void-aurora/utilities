@@ -7,6 +7,7 @@ import {
   isDate,
   isDefined,
   isFunction,
+  isIterable,
   isMap,
   isNull,
   isNullish,
@@ -38,6 +39,7 @@ const checkers = [
   isFunction,
   isObject,
   isPlainObject,
+  isIterable,
   isArray,
   isMap,
   isSet,
@@ -65,6 +67,11 @@ const asyncFunction = async () => {
 class Foobar {
   get [Symbol.toStringTag]() {
     return 'Foobar';
+  }
+
+  *[Symbol.iterator](): Iterator<string> {
+    yield 'foo';
+    yield 'bar';
   }
 
   foo: string;
