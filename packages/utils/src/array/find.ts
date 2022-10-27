@@ -1,7 +1,7 @@
 // ================================================================
 // First & Last
 
-import { isIterable } from '../type';
+import { isArray, isIterable, isNullOrUndefined, isString } from '../type';
 
 /**
  * Returns the value of the first element in the array, and undefined if not exists.
@@ -22,11 +22,9 @@ export function firstItem<T>(
 export function lastItem<T>(
   iterable: Iterable<T> | ArrayLike<T>,
 ): T | undefined {
-  if (isIterable(iterable)) {
-    const array = [...iterable];
-    return array[array.length - 1];
-  }
-  return iterable[iterable.length - 1];
+  const array =
+    (isIterable(iterable) && [...iterable]) || (iterable as ArrayLike<T>);
+  return array[array.length - 1];
 }
 
 // ================================================================
@@ -40,8 +38,12 @@ export function lastItem<T>(
  * `findFirst` immediately returns that element value. Otherwise, `findFirst` returns undefined.
  */
 export function findFirst<T, S extends T>(
-  predicate: (value: T, index: number, array: ArrayLike<T>) => value is T,
-): (array: ArrayLike<T>) => S | undefined;
+  predicate: (
+    value: T,
+    index: number,
+    iterable: Iterable<T> | ArrayLike<T>,
+  ) => value is T,
+): (iterable: Iterable<T> | ArrayLike<T>) => S | undefined;
 
 /**
  * Create a function `findFirst` that returns the value of the first element in the array where predicate is true,
@@ -51,8 +53,12 @@ export function findFirst<T, S extends T>(
  * `findFirst` immediately returns that element value. Otherwise, `findFirst` returns undefined.
  */
 export function findFirst<T>(
-  predicate: (value: T, index: number, array: ArrayLike<T>) => unknown,
-): (array: ArrayLike<T>) => T | undefined;
+  predicate: (
+    value: T,
+    index: number,
+    iterable: Iterable<T> | ArrayLike<T>,
+  ) => unknown,
+): (iterable: Iterable<T> | ArrayLike<T>) => T | undefined;
 
 /**
  * Returns the value of the first element in the array where predicate is true,
@@ -63,8 +69,12 @@ export function findFirst<T>(
  * `findFirst` immediately returns that element value. Otherwise, `findFirst` returns undefined.
  */
 export function findFirst<T, S extends T>(
-  predicate: (value: T, index: number, array: ArrayLike<T>) => value is S,
-  array: ArrayLike<T>,
+  predicate: (
+    value: T,
+    index: number,
+    iterable: Iterable<T> | ArrayLike<T>,
+  ) => value is S,
+  iterable: Iterable<T> | ArrayLike<T>,
 ): S | undefined;
 
 /**
@@ -76,27 +86,69 @@ export function findFirst<T, S extends T>(
  * `findFirst` immediately returns that element value. Otherwise, `findFirst` returns undefined.
  */
 export function findFirst<T>(
-  predicate: (value: T, index: number, array: ArrayLike<T>) => unknown,
-  array: ArrayLike<T>,
+  predicate: (
+    value: T,
+    index: number,
+    iterable: Iterable<T> | ArrayLike<T>,
+  ) => unknown,
+  iterable: Iterable<T> | ArrayLike<T>,
 ): T | undefined;
 
 // implement
 export function findFirst(
   ...args:
-    | [(value: any, index: number, array: ArrayLike<any>) => unknown]
     | [
-        (value: any, index: number, array: ArrayLike<any>) => unknown,
+        (
+          value: any,
+          index: number,
+          iterable: Iterable<any> | ArrayLike<any>,
+        ) => unknown,
+      ]
+    | [
+        (
+          value: any,
+          index: number,
+          iterable: Iterable<any> | ArrayLike<any>,
+        ) => unknown,
         ArrayLike<any> | Iterable<any>,
       ]
-): ((array: ArrayLike<any>) => any | undefined) | any | undefined {
-  const [predicate, array] = args;
-  if (args.length === 1) {
-    return function arrayFindFirst(array: ArrayLike<any>) {
-      return findFirst(predicate, array);
+):
+  | ((iterable: Iterable<any> | ArrayLike<any>) => any | undefined)
+  | any
+  | undefined {
+  const [predicate, iterable] = args;
+  if (isNullOrUndefined(iterable)) {
+    return function findFirstFunc(iterable: Iterable<any> | ArrayLike<any>) {
+      return findFirst(predicate, iterable);
     };
   }
-  return Array.prototype.find.call(array, predicate);
+
+  if (!isString(iterable) && !isArray(iterable) && isIterable(iterable)) {
+    let index = 0;
+    for (const iterator of iterable) {
+      const flag = predicate(iterator, index, iterable);
+      if (flag) {
+        return iterator;
+      }
+      index++;
+    }
+    return undefined;
+  }
+
+  const { length } = iterable;
+
+  for (let index = 0; index < length; index++) {
+    const element = iterable[index];
+    const flag = predicate(element, index, iterable);
+    if (flag) {
+      return element;
+    }
+  }
+  return undefined;
 }
+
+// alias
+export { findFirst as find };
 
 // ================================================================
 // Find Last
@@ -109,8 +161,12 @@ export function findFirst(
  * `findLast` immediately returns that element value. Otherwise, `findLast` returns undefined.
  */
 export function findLast<T, S extends T>(
-  predicate: (value: T, index: number, array: ArrayLike<T>) => value is T,
-): (array: ArrayLike<T>) => S | undefined;
+  predicate: (
+    value: T,
+    index: number,
+    iterable: Iterable<any> | ArrayLike<any>,
+  ) => value is T,
+): (iterable: Iterable<any> | ArrayLike<any>) => S | undefined;
 
 /**
  * Create a function `findLast` that returns the value of the last element in the array where predicate is true,
@@ -120,8 +176,12 @@ export function findLast<T, S extends T>(
  * `findLast` immediately returns that element value. Otherwise, `findLast` returns undefined.
  */
 export function findLast<T>(
-  predicate: (value: T, index: number, array: ArrayLike<T>) => unknown,
-): (array: ArrayLike<T>) => T | undefined;
+  predicate: (
+    value: T,
+    index: number,
+    iterable: Iterable<any> | ArrayLike<any>,
+  ) => unknown,
+): (iterable: Iterable<any> | ArrayLike<any>) => T | undefined;
 
 /**
  * Returns the value of the last element in the array where predicate is true,
@@ -132,8 +192,12 @@ export function findLast<T>(
  * `findLast` immediately returns that element value. Otherwise, `findLast` returns undefined.
  */
 export function findLast<T, S extends T>(
-  predicate: (value: T, index: number, array: ArrayLike<T>) => value is S,
-  array: ArrayLike<T>,
+  predicate: (
+    value: T,
+    index: number,
+    iterable: Iterable<any> | ArrayLike<any>,
+  ) => value is S,
+  iterable: Iterable<any> | ArrayLike<any>,
 ): S | undefined;
 
 /**
@@ -145,8 +209,12 @@ export function findLast<T, S extends T>(
  * `findLast` immediately returns that element value. Otherwise, `findLast` returns undefined.
  */
 export function findLast<T>(
-  predicate: (value: T, index: number, array: ArrayLike<T>) => unknown,
-  array: ArrayLike<T>,
+  predicate: (
+    value: T,
+    index: number,
+    iterable: Iterable<any> | ArrayLike<any>,
+  ) => unknown,
+  iterable: Iterable<any> | ArrayLike<any>,
 ): T | undefined;
 
 // implement
@@ -162,21 +230,41 @@ export function findLast<T>(
 export function findLast(
   ...args:
     | [
-        (value: any, index: number, array: ArrayLike<any>) => unknown,
-        ArrayLike<any>,
+        (
+          value: any,
+          index: number,
+          iterable: Iterable<any> | ArrayLike<any>,
+        ) => unknown,
+        Iterable<any> | ArrayLike<any>,
       ]
-    | [(value: any, index: number, array: ArrayLike<any>) => unknown]
-): ((array: ArrayLike<any>) => any | undefined) | any | undefined {
-  const [predicate, array] = args;
-  if (args.length === 1) {
-    return function arrayFindLast(array: ArrayLike<any>) {
-      return findLast(predicate, array);
+    | [
+        (
+          value: any,
+          index: number,
+          iterable: Iterable<any> | ArrayLike<any>,
+        ) => unknown,
+      ]
+):
+  | ((iterable: Iterable<any> | ArrayLike<any>) => any | undefined)
+  | any
+  | undefined {
+  const [predicate, iterable] = args;
+  if (isNullOrUndefined(iterable)) {
+    return function arrayFindLast(iterable: Iterable<any> | ArrayLike<any>) {
+      return findLast(predicate, iterable);
     };
   }
-  const { length } = array!;
+
+  const array =
+    (!isArray(iterable) &&
+      !isString(iterable) &&
+      isIterable(iterable) && [...iterable]) ||
+    (iterable as ArrayLike<any>);
+
+  const { length } = array;
   for (let index = length; index > -1; index--) {
-    const element = array![index];
-    if (predicate(element, index, array!)) {
+    const element = array[index];
+    if (predicate(element, index, iterable!)) {
       return element;
     }
   }
