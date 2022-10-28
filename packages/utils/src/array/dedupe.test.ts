@@ -1,30 +1,52 @@
-import { createDeDupe, deDupe } from './dedupe';
+import { isFunction } from '../type';
+import { dedupe, simpleDedupe } from './dedupe';
 
 interface Foobar {
-  foo: string;
-  bar: string;
+  foo: string | number;
+  bar: string | number;
 }
 
-const foobarEqual = (a: Foobar, b: Foobar) =>
-  a === b || (a.foo === b.foo && a.bar === b.bar);
-
 describe('array dedupe', () => {
-  test('deDupe()', () => {
-    const array = ['a', 'b', 'c', 1, 2, 3, true, false];
-    expect(deDupe([...array, ...array])).toEqual(array);
+  test('simpleDedupe()', () => {
+    const array = ['a', 'b', 'c', 1, 2, 3, true, false, NaN];
+    expect(simpleDedupe([...array, ...array])).toEqual(array);
   });
 
-  test('createDeDupe', () => {
-    const customDeDupe = createDeDupe(foobarEqual);
+  test('dedupe', () => {
     const array: Foobar[] = [
-      { foo: '1', bar: '2' },
-      { foo: '3', bar: '4' },
+      { foo: 1, bar: '2' },
+      { foo: 3, bar: '4' },
+      { foo: 5, bar: '6' },
+      { foo: 5, bar: '6' }, // duplicated
+      { foo: 5, bar: '6' }, // duplicated
+      { foo: 7, bar: '8' },
+      { foo: '1', bar: 2 },
+      { foo: '1', bar: 2 }, // duplicated
+      { foo: '3', bar: 4 },
+      { foo: '3', bar: 4 }, // duplicated
+      { foo: '3', bar: 4 }, // duplicated
+      { foo: '3', bar: 4 }, // duplicated
+      { foo: '3', bar: 4 }, // duplicated
+      { foo: '5', bar: 6 },
+      { foo: '7', bar: 8 },
     ];
-    const duplicated = [
-      ...array,
-      ...array,
-      ...JSON.parse(JSON.stringify(array)),
-    ];
-    expect(customDeDupe(duplicated)).toEqual(array);
+
+    const equal = (a: Foobar, b: Foobar) =>
+      a === b || (a.foo === b.foo && a.bar === b.bar);
+    const dedupeFunc = dedupe(equal);
+
+    expect(isFunction(dedupeFunc)).toBe(true);
+
+    expect(dedupe(equal, array)).toEqual(dedupeFunc(array));
+    expect(dedupeFunc(array)).toEqual([
+      { foo: 1, bar: '2' },
+      { foo: 3, bar: '4' },
+      { foo: 5, bar: '6' },
+      { foo: 7, bar: '8' },
+      { foo: '1', bar: 2 },
+      { foo: '3', bar: 4 },
+      { foo: '5', bar: 6 },
+      { foo: '7', bar: 8 },
+    ]);
   });
 });
