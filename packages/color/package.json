@@ -35,7 +35,7 @@
     "serve": "vite preview",
     "test": "jest",
     "test:updateSnapshot": "jest --updateSnapshot",
-    "prepare": "pnpm run build",
+    "comment:postinstall": "pnpm run build",
     "ts-node": "ts-node --project ../../tsconfig.dev.json"
   },
   "devDependencies": {
