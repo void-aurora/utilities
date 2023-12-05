@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
-import { parseFloat } from '@void-aurora/math';
+import {} from '@void-aurora/utils';
+import { clamp01 } from '@void-aurora/math';
 import { ColorSrgbFloat } from '@void-aurora/color';
 
 export const DemoSrgbFloat: FC = () => {
