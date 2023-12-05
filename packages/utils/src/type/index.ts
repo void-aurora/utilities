@@ -1,2 +1,2 @@
-export * from './utility';
 export * from './check';
+export * from './type-fest';

@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`type check simple type predicates 1`] = `
-Object {
-  "NEGATIVE_INFINITY": Object {
+{
+  "NEGATIVE_INFINITY": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -25,7 +25,7 @@ Object {
     "toRawType": "Number",
     "toTypeString": "[object Number]",
   },
-  "NaN": Object {
+  "NaN": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -48,7 +48,7 @@ Object {
     "toRawType": "Number",
     "toTypeString": "[object Number]",
   },
-  "POSITIVE_INFINITY": Object {
+  "POSITIVE_INFINITY": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -71,7 +71,7 @@ Object {
     "toRawType": "Number",
     "toTypeString": "[object Number]",
   },
-  "apiArray": Object {
+  "apiArray": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -94,7 +94,7 @@ Object {
     "toRawType": "Function",
     "toTypeString": "[object Function]",
   },
-  "apiDate": Object {
+  "apiDate": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -117,7 +117,7 @@ Object {
     "toRawType": "Function",
     "toTypeString": "[object Function]",
   },
-  "apiMath": Object {
+  "apiMath": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -140,7 +140,7 @@ Object {
     "toRawType": "Math",
     "toTypeString": "[object Math]",
   },
-  "apiNumber": Object {
+  "apiNumber": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -163,7 +163,7 @@ Object {
     "toRawType": "Function",
     "toTypeString": "[object Function]",
   },
-  "apiObject": Object {
+  "apiObject": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -186,7 +186,7 @@ Object {
     "toRawType": "Function",
     "toTypeString": "[object Function]",
   },
-  "apiString": Object {
+  "apiString": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -209,7 +209,7 @@ Object {
     "toRawType": "Function",
     "toTypeString": "[object Function]",
   },
-  "arrowFunction": Object {
+  "arrowFunction": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -232,7 +232,7 @@ Object {
     "toRawType": "Function",
     "toTypeString": "[object Function]",
   },
-  "bigint": Object {
+  "bigint": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": true,
@@ -255,7 +255,7 @@ Object {
     "toRawType": "BigInt",
     "toTypeString": "[object BigInt]",
   },
-  "booleanFalse": Object {
+  "booleanFalse": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -278,7 +278,7 @@ Object {
     "toRawType": "Boolean",
     "toTypeString": "[object Boolean]",
   },
-  "booleanTrue": Object {
+  "booleanTrue": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -301,7 +301,7 @@ Object {
     "toRawType": "Boolean",
     "toTypeString": "[object Boolean]",
   },
-  "classFoobar": Object {
+  "classFoobar": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -324,7 +324,7 @@ Object {
     "toRawType": "Function",
     "toTypeString": "[object Function]",
   },
-  "instanceArray": Object {
+  "instanceArray": {
     "isArray": true,
     "isAssigned": true,
     "isBigInt": false,
@@ -347,7 +347,7 @@ Object {
     "toRawType": "Array",
     "toTypeString": "[object Array]",
   },
-  "instanceAsync": Object {
+  "instanceAsync": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -370,7 +370,7 @@ Object {
     "toRawType": "Promise",
     "toTypeString": "[object Promise]",
   },
-  "instanceDate": Object {
+  "instanceDate": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -393,7 +393,7 @@ Object {
     "toRawType": "Date",
     "toTypeString": "[object Date]",
   },
-  "instanceFoobar": Object {
+  "instanceFoobar": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -416,7 +416,7 @@ Object {
     "toRawType": "Foobar",
     "toTypeString": "[object Foobar]",
   },
-  "instanceMap": Object {
+  "instanceMap": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -439,7 +439,7 @@ Object {
     "toRawType": "Map",
     "toTypeString": "[object Map]",
   },
-  "instancePromise": Object {
+  "instancePromise": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -462,7 +462,7 @@ Object {
     "toRawType": "Promise",
     "toTypeString": "[object Promise]",
   },
-  "instanceSet": Object {
+  "instanceSet": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -485,7 +485,7 @@ Object {
     "toRawType": "Set",
     "toTypeString": "[object Set]",
   },
-  "normalFunction": Object {
+  "normalFunction": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -508,7 +508,7 @@ Object {
     "toRawType": "Function",
     "toTypeString": "[object Function]",
   },
-  "null": Object {
+  "null": {
     "isArray": false,
     "isAssigned": false,
     "isBigInt": false,
@@ -531,7 +531,7 @@ Object {
     "toRawType": "Null",
     "toTypeString": "[object Null]",
   },
-  "number": Object {
+  "number": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -554,7 +554,7 @@ Object {
     "toRawType": "Number",
     "toTypeString": "[object Number]",
   },
-  "object": Object {
+  "object": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -577,7 +577,7 @@ Object {
     "toRawType": "Object",
     "toTypeString": "[object Object]",
   },
-  "string": Object {
+  "string": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -600,7 +600,7 @@ Object {
     "toRawType": "String",
     "toTypeString": "[object String]",
   },
-  "stringEmpty": Object {
+  "stringEmpty": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -623,7 +623,7 @@ Object {
     "toRawType": "String",
     "toTypeString": "[object String]",
   },
-  "symbol": Object {
+  "symbol": {
     "isArray": false,
     "isAssigned": true,
     "isBigInt": false,
@@ -646,7 +646,7 @@ Object {
     "toRawType": "Symbol",
     "toTypeString": "[object Symbol]",
   },
-  "undefined": Object {
+  "undefined": {
     "isArray": false,
     "isAssigned": false,
     "isBigInt": false,

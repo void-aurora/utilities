@@ -13,24 +13,25 @@
   "author": "duduluu <duduluu@outlook.com>",
   "license": "MIT",
   "repository": "github:void-aurora/utilities",
+  "type": "module",
   "files": [
     "dist",
     "src"
   ],
   "globalName": "VaUtils",
-  "main": "./dist/utils.cjs.js",
-  "module": "./dist/utils.es.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "require": "./dist/utils.cjs.js",
-      "import": "./dist/utils.es.js"
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.es.js"
     }
   },
   "sideEffects": false,
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc",
+    "build": "vite build",
     "serve": "vite preview",
     "test": "jest",
     "test:updateSnapshot": "jest --updateSnapshot",

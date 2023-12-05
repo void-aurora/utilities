@@ -135,10 +135,10 @@ export function findFirst(
     return undefined;
   }
 
-  const { length } = iterable;
+  const { length } = iterable as any;
 
   for (let index = 0; index < length; index++) {
-    const element = iterable[index];
+    const element = (iterable as any)[index];
     const flag = predicate(element, index, iterable);
     if (flag) {
       return element;

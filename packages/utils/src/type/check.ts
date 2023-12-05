@@ -1,6 +1,6 @@
 // https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
 
-import { Primitive } from './utility';
+import { Primitive } from './type-fest';
 
 const { isFinite } = Number;
 
