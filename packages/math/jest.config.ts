@@ -1,8 +1,8 @@
 // jest.config.ts
-import type { InitialOptionsTsJest } from 'ts-jest/dist/types';
+import type { JestConfigWithTsJest } from 'ts-jest/dist/types';
 import { defaultsESM as tsjPreset } from 'ts-jest/presets';
 
-const config: InitialOptionsTsJest = {
+const config: JestConfigWithTsJest = {
   transform: {
     ...tsjPreset.transform,
   },
