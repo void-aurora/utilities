@@ -1,0 +1,46 @@
+{
+  "name": "@void-aurora/events",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.1.0",
+  "description": "Shared Typed Events Module for Void Aurora.",
+  "keywords": [
+    "typescript",
+    "javascript",
+    "Void Aurora"
+  ],
+  "author": "duduluu <duduluu@outlook.com>",
+  "license": "MIT",
+  "repository": "github:void-aurora/utilities",
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "globalName": "VaEvents",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.es.js"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "vitest",
+    "prepare": "pnpm run build",
+    "ts-node": "ts-node --project ../../tsconfig.dev.json"
+  },
+  "devDependencies": {
+    "@void-aurora/utils": "workspace:^0.1.0"
+  },
+  "peerDependencies": {
+    "@void-aurora/utils": "^0.1.0"
+  }
+}
