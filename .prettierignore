@@ -6,3 +6,7 @@ coverage/
 
 # Output directories
 dist/
+
+# Generated files
+*.generated.*
+*.g.*
