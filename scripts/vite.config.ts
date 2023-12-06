@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import fs from 'fs-extra';
 import pth from 'path';
 import yaml from 'yaml';
@@ -49,6 +50,18 @@ export const presetConfig = (options: {
           output: {
             globals,
           },
+        },
+      },
+      test: {
+        include: ['src/**/*.test.{ts,tsx}'],
+        reporters: 'default',
+        coverage: {
+          enabled: true,
+        },
+        typecheck: {
+          enabled: true,
+          include: ['src/**/*.test-d.ts'],
+          tsconfig: pth.resolve(__dirname, 'tsconfig.test.json'),
         },
       },
     };

@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { buildArray, emptyArray } from './build';
 
 describe('array build', () => {

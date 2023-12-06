@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { isFunction } from '../type';
 import { dedupe, simpleDedupe } from './dedupe';
 

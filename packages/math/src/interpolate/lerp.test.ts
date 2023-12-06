@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { createLerp, createLerpClamped, lerp, lerpClamped } from './lerp';
 
 describe('interpolate lerp', () => {

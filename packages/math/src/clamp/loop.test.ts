@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { exp } from '../standard';
 import { clampLoop, createClampLoop } from './loop';
 import { clampLoop01 } from './special';

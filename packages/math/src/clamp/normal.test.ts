@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { ceil, floor } from '../standard';
 import {
   clamp,

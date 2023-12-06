@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { isFloatEqual } from './float';
 
 describe('number float', () => {

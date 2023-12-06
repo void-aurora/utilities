@@ -33,8 +33,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "test": "jest",
-    "test:updateSnapshot": "jest --updateSnapshot",
+    "test": "vitest",
     "prepare": "pnpm run build",
     "ts-node": "ts-node --project ../../tsconfig.dev.json"
   },

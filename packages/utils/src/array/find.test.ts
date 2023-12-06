@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest';
 import { isArray, isFunction, isNumber, isString } from '../type';
 import { firstItem, lastItem, findFirst, findLast } from './find';
 
