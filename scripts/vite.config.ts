@@ -12,11 +12,11 @@ export const presetConfig = (options: {
   defineConfig(async (env: ConfigEnv): Promise<UserConfig> => {
     const { __dirname, entry = 'src/index.ts', fileName } = options;
 
-    const {
-      name,
-      globalName,
-      peerDependencies = {},
-    } = await fs.readJSON(`${__dirname}/package.json`);
+    const [{ name, globalName, peerDependencies = {} }, { include, exclude }] =
+      await Promise.all([
+        fs.readJSON(`${__dirname}/package.json`),
+        fs.readJSON(`${__dirname}/tsconfig.json`),
+      ]);
 
     const external: string[] = Object.keys(peerDependencies);
     const globals: Record<string, string> = Object.fromEntries(
@@ -53,14 +53,16 @@ export const presetConfig = (options: {
         },
       },
       test: {
-        include: ['src/**/*.test.{ts,tsx}'],
+        include: ['src/**/*.{test,spec}.{ts,tsx}'],
         reporters: 'default',
         coverage: {
           enabled: true,
+          include,
+          exclude,
         },
         typecheck: {
           enabled: true,
-          include: ['src/**/*.test-d.ts'],
+          include: ['src/**/*.{test-d,spec-d}.{ts,tsx}'],
           tsconfig: pth.resolve(__dirname, 'tsconfig.test.json'),
         },
       },
