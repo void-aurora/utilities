@@ -13,7 +13,7 @@
   "author": "duduluu <duduluu@outlook.com>",
   "license": "MIT",
   "repository": "github:void-aurora/utilities",
-  "type": "commonjs",
+  "type": "module",
   "files": [
     "dist",
     "src"
