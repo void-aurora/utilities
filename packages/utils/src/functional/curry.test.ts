@@ -7,7 +7,7 @@ describe('functional curry', () => {
       return a * b * c;
     }
 
-    const curriedMultiply = curry(3, multiply);
+    const curriedMultiply = curry(multiply, 3);
 
     expect(curriedMultiply(2)(3)(4)).toEqual(24);
     expect(curriedMultiply(2, 3)(4)).toEqual(24);

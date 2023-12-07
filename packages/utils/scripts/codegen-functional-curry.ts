@@ -62,7 +62,7 @@ type ${CurriedFn}<Fn extends ${Fn}> =
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -76,12 +76,12 @@ type ${CurriedFn}<Fn extends ${Fn}> =
     const Fn = `Fn${N}`;
     const CurriedFn = `CurriedFn${N}`;
     return `${tsDoc}
-export function curry<Fn extends ${Fn}>(length: ${n}, fn: Fn): ${CurriedFn}<Fn>;`;
+export function curry<Fn extends ${Fn}>(fn: Fn, length: ${n}): ${CurriedFn}<Fn>;`;
   });
 
   const implement = `
 // implement
-export function curry(length: number, fn: (...args: any[]) => any): any {
+export function curry(fn: (...args: any[]) => any, length: number): any {
   const curried = (...args: any[]) =>
     args.length < length
       ? (...rest: any[]) => curried(...args, ...rest)

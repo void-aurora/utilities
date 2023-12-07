@@ -21,7 +21,7 @@
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -29,7 +29,7 @@
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn02>(length: 2, fn: Fn): CurriedFn02<Fn>;
+export function curry<Fn extends Fn02>(fn: Fn, length: 2): CurriedFn02<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -49,7 +49,7 @@ export function curry<Fn extends Fn02>(length: 2, fn: Fn): CurriedFn02<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -57,7 +57,7 @@ export function curry<Fn extends Fn02>(length: 2, fn: Fn): CurriedFn02<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn03>(length: 3, fn: Fn): CurriedFn03<Fn>;
+export function curry<Fn extends Fn03>(fn: Fn, length: 3): CurriedFn03<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -77,7 +77,7 @@ export function curry<Fn extends Fn03>(length: 3, fn: Fn): CurriedFn03<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -85,7 +85,7 @@ export function curry<Fn extends Fn03>(length: 3, fn: Fn): CurriedFn03<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn04>(length: 4, fn: Fn): CurriedFn04<Fn>;
+export function curry<Fn extends Fn04>(fn: Fn, length: 4): CurriedFn04<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -105,7 +105,7 @@ export function curry<Fn extends Fn04>(length: 4, fn: Fn): CurriedFn04<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -113,7 +113,7 @@ export function curry<Fn extends Fn04>(length: 4, fn: Fn): CurriedFn04<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn05>(length: 5, fn: Fn): CurriedFn05<Fn>;
+export function curry<Fn extends Fn05>(fn: Fn, length: 5): CurriedFn05<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -133,7 +133,7 @@ export function curry<Fn extends Fn05>(length: 5, fn: Fn): CurriedFn05<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -141,7 +141,7 @@ export function curry<Fn extends Fn05>(length: 5, fn: Fn): CurriedFn05<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn06>(length: 6, fn: Fn): CurriedFn06<Fn>;
+export function curry<Fn extends Fn06>(fn: Fn, length: 6): CurriedFn06<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -161,7 +161,7 @@ export function curry<Fn extends Fn06>(length: 6, fn: Fn): CurriedFn06<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -169,7 +169,7 @@ export function curry<Fn extends Fn06>(length: 6, fn: Fn): CurriedFn06<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn07>(length: 7, fn: Fn): CurriedFn07<Fn>;
+export function curry<Fn extends Fn07>(fn: Fn, length: 7): CurriedFn07<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -189,7 +189,7 @@ export function curry<Fn extends Fn07>(length: 7, fn: Fn): CurriedFn07<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -197,7 +197,7 @@ export function curry<Fn extends Fn07>(length: 7, fn: Fn): CurriedFn07<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn08>(length: 8, fn: Fn): CurriedFn08<Fn>;
+export function curry<Fn extends Fn08>(fn: Fn, length: 8): CurriedFn08<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -217,7 +217,7 @@ export function curry<Fn extends Fn08>(length: 8, fn: Fn): CurriedFn08<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -225,7 +225,7 @@ export function curry<Fn extends Fn08>(length: 8, fn: Fn): CurriedFn08<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn09>(length: 9, fn: Fn): CurriedFn09<Fn>;
+export function curry<Fn extends Fn09>(fn: Fn, length: 9): CurriedFn09<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -245,7 +245,7 @@ export function curry<Fn extends Fn09>(length: 9, fn: Fn): CurriedFn09<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -253,7 +253,7 @@ export function curry<Fn extends Fn09>(length: 9, fn: Fn): CurriedFn09<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn10>(length: 10, fn: Fn): CurriedFn10<Fn>;
+export function curry<Fn extends Fn10>(fn: Fn, length: 10): CurriedFn10<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -273,7 +273,7 @@ export function curry<Fn extends Fn10>(length: 10, fn: Fn): CurriedFn10<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -281,7 +281,7 @@ export function curry<Fn extends Fn10>(length: 10, fn: Fn): CurriedFn10<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn11>(length: 11, fn: Fn): CurriedFn11<Fn>;
+export function curry<Fn extends Fn11>(fn: Fn, length: 11): CurriedFn11<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -301,7 +301,7 @@ export function curry<Fn extends Fn11>(length: 11, fn: Fn): CurriedFn11<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -309,7 +309,7 @@ export function curry<Fn extends Fn11>(length: 11, fn: Fn): CurriedFn11<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn12>(length: 12, fn: Fn): CurriedFn12<Fn>;
+export function curry<Fn extends Fn12>(fn: Fn, length: 12): CurriedFn12<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -329,7 +329,7 @@ export function curry<Fn extends Fn12>(length: 12, fn: Fn): CurriedFn12<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -337,7 +337,7 @@ export function curry<Fn extends Fn12>(length: 12, fn: Fn): CurriedFn12<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn13>(length: 13, fn: Fn): CurriedFn13<Fn>;
+export function curry<Fn extends Fn13>(fn: Fn, length: 13): CurriedFn13<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -357,7 +357,7 @@ export function curry<Fn extends Fn13>(length: 13, fn: Fn): CurriedFn13<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -365,7 +365,7 @@ export function curry<Fn extends Fn13>(length: 13, fn: Fn): CurriedFn13<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn14>(length: 14, fn: Fn): CurriedFn14<Fn>;
+export function curry<Fn extends Fn14>(fn: Fn, length: 14): CurriedFn14<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -385,7 +385,7 @@ export function curry<Fn extends Fn14>(length: 14, fn: Fn): CurriedFn14<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -393,7 +393,7 @@ export function curry<Fn extends Fn14>(length: 14, fn: Fn): CurriedFn14<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn15>(length: 15, fn: Fn): CurriedFn15<Fn>;
+export function curry<Fn extends Fn15>(fn: Fn, length: 15): CurriedFn15<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -413,7 +413,7 @@ export function curry<Fn extends Fn15>(length: 15, fn: Fn): CurriedFn15<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -421,7 +421,7 @@ export function curry<Fn extends Fn15>(length: 15, fn: Fn): CurriedFn15<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn16>(length: 16, fn: Fn): CurriedFn16<Fn>;
+export function curry<Fn extends Fn16>(fn: Fn, length: 16): CurriedFn16<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -441,7 +441,7 @@ export function curry<Fn extends Fn16>(length: 16, fn: Fn): CurriedFn16<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -449,7 +449,7 @@ export function curry<Fn extends Fn16>(length: 16, fn: Fn): CurriedFn16<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn17>(length: 17, fn: Fn): CurriedFn17<Fn>;
+export function curry<Fn extends Fn17>(fn: Fn, length: 17): CurriedFn17<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -469,7 +469,7 @@ export function curry<Fn extends Fn17>(length: 17, fn: Fn): CurriedFn17<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -477,7 +477,7 @@ export function curry<Fn extends Fn17>(length: 17, fn: Fn): CurriedFn17<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn18>(length: 18, fn: Fn): CurriedFn18<Fn>;
+export function curry<Fn extends Fn18>(fn: Fn, length: 18): CurriedFn18<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -497,7 +497,7 @@ export function curry<Fn extends Fn18>(length: 18, fn: Fn): CurriedFn18<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -505,7 +505,7 @@ export function curry<Fn extends Fn18>(length: 18, fn: Fn): CurriedFn18<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn19>(length: 19, fn: Fn): CurriedFn19<Fn>;
+export function curry<Fn extends Fn19>(fn: Fn, length: 19): CurriedFn19<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -525,7 +525,7 @@ export function curry<Fn extends Fn19>(length: 19, fn: Fn): CurriedFn19<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -533,7 +533,7 @@ export function curry<Fn extends Fn19>(length: 19, fn: Fn): CurriedFn19<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn20>(length: 20, fn: Fn): CurriedFn20<Fn>;
+export function curry<Fn extends Fn20>(fn: Fn, length: 20): CurriedFn20<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -553,7 +553,7 @@ export function curry<Fn extends Fn20>(length: 20, fn: Fn): CurriedFn20<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -561,7 +561,7 @@ export function curry<Fn extends Fn20>(length: 20, fn: Fn): CurriedFn20<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn21>(length: 21, fn: Fn): CurriedFn21<Fn>;
+export function curry<Fn extends Fn21>(fn: Fn, length: 21): CurriedFn21<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -581,7 +581,7 @@ export function curry<Fn extends Fn21>(length: 21, fn: Fn): CurriedFn21<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -589,7 +589,7 @@ export function curry<Fn extends Fn21>(length: 21, fn: Fn): CurriedFn21<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn22>(length: 22, fn: Fn): CurriedFn22<Fn>;
+export function curry<Fn extends Fn22>(fn: Fn, length: 22): CurriedFn22<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -609,7 +609,7 @@ export function curry<Fn extends Fn22>(length: 22, fn: Fn): CurriedFn22<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -617,7 +617,7 @@ export function curry<Fn extends Fn22>(length: 22, fn: Fn): CurriedFn22<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn23>(length: 23, fn: Fn): CurriedFn23<Fn>;
+export function curry<Fn extends Fn23>(fn: Fn, length: 23): CurriedFn23<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -637,7 +637,7 @@ export function curry<Fn extends Fn23>(length: 23, fn: Fn): CurriedFn23<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -645,7 +645,7 @@ export function curry<Fn extends Fn23>(length: 23, fn: Fn): CurriedFn23<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn24>(length: 24, fn: Fn): CurriedFn24<Fn>;
+export function curry<Fn extends Fn24>(fn: Fn, length: 24): CurriedFn24<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -665,7 +665,7 @@ export function curry<Fn extends Fn24>(length: 24, fn: Fn): CurriedFn24<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -673,7 +673,7 @@ export function curry<Fn extends Fn24>(length: 24, fn: Fn): CurriedFn24<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn25>(length: 25, fn: Fn): CurriedFn25<Fn>;
+export function curry<Fn extends Fn25>(fn: Fn, length: 25): CurriedFn25<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -693,7 +693,7 @@ export function curry<Fn extends Fn25>(length: 25, fn: Fn): CurriedFn25<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -701,7 +701,7 @@ export function curry<Fn extends Fn25>(length: 25, fn: Fn): CurriedFn25<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn26>(length: 26, fn: Fn): CurriedFn26<Fn>;
+export function curry<Fn extends Fn26>(fn: Fn, length: 26): CurriedFn26<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -721,7 +721,7 @@ export function curry<Fn extends Fn26>(length: 26, fn: Fn): CurriedFn26<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -729,7 +729,7 @@ export function curry<Fn extends Fn26>(length: 26, fn: Fn): CurriedFn26<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn27>(length: 27, fn: Fn): CurriedFn27<Fn>;
+export function curry<Fn extends Fn27>(fn: Fn, length: 27): CurriedFn27<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -749,7 +749,7 @@ export function curry<Fn extends Fn27>(length: 27, fn: Fn): CurriedFn27<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -757,7 +757,7 @@ export function curry<Fn extends Fn27>(length: 27, fn: Fn): CurriedFn27<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn28>(length: 28, fn: Fn): CurriedFn28<Fn>;
+export function curry<Fn extends Fn28>(fn: Fn, length: 28): CurriedFn28<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -777,7 +777,7 @@ export function curry<Fn extends Fn28>(length: 28, fn: Fn): CurriedFn28<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -785,7 +785,7 @@ export function curry<Fn extends Fn28>(length: 28, fn: Fn): CurriedFn28<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn29>(length: 29, fn: Fn): CurriedFn29<Fn>;
+export function curry<Fn extends Fn29>(fn: Fn, length: 29): CurriedFn29<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -805,7 +805,7 @@ export function curry<Fn extends Fn29>(length: 29, fn: Fn): CurriedFn29<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -813,7 +813,7 @@ export function curry<Fn extends Fn29>(length: 29, fn: Fn): CurriedFn29<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn30>(length: 30, fn: Fn): CurriedFn30<Fn>;
+export function curry<Fn extends Fn30>(fn: Fn, length: 30): CurriedFn30<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -833,7 +833,7 @@ export function curry<Fn extends Fn30>(length: 30, fn: Fn): CurriedFn30<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -841,7 +841,7 @@ export function curry<Fn extends Fn30>(length: 30, fn: Fn): CurriedFn30<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn31>(length: 31, fn: Fn): CurriedFn31<Fn>;
+export function curry<Fn extends Fn31>(fn: Fn, length: 31): CurriedFn31<Fn>;
 
 /**
  * Currying function that converts a multi-argument function
@@ -861,7 +861,7 @@ export function curry<Fn extends Fn31>(length: 31, fn: Fn): CurriedFn31<Fn>;
  *   return a * b * c;
  * }
  *
- * const curriedMultiply = curry(3, multiply);
+ * const curriedMultiply = curry(multiply, 3);
  *
  * console.log(curriedMultiply(2)(3)(4)); // output 24
  * console.log(curriedMultiply(2, 3)(4)); // output 24
@@ -869,11 +869,11 @@ export function curry<Fn extends Fn31>(length: 31, fn: Fn): CurriedFn31<Fn>;
  * console.log(curriedMultiply(2, 3, 4)); // output 24
  * ```
  */
-export function curry<Fn extends Fn32>(length: 32, fn: Fn): CurriedFn32<Fn>;
+export function curry<Fn extends Fn32>(fn: Fn, length: 32): CurriedFn32<Fn>;
 
 
 // implement
-export function curry(length: number, fn: (...args: any[]) => any): any {
+export function curry(fn: (...args: any[]) => any, length: number): any {
   const curried = (...args: any[]) =>
     args.length < length
       ? (...rest: any[]) => curried(...args, ...rest)
