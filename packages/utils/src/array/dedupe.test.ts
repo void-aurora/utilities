@@ -1,4 +1,4 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect, expectTypeOf } from 'vitest';
 import { isFunction } from '../type';
 import { dedupe, simpleDedupe } from './dedupe';
 
@@ -36,10 +36,11 @@ describe('array dedupe', () => {
       a === b || (a.foo === b.foo && a.bar === b.bar);
     const dedupeFunc = dedupe(equal);
 
-    expect(isFunction(dedupeFunc)).toBe(true);
+    expect(dedupeFunc).toBeTypeOf('function');
 
-    expect(dedupe(equal, array)).toEqual(dedupeFunc(array));
-    expect(dedupeFunc(array)).toEqual([
+    const receivedA = dedupe(equal, array);
+    const receivedB = dedupeFunc(array);
+    const expected = [
       { foo: 1, bar: '2' },
       { foo: 3, bar: '4' },
       { foo: 5, bar: '6' },
@@ -48,6 +49,9 @@ describe('array dedupe', () => {
       { foo: '3', bar: 4 },
       { foo: '5', bar: 6 },
       { foo: '7', bar: 8 },
-    ]);
+    ];
+
+    expect(receivedA).toEqual(expected);
+    expect(receivedB).toEqual(expected);
   });
 });

@@ -1,3 +1,4 @@
+import { curry } from '../functional/curry.g';
 import { isNullOrUndefined } from '../type';
 
 /**
@@ -6,33 +7,13 @@ import { isNullOrUndefined } from '../type';
  */
 export const simpleDedupe = <T>(array: T[]): T[] => [...new Set(array)];
 
-/**
- * Create a function to remove duplicates from an array via the passing in callback `equal`
- * to determine if the elements are equal, and then a new array is returned.
- * Note that you need to handle the `NaN` yourself.
- * @param equal The callback to determine whether two elements are equal or not.
- */
-export function dedupe<T>(equal: (a: T, b: T) => boolean): (array: T[]) => T[];
+export const dedupe: {
+  <T>(equal: (a: T, b: T) => boolean, array: T[]): T[];
 
-/**
- * Remove duplicates from an array via the passing in callback `equal`
- * to determine if the elements are equal, and then a new array is returned.
- * Note that you need to handle the `NaN` yourself.
- * @param equal The callback to determine whether two elements are equal or not.
- */
-export function dedupe<T>(equal: (a: T, b: T) => boolean, array: T[]): T[];
+  <T>(equal: (a: T, b: T) => boolean): (array: T[]) => T[];
 
-// implement
-export function dedupe<T>(
-  ...args: [(a: T, b: T) => boolean] | [(a: T, b: T) => boolean, T[]]
-): ((array: T[]) => T[]) | T[] {
-  const [equal, array] = args;
-  if (isNullOrUndefined(array)) {
-    return function dedupeFunc(array: T[]): T[] {
-      return dedupe(equal, array);
-    };
-  }
-
+  // overloading, implement, currying
+} = curry(<T>(equal: (a: T, b: T) => boolean, array: T[]): T[] => {
   const result: T[] = [];
   const { length } = array;
   for (let i = 0; i < length; i++) {
@@ -42,4 +23,4 @@ export function dedupe<T>(
     }
   }
   return result;
-}
+}, 2);
