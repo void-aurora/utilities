@@ -1,32 +1,46 @@
-/**
- * Determine if two array are equal via determining whether each elements is equal
- * one by one through the strict equal `===`.
- * If there are non-primitive elements in the array, use `createArrayEqual` instead.
- */
-export function arrayEqual<T>(arrayA: T[], arrayB: T[]): boolean {
-  if (arrayA === arrayB) {
-    return true;
-  }
-  if (arrayA.length !== arrayB.length) {
-    return false;
-  }
-  const { length } = arrayA;
-  for (let i = 0; i < length; i++) {
-    if (arrayA[i] !== arrayB[i]) {
-      return false;
-    }
-  }
-  return true;
-}
+import { curry } from '../functional/curry.g';
 
-/**
- * Create a check function to determine if two array ore equal in all elements.
- * @param equal The callback to determine whether two elements are equal or not.
- */
-export function createArrayEqual<T>(
-  equal: (a: T, b: T) => boolean,
-): (arrayA: T[], arrayB: T[]) => boolean {
-  return function arrayEqual(arrayA: T[], arrayB: T[]): boolean {
+export const arrayEqual: {
+  /**
+   * Checks if two arrays are equal
+   * based on a custom equality function.
+   * @param equal The equality function that compares two elements.
+   * @param arrayA The first input array.
+   * @param arrayB The second input array.
+   * @returns A boolean value indicating whether the two arrays are equal.
+   * @template T The type of elements in the arrays.
+   */
+  <T>(equal: (a: T, b: T) => boolean, arrayA: T[], arrayB: T[]): boolean;
+
+  /**
+   * Returns a curried function that accepts the first and second arrays
+   * and checks if they are equal
+   * based on the provided equality function.
+   * @param equal The equality function that compares two elements.
+   * @param arrayA The first input array.
+   * @param arrayB The second input array.
+   * @returns The curried function.
+   * @template T The type of elements in the arrays.
+   */
+  <T>(
+    equal: (a: T, b: T) => boolean,
+  ): ((arrayA: T[], arrayB: T[]) => boolean) &
+    ((arrayA: T[]) => (arrayB: T[]) => boolean);
+
+  /**
+   * Returns a curried function that accepts the second array
+   * and checks if it is equal to the first array
+   * based on the provided equality function.
+   * @param equal The equality function that compares two elements.
+   * @param arrayA The first input array.
+   * @returns The curried function.
+   * @template T The type of elements in the arrays.
+   */
+  <T>(equal: (a: T, b: T) => boolean, arrayA: T[]): (arrayB: T[]) => boolean;
+
+  // overloading, implement, currying
+} = curry(
+  <T>(equal: (a: T, b: T) => boolean, arrayA: T[], arrayB: T[]): boolean => {
     if (arrayA === arrayB) {
       return true;
     }
@@ -40,5 +54,39 @@ export function createArrayEqual<T>(
       }
     }
     return true;
-  };
-}
+  },
+  3,
+);
+
+export const simpleArrayEqual: {
+  /**
+   * Checks if two arrays are equal
+   * by comparing the elements using strict equality (`===`).
+   * @param arrayA The first input array.
+   * @param arrayB The second input array.
+   * @returns A boolean value indicating whether the two arrays are equal.
+   * @template T The type of elements in the arrays.
+   */
+  <T>(arrayA: T[], arrayB: T[]): boolean;
+
+  /**
+   * Returns a curried function that accepts the second array
+   * and checks if it is equal to the first array
+   * by comparing the elements using strict equality (`===`).
+   * @param arrayA The first input array.
+   * @returns The curried function.
+   * @template T The type of elements in the arrays.
+   */
+  <T>(arrayA: T[]): (arrayB: T[]) => boolean;
+
+  //
+} = arrayEqual((a, b) => a === b);
+
+// Example usage
+const numbersEqual = (a: number, b: number) => a === b;
+const array1 = [1, 2, 3];
+const array2 = [1, 2, 3];
+const array3 = [1, 2, 4];
+
+const result1 = arrayEqual(numbersEqual, array1, array2); // true
+const result2 = arrayEqual(numbersEqual)(array1)(array3); // false
