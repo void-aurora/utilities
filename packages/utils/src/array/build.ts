@@ -32,6 +32,4 @@ export const buildArray: {
 /**
  * Create a new empty array.
  */
-export function emptyArray<T>(): T[] {
-  return [];
-}
+export const emptyArray = <T>(): T[] => [];
