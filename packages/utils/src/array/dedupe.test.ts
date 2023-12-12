@@ -7,7 +7,7 @@ interface Foobar {
   bar: string | number;
 }
 
-describe('array dedupe', () => {
+describe('array/dedupe', () => {
   test('simpleDedupe()', () => {
     const array = ['a', 'b', 'c', 1, 2, 3, true, false, NaN];
     expect(simpleDedupe([...array, ...array])).toEqual(array);

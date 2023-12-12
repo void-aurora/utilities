@@ -10,7 +10,7 @@ interface Foobar {
 const foobarEqual = (a: Foobar, b: Foobar) =>
   a === b || (a.foo === b.foo && a.bar === b.bar);
 
-describe('array equal', () => {
+describe('array/equal', () => {
   test('simpleArrayEqual()', () => {
     const objectA = { foobar: 'hello world!' };
     const objectB = { foobar: 'hello world!' };

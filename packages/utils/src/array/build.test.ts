@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import { buildArray, emptyArray } from './build';
 
-describe('array build', () => {
+describe('array/build', () => {
   test('buildArray()', () => {
     const arrayA1 = buildArray(i => i, 5);
     const arrayA2 = buildArray(i => i)(5);
