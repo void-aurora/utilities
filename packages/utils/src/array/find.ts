@@ -4,7 +4,33 @@
 import { isArray, isIterable, isNullOrUndefined, isString } from '../type';
 
 /**
- * Returns the value of the first element in the array, and undefined if not exists.
+ *  Returns the first item of an iterable or array-like object.
+ *
+ *  @param iterable The iterable or array-like object.
+ *  @returns The first item of the input object or undefined if the input is empty.
+ *
+ * @example
+ * ```ts
+ * const arr = [1, 2, 3, 4];
+ * console.log(firstItem(arr));  // Output: 1
+ *
+ * const empty = [];
+ * console.log(firstItem(empty));  // Output: undefined
+ *
+ * const str = 'hello'
+ * console.log(firstItem(str)); // Output: 'h'
+ *
+ * const set = new Set(['apple', 'banana', 'cat', 'dog']);
+ * console.log(firstItem(set)); // Output: 'apple'
+ *
+ * const map = new Map<string | number, string | number>([
+ *   ['a', 1],
+ *   ['b', 2],
+ *   ['c', 3],
+ *   ['d', 4],
+ * ]);
+ * console.log(firstItem(map)); // Output: ['a', 1]
+ * ```
  */
 export function firstItem<T>(
   iterable: Iterable<T> | ArrayLike<T>,
@@ -17,7 +43,33 @@ export function firstItem<T>(
 }
 
 /**
- * Returns the value of the last element in the array, and undefined if not exists.
+ * Returns the last item of an iterable or array-like object.
+ *
+ * @param iterable The iterable or array-like object.
+ * @returns The last item of the input object or undefined if the input is empty.
+ *
+ * @example
+ * ```
+ * const arr = [1, 2, 3, 4];
+ * console.log(lastItem(arr));  // Output: 4
+ *
+ * const empty = [];
+ * console.log(lastItem(empty));  // Output: undefined
+ *
+ * const str = 'hello'
+ * console.log(lastItem(str)); // Output: 'o'
+ *
+ * const set = new Set(['apple', 'banana', 'cat', 'dog']);
+ * console.log(lastItem(set)); // Output: 'dog'
+ *
+ * const map = new Map<string | number, string | number>([
+ *   ['a', 1],
+ *   ['b', 2],
+ *   ['c', 3],
+ *   ['d', 4],
+ * ]);
+ * console.log(lastItem(map)); // Output: ['d', 4]
+ * ```
  */
 export function lastItem<T>(
   iterable: Iterable<T> | ArrayLike<T>,
