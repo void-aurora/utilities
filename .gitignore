@@ -32,5 +32,7 @@ docs/
 
 # Temporary directories and files
 temp/
+.temp
+.temp.*
 .tmp
 .tmp.*

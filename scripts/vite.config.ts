@@ -58,7 +58,7 @@ export const presetConfig = (options: {
         coverage: {
           enabled: true,
           include,
-          exclude,
+          exclude: [...exclude, '**/*/index.{ts,tsx}', '**/*/.*.*'],
         },
         typecheck: {
           enabled: true,
