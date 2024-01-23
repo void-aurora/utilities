@@ -2,7 +2,7 @@
 // First & Last
 
 import { curry } from '../functional/curry.g';
-import { isArray, isIterable, isNullOrUndefined, isString } from '../type';
+import { isArray, isIterable } from '../type';
 
 /**
  *  Returns the first item of an iterable or array-like object.
@@ -75,8 +75,7 @@ export function firstItem<T>(
 export function lastItem<T>(
   iterable: Iterable<T> | ArrayLike<T>,
 ): T | undefined {
-  const array =
-    (isIterable(iterable) && [...iterable]) || (iterable as ArrayLike<T>);
+  const array = (isArray(iterable) && iterable) || Array.from(iterable);
   return array[array.length - 1];
 }
 
@@ -261,13 +260,12 @@ export const findLast: {
 
   // overloading, implement, currying
 } = curry((predicate, iterable) => {
-  let index = 0;
-  let lastItem: any = undefined;
-  for (const iterator of iterable) {
-    if (predicate(iterator, index, iterable)) {
-      lastItem = iterator;
+  const array = (isArray(iterable) && iterable) || Array.from(iterable);
+  for (let index = array.length - 1; index >= 0; index--) {
+    const item = array[index];
+    if (predicate(item, index, iterable)) {
+      return item;
     }
-    index += 1;
   }
-  return lastItem;
+  return undefined;
 }, 2);
