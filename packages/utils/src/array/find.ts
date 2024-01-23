@@ -1,6 +1,7 @@
 // ================================================================
 // First & Last
 
+import { curry } from '../functional/curry.g';
 import { isArray, isIterable, isNullOrUndefined, isString } from '../type';
 
 /**
@@ -82,122 +83,96 @@ export function lastItem<T>(
 // ================================================================
 // Find First
 
-/**
- * Create a function `findFirst` that returns the value of the first element in the array where predicate is true,
- * and undefined otherwise.
- * @param predicate The function calls `predicate` once for each element of the array,
- * in ascending order, until it finds one where predicate returns true. If such an element is found,
- * `findFirst` immediately returns that element value. Otherwise, `findFirst` returns undefined.
- */
-export function findFirst<T, S extends T>(
-  predicate: (
-    value: T,
-    index: number,
+export const findFirst: {
+  /**
+   * Returns the value of the first item in the iterable or array-like object
+   * where `predicate` is true, and undefined otherwise.
+   *
+   * @param predicate `findFirst` calls `predicate` once for each item of the array,
+   * in ascending order, until it finds one where `predicate` returns true.
+   * If such an item is found, find immediately returns that item value.
+   * Otherwise, find returns undefined.
+   * @param iterable The iterable or array-like object to find an item in.
+   * @template T The type of items in the iterable or array-like object.
+   */
+  <T>(
+    predicate: (
+      iterator: T,
+      index: number,
+      iterable: Iterable<T> | ArrayLike<T>,
+    ) => boolean,
     iterable: Iterable<T> | ArrayLike<T>,
-  ) => value is T,
-): (iterable: Iterable<T> | ArrayLike<T>) => S | undefined;
+  ): T | undefined;
 
-/**
- * Create a function `findFirst` that returns the value of the first element in the array where predicate is true,
- * and undefined otherwise.
- * @param predicate The function calls `predicate` once for each element of the array,
- * in ascending order, until it finds one where predicate returns true. If such an element is found,
- * `findFirst` immediately returns that element value. Otherwise, `findFirst` returns undefined.
- */
-export function findFirst<T>(
-  predicate: (
-    value: T,
-    index: number,
+  /**
+   * Returns a curried function to find the value of the first item
+   * in the iterable or array-like object where `predicate` is true, and undefined otherwise.
+   *
+   * @param predicate `findFirst` calls `predicate` once for each item of the array,
+   * in ascending order, until it finds one where `predicate` returns true.
+   * If such an item is found, find immediately returns that item value.
+   * Otherwise, find returns undefined.
+   * @template T The type of items in the iterable or array-like object.
+   */
+  <T>(
+    predicate: (
+      iterator: T,
+      index: number,
+      iterable: Iterable<T> | ArrayLike<T>,
+    ) => boolean,
+  ): (iterable: Iterable<T> | ArrayLike<T>) => T | undefined;
+
+  /**
+   * Returns the value of the first item in the iterable or array-like object
+   * where `predicate` is true, and undefined otherwise.
+   *
+   * @param predicate `findFirst` calls `predicate` once for each item of the array,
+   * in ascending order, until it finds one where `predicate` returns true.
+   * If such an item is found, find immediately returns that item value.
+   * Otherwise, find returns undefined.
+   * @param iterable The iterable or array-like object to find an item in.
+   * @template T The type of items in the iterable or array-like object.
+   * @template S The type of the first item where `predicate` is true.
+   */
+  <T, S extends T>(
+    predicate: (
+      iterator: T,
+      index: number,
+      iterable: Iterable<T> | ArrayLike<T>,
+    ) => iterator is S,
     iterable: Iterable<T> | ArrayLike<T>,
-  ) => unknown,
-): (iterable: Iterable<T> | ArrayLike<T>) => T | undefined;
+  ): S | undefined;
 
-/**
- * Returns the value of the first element in the array where predicate is true,
- * and undefined otherwise.
- * @param array The array to find the element.
- * @param predicate The function `findFirst` calls `predicate` once for each element of the array,
- * in ascending order, until it finds one where predicate returns true. If such an element is found,
- * `findFirst` immediately returns that element value. Otherwise, `findFirst` returns undefined.
- */
-export function findFirst<T, S extends T>(
-  predicate: (
-    value: T,
-    index: number,
-    iterable: Iterable<T> | ArrayLike<T>,
-  ) => value is S,
-  iterable: Iterable<T> | ArrayLike<T>,
-): S | undefined;
+  /**
+   * Returns a curried function to find the value of the first item
+   * in the iterable or array-like object where `predicate` is true, and undefined otherwise.
+   *
+   * @param predicate `findFirst` calls `predicate` once for each item of the array,
+   * in ascending order, until it finds one where `predicate` returns true.
+   * If such an item is found, find immediately returns that item value.
+   * Otherwise, find returns undefined.
+   * @template T The type of items in the iterable or array-like object.
+   * @template S The type of the first item where `predicate` is true.
+   */
+  <T, S extends T>(
+    predicate: (
+      iterator: T,
+      index: number,
+      iterable: Iterable<T> | ArrayLike<T>,
+    ) => iterator is S,
+  ): (iterable: Iterable<T> | ArrayLike<T>) => S | undefined;
 
-/**
- * Returns the value of the first element in the array where predicate is true,
- * and undefined otherwise.
- * @param array The array to find the element.
- * @param predicate The function `findFirst` calls `predicate` once for each element of the array,
- * in ascending order, until it finds one where predicate returns true. If such an element is found,
- * `findFirst` immediately returns that element value. Otherwise, `findFirst` returns undefined.
- */
-export function findFirst<T>(
-  predicate: (
-    value: T,
-    index: number,
-    iterable: Iterable<T> | ArrayLike<T>,
-  ) => unknown,
-  iterable: Iterable<T> | ArrayLike<T>,
-): T | undefined;
-
-// implement
-export function findFirst(
-  ...args:
-    | [
-        (
-          value: any,
-          index: number,
-          iterable: Iterable<any> | ArrayLike<any>,
-        ) => unknown,
-      ]
-    | [
-        (
-          value: any,
-          index: number,
-          iterable: Iterable<any> | ArrayLike<any>,
-        ) => unknown,
-        ArrayLike<any> | Iterable<any>,
-      ]
-):
-  | ((iterable: Iterable<any> | ArrayLike<any>) => any | undefined)
-  | any
-  | undefined {
-  const [predicate, iterable] = args;
-  if (isNullOrUndefined(iterable)) {
-    return function findFirstFunc(iterable: Iterable<any> | ArrayLike<any>) {
-      return findFirst(predicate, iterable);
-    };
-  }
-
-  if (!isString(iterable) && !isArray(iterable) && isIterable(iterable)) {
-    let index = 0;
-    for (const iterator of iterable) {
-      const flag = predicate(iterator, index, iterable);
-      if (flag) {
-        return iterator;
-      }
-      index++;
+  // overloading, implement, currying
+} = curry((predicate, iterable) => {
+  let index = 0;
+  for (const iterator of iterable) {
+    if (predicate(iterator, index, iterable)) {
+      return iterator;
     }
-    return undefined;
-  }
-
-  const { length } = iterable as any;
-
-  for (let index = 0; index < length; index++) {
-    const element = (iterable as any)[index];
-    const flag = predicate(element, index, iterable);
-    if (flag) {
-      return element;
-    }
+    index += 1;
   }
   return undefined;
-}
+}, 2);
 
 // alias
 export { findFirst as find };
@@ -205,120 +180,94 @@ export { findFirst as find };
 // ================================================================
 // Find Last
 
-/**
- * Create a function `findLast` that returns the value of the last element in the array where predicate is true,
- * and undefined otherwise.
- * @param predicate The function calls `predicate` once for each element of the array,
- * in descending order, until it finds one where predicate returns true. If such an element is found,
- * `findLast` immediately returns that element value. Otherwise, `findLast` returns undefined.
- */
-export function findLast<T, S extends T>(
-  predicate: (
-    value: T,
-    index: number,
-    iterable: Iterable<any> | ArrayLike<any>,
-  ) => value is T,
-): (iterable: Iterable<any> | ArrayLike<any>) => S | undefined;
+export const findLast: {
+  /**
+   * Returns the value of the last item in the iterable or array-like object
+   * where `predicate` is true, and undefined otherwise.
+   *
+   * @param predicate `findLast` calls `predicate` once for each item of the array,
+   * in descending order, until it finds one where `predicate` returns true.
+   * If such an item is found, find immediately returns that item value.
+   * Otherwise, find returns undefined.
+   * @param iterable The iterable or array-like object to find an item in.
+   * @template T The type of items in the iterable or array-like object.
+   */
+  <T>(
+    predicate: (
+      iterator: T,
+      index: number,
+      iterable: Iterable<T> | ArrayLike<T>,
+    ) => boolean,
+    iterable: Iterable<T> | ArrayLike<T>,
+  ): T | undefined;
 
-/**
- * Create a function `findLast` that returns the value of the last element in the array where predicate is true,
- * and undefined otherwise.
- * @param predicate The function calls `predicate` once for each element of the array,
- * in descending order, until it finds one where predicate returns true. If such an element is found,
- * `findLast` immediately returns that element value. Otherwise, `findLast` returns undefined.
- */
-export function findLast<T>(
-  predicate: (
-    value: T,
-    index: number,
-    iterable: Iterable<any> | ArrayLike<any>,
-  ) => unknown,
-): (iterable: Iterable<any> | ArrayLike<any>) => T | undefined;
+  /**
+   * Returns a curried function to find the value of the last item
+   * in the iterable or array-like object where `predicate` is true, and undefined otherwise.
+   *
+   * @param predicate `findLast` calls `predicate` once for each item of the array,
+   * in descending order, until it finds one where `predicate` returns true.
+   * If such an item is found, find immediately returns that item value.
+   * Otherwise, find returns undefined.
+   * @template T The type of items in the iterable or array-like object.
+   */
+  <T>(
+    predicate: (
+      iterator: T,
+      index: number,
+      iterable: Iterable<T> | ArrayLike<T>,
+    ) => boolean,
+  ): (iterable: Iterable<T> | ArrayLike<T>) => T | undefined;
 
-/**
- * Returns the value of the last element in the array where predicate is true,
- * and undefined otherwise.
- * @param array The array to find the element.
- * @param predicate The function `findLast` calls `predicate` once for each element of the array,
- * in descending order, until it finds one where predicate returns true. If such an element is found,
- * `findLast` immediately returns that element value. Otherwise, `findLast` returns undefined.
- */
-export function findLast<T, S extends T>(
-  predicate: (
-    value: T,
-    index: number,
-    iterable: Iterable<any> | ArrayLike<any>,
-  ) => value is S,
-  iterable: Iterable<any> | ArrayLike<any>,
-): S | undefined;
+  /**
+   * Returns the value of the last item in the iterable or array-like object
+   * where `predicate` is true, and undefined otherwise.
+   *
+   * @param predicate `findLast` calls `predicate` once for each item of the array,
+   * in descending order, until it finds one where `predicate` returns true.
+   * If such an item is found, find immediately returns that item value.
+   * Otherwise, find returns undefined.
+   * @param iterable The iterable or array-like object to find an item in.
+   * @template T The type of items in the iterable or array-like object.
+   * @template S The type of the last item where `predicate` is true.
+   */
+  <T, S extends T>(
+    predicate: (
+      iterator: T,
+      index: number,
+      iterable: Iterable<T> | ArrayLike<T>,
+    ) => iterator is S,
+    iterable: Iterable<T> | ArrayLike<T>,
+  ): S | undefined;
 
-/**
- * Returns the value of the last element in the array where predicate is true,
- * and undefined otherwise.
- * @param array The array to find the element.
- * @param predicate The function `findLast` calls `predicate` once for each element of the array,
- * in descending order, until it finds one where predicate returns true. If such an element is found,
- * `findLast` immediately returns that element value. Otherwise, `findLast` returns undefined.
- */
-export function findLast<T>(
-  predicate: (
-    value: T,
-    index: number,
-    iterable: Iterable<any> | ArrayLike<any>,
-  ) => unknown,
-  iterable: Iterable<any> | ArrayLike<any>,
-): T | undefined;
+  /**
+   * Returns a curried function to find the value of the last item
+   * in the iterable or array-like object where `predicate` is true, and undefined otherwise.
+   *
+   * @param predicate `findLast` calls `predicate` once for each item of the array,
+   * in descending order, until it finds one where `predicate` returns true.
+   * If such an item is found, find immediately returns that item value.
+   * Otherwise, find returns undefined.
+   * @template T The type of items in the iterable or array-like object.
+   * @template S The type of the last item where `predicate` is true.
+   */
+  <T, S extends T>(
+    predicate: (
+      iterator: T,
+      index: number,
+      iterable: Iterable<T> | ArrayLike<T>,
+    ) => iterator is S,
+  ): (iterable: Iterable<T> | ArrayLike<T>) => S | undefined;
 
-// implement
-// export function createFindLast(
-//   predicate: (value: any, index: number, array: ArrayLike<any>) => unknown,
-// ): (array: ArrayLike<any>) => any | undefined {
-//   return function arrayFindLast(array) {
-//     return findLast(array, predicate);
-//   };
-// }
-
-// implement
-export function findLast(
-  ...args:
-    | [
-        (
-          value: any,
-          index: number,
-          iterable: Iterable<any> | ArrayLike<any>,
-        ) => unknown,
-        Iterable<any> | ArrayLike<any>,
-      ]
-    | [
-        (
-          value: any,
-          index: number,
-          iterable: Iterable<any> | ArrayLike<any>,
-        ) => unknown,
-      ]
-):
-  | ((iterable: Iterable<any> | ArrayLike<any>) => any | undefined)
-  | any
-  | undefined {
-  const [predicate, iterable] = args;
-  if (isNullOrUndefined(iterable)) {
-    return function arrayFindLast(iterable: Iterable<any> | ArrayLike<any>) {
-      return findLast(predicate, iterable);
-    };
-  }
-
-  const array =
-    (!isArray(iterable) &&
-      !isString(iterable) &&
-      isIterable(iterable) && [...iterable]) ||
-    (iterable as ArrayLike<any>);
-
-  const { length } = array;
-  for (let index = length; index > -1; index--) {
-    const element = array[index];
-    if (predicate(element, index, iterable!)) {
-      return element;
+  // overloading, implement, currying
+} = curry((predicate, iterable) => {
+  let index = 0;
+  let lastItem: any = undefined;
+  for (const iterator of iterable) {
+    if (predicate(iterator, index, iterable)) {
+      lastItem = iterator;
     }
+    index += 1;
   }
-  return undefined;
-}
+  return lastItem;
+}, 2);
