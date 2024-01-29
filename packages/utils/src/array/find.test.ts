@@ -1,4 +1,4 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect, expectTypeOf } from 'vitest';
 import { isArray, isFunction, isNumber, isString } from '../type';
 import { firstItem, lastItem, findFirst, findLast } from './find';
 
@@ -73,11 +73,24 @@ describe('array find', () => {
   });
 
   test('findFirst', () => {
-    const predicate = (v: unknown): v is string =>
-      isArray(v) ? isString(v[1]) : isString(v);
+    // Types
+    {
+      expectTypeOf(findFirst((v: string) => v === 'foobar')).toMatchTypeOf<
+        (iterable: Iterable<string> | ArrayLike<string>) => string | undefined
+      >();
+      expectTypeOf(
+        findFirst((v: string | number): v is number => isNumber(v)),
+      ).toMatchTypeOf<
+        (
+          Iterable: Iterable<string | number> | ArrayLike<string | number>,
+        ) => number | undefined
+      >();
+    }
+
+    const predicate = (v: unknown): v is string => isString(v);
     const findFirstFunc = findFirst<unknown, string>(predicate);
 
-    expect(isFunction(findFirstFunc)).toBe(true);
+    expect(findFirstFunc).toBeTypeOf('function');
 
     expect(findFirst(predicate, emptyArray)).toBeUndefined();
     expect(findFirstFunc(emptyArray)).toBeUndefined();
@@ -90,29 +103,64 @@ describe('array find', () => {
     expect(findFirstFunc(text)).toBe('a');
     expect(findFirst(predicate, toSet([...text]))).toBe('a');
     expect(findFirstFunc(toSet([...text]))).toBe('a');
-    expect(findFirst(predicate, toMap([...text]))).toEqual([0, 'a']);
-    expect(findFirstFunc(toMap([...text]))).toEqual([0, 'a']);
+    expect(findFirst(predicate, toMap([...text]))).toBeUndefined();
+    expect(findFirstFunc(toMap([...text]))).toBeUndefined();
 
     expect(findFirst(predicate, hybridArray)).toBe('a');
     expect(findFirstFunc(hybridArray)).toBe('a');
     expect(findFirst(predicate, toSet(hybridArray))).toBe('a');
     expect(findFirstFunc(toSet(hybridArray))).toBe('a');
-    expect(findFirst(predicate, toMap(hybridArray))).toEqual([3, 'a']);
-    expect(findFirstFunc(toMap(hybridArray))).toEqual([3, 'a']);
+    expect(findFirst(predicate, toMap(hybridArray))).toBeUndefined();
+    expect(findFirstFunc(toMap(hybridArray))).toBeUndefined();
 
     expect(findFirst(predicate, fooSet)).toBe('apple');
     expect(findFirstFunc(fooSet)).toBe('apple');
 
-    expect(findFirst(predicate, barMap)).toEqual([5, 'e']);
-    expect(findFirstFunc(barMap)).toEqual([5, 'e']);
+    expect(findFirst(predicate, barMap)).toBeUndefined();
+    expect(findFirstFunc(barMap)).toBeUndefined();
 
     expect(findFirst(predicate, foobar)).toBe('f');
     expect(findFirstFunc(foobar)).toBe('f');
+
+    // Type match to Map
+    {
+      const predicate = (
+        kvp: [string | number, string | number],
+      ): kvp is [number, string] => isString(kvp[1]);
+
+      const find = findFirst(predicate);
+      expectTypeOf(find).toMatchTypeOf<
+        (
+          iterable:
+            | Iterable<[string | number, string | number]>
+            | ArrayLike<[string | number, string | number]>,
+        ) => [number, string] | undefined
+      >();
+
+      const result = find(barMap);
+      expect(result).toEqual([5, 'e']);
+      expectTypeOf(result).toMatchTypeOf<[number, string] | undefined>();
+
+      expect(findFirst(predicate, barMap)).toEqual(result);
+    }
   });
 
   test('findLast', () => {
-    const predicate = (v: unknown): v is string =>
-      isArray(v) ? isString(v[1]) : isString(v);
+    // Types
+    {
+      expectTypeOf(findLast((v: string) => v === 'foobar')).toMatchTypeOf<
+        (iterable: Iterable<string> | ArrayLike<string>) => string | undefined
+      >();
+      expectTypeOf(
+        findLast((v: string | number): v is number => isNumber(v)),
+      ).toMatchTypeOf<
+        (
+          Iterable: Iterable<string | number> | ArrayLike<string | number>,
+        ) => number | undefined
+      >();
+    }
+
+    const predicate = (v: unknown): v is string => isString(v);
     const findLastFunc = findLast<unknown, string>(predicate);
 
     expect(isFunction(findLastFunc)).toBe(true);
@@ -128,23 +176,45 @@ describe('array find', () => {
     expect(findLastFunc(text)).toBe('z');
     expect(findLast(predicate, toSet([...text]))).toBe('z');
     expect(findLastFunc(toSet([...text]))).toBe('z');
-    expect(findLast(predicate, toMap([...text]))).toEqual([25, 'z']);
-    expect(findLastFunc(toMap([...text]))).toEqual([25, 'z']);
+    expect(findLast(predicate, toMap([...text]))).toBeUndefined();
+    expect(findLastFunc(toMap([...text]))).toBeUndefined();
 
     expect(findLast(predicate, hybridArray)).toBe('c');
     expect(findLastFunc(hybridArray)).toBe('c');
     expect(findLast(predicate, toSet(hybridArray))).toBe('c');
     expect(findLastFunc(toSet(hybridArray))).toBe('c');
-    expect(findLast(predicate, toMap(hybridArray))).toEqual([5, 'c']);
-    expect(findLastFunc(toMap(hybridArray))).toEqual([5, 'c']);
+    expect(findLast(predicate, toMap(hybridArray))).toBeUndefined();
+    expect(findLastFunc(toMap(hybridArray))).toBeUndefined();
 
     expect(findLast(predicate, fooSet)).toBe('dog');
     expect(findLastFunc(fooSet)).toBe('dog');
 
-    expect(findLast(predicate, barMap)).toEqual([8, 'h']);
-    expect(findLastFunc(barMap)).toEqual([8, 'h']);
+    expect(findLast(predicate, barMap)).toBeUndefined();
+    expect(findLastFunc(barMap)).toBeUndefined();
 
     expect(findLast(predicate, foobar)).toBe('r');
     expect(findLastFunc(foobar)).toBe('r');
+
+    // Type match to Map
+    {
+      const predicate = (
+        kvp: [string | number, string | number],
+      ): kvp is [number, string] => isNumber(kvp[1]);
+
+      const find = findLast(predicate);
+      expectTypeOf(find).toMatchTypeOf<
+        (
+          iterable:
+            | Iterable<[string | number, string | number]>
+            | ArrayLike<[string | number, string | number]>,
+        ) => [number, string] | undefined
+      >();
+
+      const result = find(barMap);
+      expect(result).toEqual(['d', 4]);
+      expectTypeOf(result).toMatchTypeOf<[number, string] | undefined>();
+
+      expect(findLast(predicate, barMap)).toEqual(result);
+    }
   });
 });
