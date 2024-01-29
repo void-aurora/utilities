@@ -93,6 +93,27 @@ export const findFirst: {
    * Otherwise, find returns undefined.
    * @param iterable The iterable or array-like object to find an item in.
    * @template T The type of items in the iterable or array-like object.
+   * @template S The type of the first item where `predicate` is true.
+   */
+  <T, S extends T>(
+    predicate: (
+      iterator: T,
+      index: number,
+      iterable: Iterable<T> | ArrayLike<T>,
+    ) => iterator is S,
+    iterable: Iterable<T> | ArrayLike<T>,
+  ): S | undefined;
+
+  /**
+   * Returns the value of the first item in the iterable or array-like object
+   * where `predicate` is true, and undefined otherwise.
+   *
+   * @param predicate `findFirst` calls `predicate` once for each item of the array,
+   * in ascending order, until it finds one where `predicate` returns true.
+   * If such an item is found, find immediately returns that item value.
+   * Otherwise, find returns undefined.
+   * @param iterable The iterable or array-like object to find an item in.
+   * @template T The type of items in the iterable or array-like object.
    */
   <T>(
     predicate: (
@@ -112,25 +133,6 @@ export const findFirst: {
    * If such an item is found, find immediately returns that item value.
    * Otherwise, find returns undefined.
    * @template T The type of items in the iterable or array-like object.
-   */
-  <T>(
-    predicate: (
-      iterator: T,
-      index: number,
-      iterable: Iterable<T> | ArrayLike<T>,
-    ) => boolean,
-  ): (iterable: Iterable<T> | ArrayLike<T>) => T | undefined;
-
-  /**
-   * Returns the value of the first item in the iterable or array-like object
-   * where `predicate` is true, and undefined otherwise.
-   *
-   * @param predicate `findFirst` calls `predicate` once for each item of the array,
-   * in ascending order, until it finds one where `predicate` returns true.
-   * If such an item is found, find immediately returns that item value.
-   * Otherwise, find returns undefined.
-   * @param iterable The iterable or array-like object to find an item in.
-   * @template T The type of items in the iterable or array-like object.
    * @template S The type of the first item where `predicate` is true.
    */
   <T, S extends T>(
@@ -139,8 +141,7 @@ export const findFirst: {
       index: number,
       iterable: Iterable<T> | ArrayLike<T>,
     ) => iterator is S,
-    iterable: Iterable<T> | ArrayLike<T>,
-  ): S | undefined;
+  ): (iterable: Iterable<T> | ArrayLike<T>) => S | undefined;
 
   /**
    * Returns a curried function to find the value of the first item
@@ -151,15 +152,14 @@ export const findFirst: {
    * If such an item is found, find immediately returns that item value.
    * Otherwise, find returns undefined.
    * @template T The type of items in the iterable or array-like object.
-   * @template S The type of the first item where `predicate` is true.
    */
-  <T, S extends T>(
+  <T>(
     predicate: (
       iterator: T,
       index: number,
       iterable: Iterable<T> | ArrayLike<T>,
-    ) => iterator is S,
-  ): (iterable: Iterable<T> | ArrayLike<T>) => S | undefined;
+    ) => boolean,
+  ): (iterable: Iterable<T> | ArrayLike<T>) => T | undefined;
 
   // overloading, implement, currying
 } = curry((predicate, iterable) => {
@@ -190,6 +190,27 @@ export const findLast: {
    * Otherwise, find returns undefined.
    * @param iterable The iterable or array-like object to find an item in.
    * @template T The type of items in the iterable or array-like object.
+   * @template S The type of the last item where `predicate` is true.
+   */
+  <T, S extends T>(
+    predicate: (
+      iterator: T,
+      index: number,
+      iterable: Iterable<T> | ArrayLike<T>,
+    ) => iterator is S,
+    iterable: Iterable<T> | ArrayLike<T>,
+  ): S | undefined;
+
+  /**
+   * Returns the value of the last item in the iterable or array-like object
+   * where `predicate` is true, and undefined otherwise.
+   *
+   * @param predicate `findLast` calls `predicate` once for each item of the array,
+   * in descending order, until it finds one where `predicate` returns true.
+   * If such an item is found, find immediately returns that item value.
+   * Otherwise, find returns undefined.
+   * @param iterable The iterable or array-like object to find an item in.
+   * @template T The type of items in the iterable or array-like object.
    */
   <T>(
     predicate: (
@@ -209,25 +230,6 @@ export const findLast: {
    * If such an item is found, find immediately returns that item value.
    * Otherwise, find returns undefined.
    * @template T The type of items in the iterable or array-like object.
-   */
-  <T>(
-    predicate: (
-      iterator: T,
-      index: number,
-      iterable: Iterable<T> | ArrayLike<T>,
-    ) => boolean,
-  ): (iterable: Iterable<T> | ArrayLike<T>) => T | undefined;
-
-  /**
-   * Returns the value of the last item in the iterable or array-like object
-   * where `predicate` is true, and undefined otherwise.
-   *
-   * @param predicate `findLast` calls `predicate` once for each item of the array,
-   * in descending order, until it finds one where `predicate` returns true.
-   * If such an item is found, find immediately returns that item value.
-   * Otherwise, find returns undefined.
-   * @param iterable The iterable or array-like object to find an item in.
-   * @template T The type of items in the iterable or array-like object.
    * @template S The type of the last item where `predicate` is true.
    */
   <T, S extends T>(
@@ -236,8 +238,7 @@ export const findLast: {
       index: number,
       iterable: Iterable<T> | ArrayLike<T>,
     ) => iterator is S,
-    iterable: Iterable<T> | ArrayLike<T>,
-  ): S | undefined;
+  ): (iterable: Iterable<T> | ArrayLike<T>) => S | undefined;
 
   /**
    * Returns a curried function to find the value of the last item
@@ -248,15 +249,14 @@ export const findLast: {
    * If such an item is found, find immediately returns that item value.
    * Otherwise, find returns undefined.
    * @template T The type of items in the iterable or array-like object.
-   * @template S The type of the last item where `predicate` is true.
    */
-  <T, S extends T>(
+  <T>(
     predicate: (
       iterator: T,
       index: number,
       iterable: Iterable<T> | ArrayLike<T>,
-    ) => iterator is S,
-  ): (iterable: Iterable<T> | ArrayLike<T>) => S | undefined;
+    ) => boolean,
+  ): (iterable: Iterable<T> | ArrayLike<T>) => T | undefined;
 
   // overloading, implement, currying
 } = curry((predicate, iterable) => {
