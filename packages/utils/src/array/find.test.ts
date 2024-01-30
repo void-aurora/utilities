@@ -1,6 +1,6 @@
 import { describe, test, expect, expectTypeOf } from 'vitest';
 import { isArray, isFunction, isNumber, isString } from '../type';
-import { firstItem, lastItem, findFirst, findLast } from './find';
+import { firstItem, lastItem, findFirst, findLast, find } from './find';
 
 const toSet = <T>(value: T[]) => new Set(value.values());
 const toMap = <T>(value: T[]) => new Map(value.entries());
@@ -216,5 +216,9 @@ describe('array find', () => {
 
       expect(findLast(predicate, barMap)).toEqual(result);
     }
+  });
+
+  test('alias', () => {
+    expect(find).toBe(findFirst);
   });
 });
