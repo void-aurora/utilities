@@ -26,121 +26,143 @@ import {
   toTypeString,
 } from './check';
 
-const checkers = [
-  isNull,
-  isUndefined,
-  isNullOrUndefined,
-  isAssigned,
-  isString,
-  isNumber,
-  isBoolean,
-  isSymbol,
-  isBigInt,
-  isPrimitives,
-  isFunction,
-  isObject,
-  isPlainObject,
-  isIterable,
-  isArray,
-  isMap,
-  isSet,
-  isPromise,
-  isDate,
-  toTypeString,
-  toRawType,
-];
-
-function normalFunction(a: string, b: string): string {
-  return a + b;
-}
-
-const arrowFunction = (a: number, b: number) => a + b;
-
-const promiseFunction = () =>
-  new Promise((resolve, reject) => {
-    setTimeout(() => resolve(1), 100);
-  });
-
-const asyncFunction = async () => {
-  return 1;
-};
-
 class Foobar {
-  get [Symbol.toStringTag]() {
-    return 'Foobar';
-  }
-
-  *[Symbol.iterator](): Iterator<string> {
-    yield 'foo';
-    yield 'bar';
-  }
-
   foo: string;
   bar: string;
   constructor(foo: string, bar: string) {
     this.foo = foo;
     this.bar = bar;
   }
-
   getFoo() {
     return this.foo;
   }
-
   getBar() {
     return this.bar;
   }
-
+  get [Symbol.toStringTag]() {
+    return 'Foobar';
+  }
+  *[Symbol.iterator](): Iterator<string> {
+    yield 'foo';
+    yield 'bar';
+  }
   toString() {
     return this.foo + this.bar;
   }
-
   hasOwnProperty(key: string) {
     return true;
   }
 }
 
-const values = {
-  null: null,
-  undefined: undefined,
-  string: '11',
-  stringEmpty: '',
-  number: 11,
-  NaN: NaN,
-  NEGATIVE_INFINITY: Number.NEGATIVE_INFINITY,
-  POSITIVE_INFINITY: Number.POSITIVE_INFINITY,
-  booleanTrue: true,
-  booleanFalse: false,
-  symbol: Symbol('foobar'),
-  bigint: 11n,
-  normalFunction,
-  arrowFunction,
-  object: { foobar: 'foobar' },
-  instanceFoobar: new Foobar('a', 'b'),
-  instanceArray: [0, 1, 2, 3, 4],
-  instanceMap: new Map(),
-  instanceSet: new Set(),
-  instancePromise: promiseFunction(),
-  instanceAsync: asyncFunction(),
-  instanceDate: new Date(),
-  classFoobar: Foobar,
-  apiString: String,
-  apiNumber: Number,
-  apiObject: Object,
-  apiArray: Array,
-  apiMath: Math,
-  apiDate: Date,
-};
+describe('type/check', () => {
+  test(`basic`, () => {
+    expect(isNull(null)).toBe(true);
+    expect(isUndefined(undefined)).toBe(true);
+    expect(isNullOrUndefined(void 0)).toBe(true);
+    expect(isAssigned({})).toBe(true);
+    expect(isString('foobar')).toBe(true);
+    expect(isNumber(123)).toBe(true);
+    expect(isBoolean(false)).toBe(true);
+    expect(isSymbol(Symbol('foobar'))).toBe(true);
+    expect(isBigInt(BigInt('321'))).toBe(true);
+    expect(isPrimitives(456)).toBe(true);
+    expect(isFunction(() => false)).toBe(true);
+    expect(isObject({})).toBe(true);
+    expect(isPlainObject({})).toBe(true);
+    expect(isIterable([])).toBe(true);
+    expect(isArray([])).toBe(true);
+    expect(isMap(new Map())).toBe(true);
+    expect(isSet(new Set())).toBe(true);
+    expect(
+      isPromise(
+        new Promise((resolve, reject) => setTimeout(() => resolve(1), 100)),
+      ),
+    ).toBe(true);
+    expect(isDate(new Date())).toBe(true);
+    expect(toTypeString(123)).toBe('[object Number]');
+    expect(toRawType(123)).toBe('Number');
+  });
 
-describe('type check', () => {
-  test('simple type predicates', () => {
-    const record = Object.fromEntries(
-      Object.entries(values).map(([name, value]) => {
-        const result = {} as any;
-        checkers.forEach(check => (result[check.name] = check(value)));
-        return [name, result];
-      }),
+  test(`snapshot`, () => {
+    const checkers = Object.entries({
+      isNull,
+      isUndefined,
+      isNullOrUndefined,
+      isAssigned,
+      isString,
+      isNumber,
+      isBoolean,
+      isSymbol,
+      isBigInt,
+      isPrimitives,
+      isFunction,
+      isObject,
+      isPlainObject,
+      isIterable,
+      isArray,
+      isMap,
+      isSet,
+      isPromise,
+      isDate,
+      toTypeString,
+      toRawType,
+    } as Record<string, (v: unknown) => any>);
+
+    function functionNormal(a: string, b: string): string {
+      return a + b;
+    }
+    const functionArrow = (a: number, b: number) => a + b;
+
+    const promiseFunction = () =>
+      new Promise((resolve, reject) => {
+        setTimeout(() => resolve(1), 100);
+      });
+    const asyncFunction = async () => {
+      return 1;
+    };
+
+    const values = Object.entries({
+      'primitives.undefined': undefined,
+      'primitives.string': '11',
+      'primitives.string.empty': '',
+      'primitives.number': 11,
+      'primitives.number.NaN': NaN,
+      'primitives.number.NEGATIVE_INFINITY': Number.NEGATIVE_INFINITY,
+      'primitives.number.POSITIVE_INFINITY': Number.POSITIVE_INFINITY,
+      'primitives.boolean.true': true,
+      'primitives.boolean.false': false,
+      'primitives.symbol': Symbol('foobar'),
+      'primitives.bigint': 11n,
+      functionNormal,
+      functionArrow,
+      object: { foobar: 'foobar' },
+      'object.null': null,
+      classFoobar: Foobar,
+      instanceFoobar: new Foobar('a', 'b'),
+      instanceArray: [0, 1, 2, 3, 4],
+      instanceMap: new Map(),
+      instanceSet: new Set(),
+      instancePromise: promiseFunction(),
+      instanceAsync: asyncFunction(),
+      instanceDate: new Date(),
+      apiString: String,
+      apiNumber: Number,
+      apiObject: Object,
+      apiArray: Array,
+      apiMath: Math,
+      apiDate: Date,
+    } as Record<string, any>);
+
+    const result = Object.fromEntries(
+      checkers.map(([checkerName, checker]) => [
+        checkerName,
+        Object.fromEntries(
+          values.map(([valueName, value]) => [valueName, checker(value)]),
+        ),
+      ]),
     );
-    expect(record).toMatchSnapshot();
+
+    expect(result).toMatchFileSnapshot(`${__filename}.snap`);
   });
 
   test('alias', () => {
