@@ -75,12 +75,12 @@ describe('array find', () => {
   test('findFirst', () => {
     // Types
     {
-      expectTypeOf(findFirst((v: string) => v === 'foobar')).toMatchTypeOf<
+      expectTypeOf(findFirst((v: string) => v === 'foobar')).toEqualTypeOf<
         (iterable: Iterable<string> | ArrayLike<string>) => string | undefined
       >();
       expectTypeOf(
         findFirst((v: string | number): v is number => isNumber(v)),
-      ).toMatchTypeOf<
+      ).toEqualTypeOf<
         (
           Iterable: Iterable<string | number> | ArrayLike<string | number>,
         ) => number | undefined
@@ -129,7 +129,7 @@ describe('array find', () => {
       ): kvp is [number, string] => isString(kvp[1]);
 
       const find = findFirst(predicate);
-      expectTypeOf(find).toMatchTypeOf<
+      expectTypeOf(find).toEqualTypeOf<
         (
           iterable:
             | Iterable<[string | number, string | number]>
@@ -139,7 +139,7 @@ describe('array find', () => {
 
       const result = find(barMap);
       expect(result).toEqual([5, 'e']);
-      expectTypeOf(result).toMatchTypeOf<[number, string] | undefined>();
+      expectTypeOf(result).toEqualTypeOf<[number, string] | undefined>();
 
       expect(findFirst(predicate, barMap)).toEqual(result);
     }
@@ -148,12 +148,12 @@ describe('array find', () => {
   test('findLast', () => {
     // Types
     {
-      expectTypeOf(findLast((v: string) => v === 'foobar')).toMatchTypeOf<
+      expectTypeOf(findLast((v: string) => v === 'foobar')).toEqualTypeOf<
         (iterable: Iterable<string> | ArrayLike<string>) => string | undefined
       >();
       expectTypeOf(
         findLast((v: string | number): v is number => isNumber(v)),
-      ).toMatchTypeOf<
+      ).toEqualTypeOf<
         (
           Iterable: Iterable<string | number> | ArrayLike<string | number>,
         ) => number | undefined
@@ -202,7 +202,7 @@ describe('array find', () => {
       ): kvp is [number, string] => isNumber(kvp[1]);
 
       const find = findLast(predicate);
-      expectTypeOf(find).toMatchTypeOf<
+      expectTypeOf(find).toEqualTypeOf<
         (
           iterable:
             | Iterable<[string | number, string | number]>
@@ -212,7 +212,7 @@ describe('array find', () => {
 
       const result = find(barMap);
       expect(result).toEqual(['d', 4]);
-      expectTypeOf(result).toMatchTypeOf<[number, string] | undefined>();
+      expectTypeOf(result).toEqualTypeOf<[number, string] | undefined>();
 
       expect(findLast(predicate, barMap)).toEqual(result);
     }
