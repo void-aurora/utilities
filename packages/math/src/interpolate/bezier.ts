@@ -43,8 +43,9 @@ export function bezier(t: number, points: number[][], d: number): number[] {
 function bezierRecursively(t: number, points: number[][], d: number): number[] {
   const { length } = points;
   const reducedLength = length - 1;
-  const reducedPoints: number[][] = buildArray(reducedLength, () =>
-    buildArray(d, () => 0),
+  const reducedPoints: number[][] = buildArray(
+    () => buildArray(() => 0, d),
+    reducedLength,
   );
   for (let i = 0; i < reducedLength; i++) {
     const start = points[i];
