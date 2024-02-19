@@ -15,7 +15,7 @@ import {
   isNullOrUndefined,
   isNumber,
   isObject,
-  isPlainObject,
+  isLiteralObject,
   isPrimitives,
   isPromise,
   isSet,
@@ -24,6 +24,7 @@ import {
   isUndefined,
   toRawType,
   toTypeString,
+  isPlainObject,
 } from './check';
 
 class Foobar {
@@ -68,7 +69,7 @@ describe('type/check', () => {
     expect(isPrimitives(456)).toBe(true);
     expect(isFunction(() => false)).toBe(true);
     expect(isObject({})).toBe(true);
-    expect(isPlainObject({})).toBe(true);
+    expect(isLiteralObject({})).toBe(true);
     expect(isIterable([])).toBe(true);
     expect(isArray([])).toBe(true);
     expect(isMap(new Map())).toBe(true);
@@ -97,6 +98,7 @@ describe('type/check', () => {
       isPrimitives,
       isFunction,
       isObject,
+      isLiteralObject,
       isPlainObject,
       isIterable,
       isArray,
@@ -135,7 +137,8 @@ describe('type/check', () => {
       'primitives.bigint': 11n,
       functionNormal,
       functionArrow,
-      object: { foobar: 'foobar' },
+      'object.literal': { foobar: 'foobar' },
+      'object.plain': Object.create(null),
       'object.null': null,
       classFoobar: Foobar,
       instanceFoobar: new Foobar('a', 'b'),

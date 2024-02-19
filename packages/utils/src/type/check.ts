@@ -110,13 +110,6 @@ export const isFunction = (value: unknown): value is Function =>
 // Object
 
 /**
- * Determines whether a value is an object that is not `null`.
- * Note that an array is also an object.
- */
-export const isObject = (value: unknown): value is Record<PropertyKey, any> =>
-  value !== null && typeof value === 'object';
-
-/**
  * `Object.prototype.toString`
  */
 export const objectToString = Object.prototype.toString;
@@ -152,20 +145,39 @@ export const toRawType = (value: unknown): string => {
 };
 
 /**
- * Determines whether a value is plain object
+ * Determines whether a value is an object that is not `null`.
+ * Note that an array is also an object.
+ */
+export const isObject = (value: unknown): value is Record<PropertyKey, any> =>
+  value !== null && typeof value === 'object';
+
+/**
+ * Determines whether a value is a literal object
  * which `Object.prototype.toString.call(value)` returns `'[object Object]'`
  */
-export const isPlainObject = (value: unknown): value is object =>
+export const isLiteralObject = (value: unknown): value is object =>
   toTypeString(value) === '[object Object]';
 
+/**
+ * Determines whether a value is a plain object which init by `Object.create(null)`.
+ * The plain object has no prototype, useful for
+ * @param value
+ * @returns
+ */
+export const isPlainObject = (value: unknown): value is object =>
+  isObject(value) && isNullOrUndefined(Object.getPrototypeOf(value));
+
 // ================================================================
-// Built-in Iterables
+// Iterable
 
 /**
  * Determines whether a object is iterable.
  */
 export const isIterable = <T>(value: unknown): value is Iterable<T> =>
   isObject(value) && isFunction(value[Symbol.iterator]);
+
+// ================================================================
+// Built-in Objects
 
 /**
  * Determines whether a value is an instance of `Array` via `Array.isArray(value)`.
@@ -183,9 +195,6 @@ export const isMap = <K = any, V = any>(value: unknown): value is Map<K, V> =>
  */
 export const isSet = <V = any>(value: unknown): value is Set<V> =>
   toTypeString(value) === '[object Set]';
-
-// ================================================================
-// Built-in Objects
 
 /**
  * Determines whether a value is an instance of `Promise`.
