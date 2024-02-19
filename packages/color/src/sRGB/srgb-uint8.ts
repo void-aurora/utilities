@@ -1,11 +1,5 @@
-import { isNumber, isObject } from '@void-aurora/utils';
-import {
-  clampUint8,
-  floor,
-  MAX_UINT8,
-  parseInt,
-  round,
-} from '@void-aurora/math';
+import { isNumber, isObject, parseInt } from '@void-aurora/utils';
+import { clampUint8, floor, MAX_UINT8, round } from '@void-aurora/math';
 import { clampAlpha, ColorBase } from '../base';
 import { createColorSrgb, ColorSrgb } from './srgb-float';
 
