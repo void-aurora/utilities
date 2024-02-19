@@ -81,12 +81,3 @@ export const simpleArrayEqual: {
 
   //
 } = arrayEqual((a, b) => a === b);
-
-// Example usage
-const numbersEqual = (a: number, b: number) => a === b;
-const array1 = [1, 2, 3];
-const array2 = [1, 2, 3];
-const array3 = [1, 2, 4];
-
-const result1 = arrayEqual(numbersEqual, array1, array2); // true
-const result2 = arrayEqual(numbersEqual)(array1)(array3); // false
