@@ -15,6 +15,9 @@ export const dedupe: {
   // overloading, implement, currying
 } = curry(<T>(equal: (a: T, b: T) => boolean, array: T[]): T[] => {
   const result: T[] = [];
+  if (isNullOrUndefined(array)) {
+    return result;
+  }
   const { length } = array;
   for (let i = 0; i < length; i++) {
     const element = array[i];
