@@ -1,9 +1,9 @@
 import React, { CSSProperties, FC, useMemo, useState } from 'react';
-import { buildArray } from '@void-aurora/utils';
-import { parseFloat, parseInt } from '@void-aurora/math';
+import { buildArray, parseFloat, parseInt } from '@void-aurora/utils';
+import {} from '@void-aurora/math';
 import {
-  ColorLinearRgb,
-  ColorSrgbFloat,
+  createColorSrgbLinear,
+  createColorSrgb,
   gammaDecode,
   gammaEncode,
 } from '@void-aurora/color';
@@ -12,11 +12,11 @@ export const DemoLinearRGB: FC = () => {
   const [r, setR] = useState(0);
   const [g, setG] = useState(0);
   const [b, setB] = useState(0);
-  const rgb = new ColorSrgbFloat(r, g, b);
-  const linearRgb = ColorLinearRgb.fromSrgbFloat(rgb);
+  const rgb = createColorSrgb(r, g, b);
+  const linearRgb = createColorSrgbLinear(r, g, b);
 
   const compare = useMemo(() => {
-    const values = buildArray(11, i => i / 10);
+    const values = buildArray(i => i / 10, 11);
 
     const labelStyle: CSSProperties = {
       display: 'flex',
@@ -55,7 +55,7 @@ export const DemoLinearRGB: FC = () => {
             key={`gamma-compressed-${v}`}
             style={{
               ...blockStyle,
-              backgroundColor: new ColorSrgbFloat(v, v, v).toString(),
+              // backgroundColor: new ColorSrgbFloat(v, v, v).toString(),
             }}
           ></div>
         ))}
@@ -67,9 +67,9 @@ export const DemoLinearRGB: FC = () => {
             key={`linear-light-${v}`}
             style={{
               ...blockStyle,
-              backgroundColor: new ColorLinearRgb(v, v, v)
-                .toSrgbFloat()
-                .toString(),
+              // backgroundColor: new ColorLinearRgb(v, v, v)
+              //   .toSrgbFloat()
+              //   .toString(),
             }}
           ></div>
         ))}

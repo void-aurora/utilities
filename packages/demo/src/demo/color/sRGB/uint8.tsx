@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
-import { parseFloat, parseInt } from '@void-aurora/math';
-import { ColorSrgbUint8 } from '@void-aurora/color';
+import { parseFloat, parseInt } from '@void-aurora/utils';
+import {} from '@void-aurora/math';
+import { createColorSrgbUint8 } from '@void-aurora/color';
 
 export const DemoSrgbUint8: FC = () => {
   const [r, setR] = useState(0);
@@ -8,7 +9,7 @@ export const DemoSrgbUint8: FC = () => {
   const [b, setB] = useState(0);
   const [alpha, setAlpha] = useState(1);
 
-  const rgb = new ColorSrgbUint8(r, g, b, alpha);
+  const rgb = createColorSrgbUint8(r, g, b, alpha);
 
   return (
     <div
@@ -39,7 +40,7 @@ export const DemoSrgbUint8: FC = () => {
 
         <div>
           <span>hex:</span>
-          <span>{rgb.toHexString(true)}</span>
+          {/* <span>{rgb.toHexString(true)}</span> */}
         </div>
 
         <div>

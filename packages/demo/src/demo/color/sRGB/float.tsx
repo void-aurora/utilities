@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import {} from '@void-aurora/utils';
 import { clamp01 } from '@void-aurora/math';
-import { ColorSrgbFloat } from '@void-aurora/color';
+import { createColorSrgb } from '@void-aurora/color';
 
 export const DemoSrgbFloat: FC = () => {
   const [r, setR] = useState(0);
@@ -9,7 +9,7 @@ export const DemoSrgbFloat: FC = () => {
   const [b, setB] = useState(0);
   const [alpha, setAlpha] = useState(1);
 
-  const rgb = new ColorSrgbFloat(r, g, b, alpha);
+  const rgb = createColorSrgb(r, g, b, alpha);
 
   return (
     <div
