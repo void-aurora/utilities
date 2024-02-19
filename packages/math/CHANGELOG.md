@@ -1,11 +1,26 @@
-# @void-aurora/xml
+# @void-aurora/math
 
-## 0.1.1
+## 1.0.0
+
+### Major Changes
+
+- 67ea6f9: Move number standard from the package math to the package utils.
+
+### Minor Changes
+
+- e93267a: Init project
+- fb0c2fb: Add more special clamp functions
+- e9d9430: Add loop clamp funtions
+- ef3fc72: Add functions related to clamping.
+- da51da0: add bezier inerpolate
+- 0da5cdd: Add clamp functions for array and page.
+- 507058b: Add min and max values for uint8, degree and radian
+- 46fd861: Add linearly interpolate functions.
 
 ### Patch Changes
 
 - 7a6fc7a: Change global name prefix to 'Va' from 'VoidAurora'.
-- aa15136: Fix global names
+- 26b29b5: Clamp for uint8 should use round
 - 6da0f6b: Add sideEffects: false to package.json
 - Updated dependencies [9a58032]
 - Updated dependencies [7a6fc7a]
@@ -30,9 +45,3 @@
 - Updated dependencies [07f7661]
 - Updated dependencies [c1667ae]
   - @void-aurora/utils@1.0.0
-
-## 0.1.0
-
-### Minor Changes
-
-- First release

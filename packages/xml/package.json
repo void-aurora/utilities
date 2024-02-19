@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple xml library, wrapping of htmlparser2.",
   "keywords": [
     "xml",
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
-    "@void-aurora/utils": "workspace:^0.1.0",
+    "@void-aurora/utils": "workspace:^1.0.0",
     "fs-extra": "^10.0.0"
   },
   "dependencies": {

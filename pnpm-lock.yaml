@@ -78,31 +78,31 @@ importers:
   packages/color:
     devDependencies:
       '@void-aurora/math':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^1.0.0
         version: link:../math
       '@void-aurora/utils':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^1.0.0
         version: link:../utils
 
   packages/datetime:
     devDependencies:
       '@void-aurora/math':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^1.0.0
         version: link:../math
       '@void-aurora/utils':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^1.0.0
         version: link:../utils
 
   packages/demo:
     dependencies:
       '@void-aurora/color':
-        specifier: workspace:^0.0.0
+        specifier: workspace:^0.1.0
         version: link:../color
       '@void-aurora/math':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^1.0.0
         version: link:../math
       '@void-aurora/utils':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^1.0.0
         version: link:../utils
       normalize.css:
         specifier: ^8.0.1
@@ -142,13 +142,13 @@ importers:
   packages/events:
     devDependencies:
       '@void-aurora/utils':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^1.0.0
         version: link:../utils
 
   packages/math:
     devDependencies:
       '@void-aurora/utils':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^1.0.0
         version: link:../utils
 
   packages/utils:
@@ -176,7 +176,7 @@ importers:
         specifier: ^9.0.13
         version: 9.0.13
       '@void-aurora/utils':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^1.0.0
         version: link:../utils
       fs-extra:
         specifier: ^10.0.0

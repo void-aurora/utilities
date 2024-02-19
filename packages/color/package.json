@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Shared Color Algorithms Module for Void Aurora.",
   "keywords": [
     "color",
@@ -38,8 +38,8 @@
     "ts-node": "ts-node --project ../../tsconfig.dev.json"
   },
   "devDependencies": {
-    "@void-aurora/math": "workspace:^0.1.0",
-    "@void-aurora/utils": "workspace:^0.1.0"
+    "@void-aurora/math": "workspace:^1.0.0",
+    "@void-aurora/utils": "workspace:^1.0.0"
   },
   "peerDependencies": {
     "@void-aurora/math": "0.1.0",

@@ -1,12 +1,13 @@
-# @void-aurora/xml
+# @void-aurora/events
 
-## 0.1.1
+## 0.2.0
+
+### Minor Changes
+
+- c147df0: New package events
 
 ### Patch Changes
 
-- 7a6fc7a: Change global name prefix to 'Va' from 'VoidAurora'.
-- aa15136: Fix global names
-- 6da0f6b: Add sideEffects: false to package.json
 - Updated dependencies [9a58032]
 - Updated dependencies [7a6fc7a]
 - Updated dependencies [1b152ae]
@@ -30,9 +31,3 @@
 - Updated dependencies [07f7661]
 - Updated dependencies [c1667ae]
   - @void-aurora/utils@1.0.0
-
-## 0.1.0
-
-### Minor Changes
-
-- First release

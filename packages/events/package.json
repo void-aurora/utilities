@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared Typed Events Module for Void Aurora.",
   "keywords": [
     "typescript",
@@ -38,7 +38,7 @@
     "ts-node": "ts-node --project ../../tsconfig.dev.json"
   },
   "devDependencies": {
-    "@void-aurora/utils": "workspace:^0.1.0"
+    "@void-aurora/utils": "workspace:^1.0.0"
   },
   "peerDependencies": {
     "@void-aurora/utils": "^0.1.0"

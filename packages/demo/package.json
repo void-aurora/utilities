@@ -1,7 +1,7 @@
 {
   "name": "@void-aurora/utilities-demo",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,9 +10,9 @@
     "ts-node": "ts-node --project ../../tsconfig.dev.json"
   },
   "dependencies": {
-    "@void-aurora/color": "workspace:^0.0.0",
-    "@void-aurora/math": "workspace:^0.1.0",
-    "@void-aurora/utils": "workspace:^0.1.0",
+    "@void-aurora/color": "workspace:^0.1.0",
+    "@void-aurora/math": "workspace:^1.0.0",
+    "@void-aurora/utils": "workspace:^1.0.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
