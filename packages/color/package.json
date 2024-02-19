@@ -19,19 +19,19 @@
     "src"
   ],
   "globalName": "VaColor",
-  "main": "./dist/color.cjs.js",
-  "module": "./dist/color.es.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "types": "./src/index.ts",
   "exports": {
     ".": {
-      "require": "./dist/color.cjs.js",
-      "import": "./dist/color.es.js"
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.es.js"
     }
   },
   "sideEffects": false,
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc",
+    "build": "vite build",
     "serve": "vite preview",
     "test": "vitest",
     "comment:prepare": "pnpm run build",

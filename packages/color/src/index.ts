@@ -1,4 +1,4 @@
 export * from './base';
 
-export * from './linearRGB';
+export * from './sRGB';
 export * from './sRGB';
